@@ -1,0 +1,9 @@
+# ローカル開発用の秘密値。このファイルをコピーして .dev.vars を作る。
+# 本番は `wrangler secret put <NAME>` で登録する。wrangler.jsonc には書かない。
+
+# JWT の署名鍵。十分な長さのランダム文字列にする。
+AUTH_SECRET=
+
+# 初期ユーザー。scripts/seed.ts が参照する。
+SEED_OWNER_EMAIL=
+SEED_PARTNER_EMAIL=

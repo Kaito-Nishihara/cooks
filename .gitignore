@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.wrangler/
+worker-configuration.d.ts
+
+# ローカルの秘密値。.dev.vars.example にキーだけを列挙する。
+.dev.vars
+
+# 成分表の変換元。配布条件の確認が要るためリポジトリに含めない。
+data/source/
+
+.DS_Store
+*.log

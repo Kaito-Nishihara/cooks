@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mana-cooks",
+  "main": "src/server/index.ts",
+  "compatibility_date": "2026-09-25",
+
+  // 既存のアセットへのリクエストは Worker を経由せずに配信される。無料かつ無制限で CPU を消費しない。
+  // アセットに無い URL は Worker へ渡るため、SPA のシェルは Worker から ASSETS 経由で返す
+  // (src/server/index.ts の最後のハンドラ)。not_found_handling がそれを index.html に解決する。
+  "assets": {
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+
+  "observability": {
+    "enabled": true
+  },
+
+  // database_id は `wrangler d1 create mana-cooks` で採番された値へ差し替える。
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "mana-cooks",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "drizzle"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      "binding": "IMAGES",
+      "bucket_name": "mana-cooks-images"
+    }
+  ]
+}
