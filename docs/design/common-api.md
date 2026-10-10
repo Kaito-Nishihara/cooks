@@ -182,6 +182,7 @@
 | `UNAUTHENTICATED` | 401 | ログインしていない。セッションが切れた | なし |
 | `LOGIN_FAILED` | 401 | メールアドレスかパスワードが違う | なし |
 | `FORBIDDEN` | 403 | メンバーだが役割が足りない | なし |
+| `CROSS_SITE_REQUEST` | 403 | 状態を変える要求が、ほかのサイトの画面から送られた | なし |
 | `NOT_FOUND` | 404 | 対象がない。メンバーでないレシピ帳を指定した | なし |
 | `EMAIL_TAKEN` | 409 | 登録済みのメールアドレスで登録しようとした | なし |
 | `REVISION_CONFLICT` | 409 | 改訂番号が合わない | `currentRevision` |
