@@ -76,3 +76,9 @@ nav:
   - はじめに: index.md
   - 要件定義: requirements.md
   - アーキテクチャ図: architecture.html
+  - 共通の設計:
+      - API の共通仕様: design/common-api.md
+  - 決定の記録:
+      - 0001 改訂番号を要求の本文で渡す: decisions/0001-revision-in-body.md
+      - 0002 API のパスに版の番号を入れない: decisions/0002-no-api-version.md
+      - 0003 一覧をカーソルで分けて返す: decisions/0003-cursor-pagination.md
