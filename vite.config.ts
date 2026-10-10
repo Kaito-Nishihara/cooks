@@ -1,6 +1,5 @@
 import { fileURLToPath } from "node:url";
-// vitest の設定を同じファイルへ書くため、defineConfig は vitest/config から取る。
-import { defineConfig } from "vitest/config";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
@@ -19,10 +18,5 @@ export default defineConfig({
     // バンドルが膨らむと Worker の起動時間が CPU 10ms に食い込むため、
     // 想定外の肥大化に気づけるよう警告のしきい値を低めにする。
     chunkSizeWarningLimit: 500,
-  },
-  test: {
-    // ドメインロジックは依存のない純粋な関数なので Node 環境で試す。
-    environment: "node",
-    include: ["src/**/*.test.ts"],
   },
 });

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>筑前煮 | おうちレシピ帖</title>
+  <meta name="description" content="鶏もも肉と根菜を炒めてから甘辛く煮る筑前煮。調理時間40分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/chikuzenni/hero.jpg" alt="花模様の器に盛った筑前煮。にんじん、れんこん、ごぼう、しいたけ、鶏肉に絹さやを添えている">
+    <div class="hero__body">
+      <span class="hero__kicker">煮物</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">CHIKUZENNI</span>
+        筑前煮
+      </h1>
+      <p class="hero__lead">鶏肉と根菜を油で炒めてから、しいたけの戻し汁で煮含める。<br>最後に煮汁を煮詰めて絡めるので、照りのある仕上がりになります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">40<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約430<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">深めのフライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">鶏もも肉</span><span class="ing__qty" data-amount="250" data-style="round5" data-unit="g">250g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ごぼう</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="本">1/2本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">れんこん</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">にんじん</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="本">1/2本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">干ししいたけ</span><span class="ing__qty" data-amount="4" data-style="int" data-unit="枚">4枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">こんにゃく</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="枚">1/2枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">絹さや</span><span class="ing__qty" data-amount="6" data-style="int" data-unit="枚">6枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="大さじ">大さじ1/2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">煮汁</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">しいたけの戻し汁と水</span><span class="ing__qty" data-amount="200" data-style="round5" data-unit="ml">200ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">酒</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">みりん</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">干ししいたけを戻す</h3>
+          <p class="step__text">干ししいたけはさっと洗い、ひたひたの水に浸けて戻す。前の晩から冷蔵庫で戻しておくと手間がない。戻し汁は煮汁に使うので取っておく。</p>
+          <span class="step__time">30分以上</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">鶏肉はひと口大に切る。ごぼうとれんこんは乱切りにして水にさらす。にんじんも乱切りにし、しいたけは軸を取って半分に切る。こんにゃくはスプーンでひと口大にちぎり、2〜3分下ゆでする。</p>
+          <span class="step__time">10分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">絹さやをゆでる</h3>
+          <p class="step__text">絹さやは筋を取り、塩少々(分量外)を入れた湯でさっとゆでて冷水に取る。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">鶏肉を炒める</h3>
+          <p class="step__text">フライパンにサラダ油を入れて中火で熱し、鶏肉を皮目から焼く。表面の色が変わるまで炒める。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">根菜を炒める</h3>
+          <p class="step__text">水気を切ったごぼう、れんこん、にんじん、しいたけ、こんにゃくを加え、全体に油が回るまで炒める。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">煮る</h3>
+          <p class="step__text">しいたけの戻し汁と水、酒、砂糖を加え、煮立ったらアクを取る。みりんと醤油を加え、落としぶたをして弱めの中火で煮る。</p>
+          <span class="step__time">15分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">煮汁を絡める</h3>
+          <p class="step__text">落としぶたを取って中火にし、フライパンをゆすりながら煮汁がほとんどなくなるまで煮詰める。器に盛り、絹さやを斜め半分に切って添える。</p>
+          <span class="step__time">5分</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>根菜は同じくらいの大きさに切りそろえると、煮えむらが出ません。</li>
+          <li>煮る前に油で炒めるのがこの料理の作り方です。炒めることでコクが出て、煮崩れもしにくくなります。</li>
+          <li>砂糖と酒を先に入れ、醤油は後から加えると、具に甘みが染みてから塩気がつきます。</li>
+          <li>いったん冷ますと味が中まで染みます。作り置きにするときは、冷蔵で3日ほどを目安にしてください。</li>
+          <li>根菜の水煮パックを使うと、下ごしらえが短くなります。その場合は煮る時間を10分ほどに縮めてください。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/chikuzenni/gameni.jpg" alt="白い鉢に盛ったがめ煮。れんこん、しいたけ、こんにゃく、絹さやが入っている" loading="lazy">
+        <figcaption>福岡では「がめ煮」と呼ばれる郷土料理</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Chikuzen-ni.jpg">Chikuzen-ni</a>(pelican 撮影、CC BY-SA 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:がめ煮（筑前煮）P1010424.jpg">がめ煮(筑前煮)</a>(南無観自在 撮影、CC BY-SA 4.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

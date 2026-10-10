@@ -12,8 +12,9 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "wrangler d1 migrations apply mana-cooks --local",
     "db:migrate:remote": "wrangler d1 migrations apply mana-cooks --remote",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "db:seed": "node --env-file-if-exists=.dev.vars scripts/seed.ts > .seed.sql && wrangler d1 execute mana-cooks --local --file .seed.sql",
+    "test": "vitest run --config vitest.config.ts",
+    "test:watch": "vitest --config vitest.config.ts",
     "test:e2e": "playwright test"
   },
   "dependencies": {

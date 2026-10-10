@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>今日の献立 | おうちレシピ帖</title>
+  <meta name="description" content="一覧で選んだ料理を朝食、昼食、夕食に分けて並べ、1日の栄養の目安の合計を出す。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/catalog.js" defer></script>
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="index-header">
+    <h1>今日の献立</h1>
+    <p class="index-header__nav"><a href="index.html">← レシピ一覧へ</a></p>
+  </header>
+
+  <!-- recipe.js の MenuPage が、ブラウザに覚えた献立と目録から中身を描く -->
+  <main class="plan" data-menu-page>
+    <noscript><p>献立の表示には JavaScript が必要です。</p></noscript>
+  </main>
+
+</body>
+</html>

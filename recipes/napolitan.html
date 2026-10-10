@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ナポリタン | おうちレシピ帖</title>
+  <meta name="description" content="ウインナーと玉ねぎ、ピーマンをケチャップで炒めるナポリタン。調理時間20分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/napolitan/hero.jpg" alt="白い器に盛ったナポリタン。ウインナーとピーマンが入っている">
+    <div class="hero__body">
+      <span class="hero__kicker">麺</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">NAPOLITAN</span>
+        ナポリタン
+      </h1>
+      <p class="hero__lead">ゆでたスパゲッティを、ケチャップと具と一緒に炒め合わせる。<br>ケチャップを先に炒めて酸味を飛ばすので、甘みの強い喫茶店の味になります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">20<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★☆☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約650<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">鍋とフライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">麺と具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">スパゲッティ(1.6mm前後)</span><span class="ing__qty" data-amount="200" data-style="round5" data-unit="g">200g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ウインナー</span><span class="ing__qty" data-amount="4" data-style="frac" data-unit="本">4本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">玉ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="個">1/2個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ピーマン</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="個">2個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">ソース</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ケチャップ</span><span class="ing__qty" data-amount="6" data-style="frac" data-prefix="大さじ">大さじ6</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ウスターソース</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty">ひとつまみ</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">バター</span><span class="ing__qty" data-amount="10" data-style="round5" data-unit="g">10g</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">仕上げ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">粉チーズ</span><span class="ing__qty">好みで</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">タバスコ</span><span class="ing__qty">好みで</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">ウインナーは斜め切り、玉ねぎは薄切り、ピーマンは細切りにする。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">スパゲッティをゆでる</h3>
+          <p class="step__text">たっぷりの湯に塩(湯1Lに小さじ2、分量外)を入れ、スパゲッティを袋の表示どおりにゆでる。ゆで汁を大さじ3取っておく。</p>
+          <span class="step__time">10分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">具を炒める</h3>
+          <p class="step__text">ゆでている間に、フライパンにサラダ油を入れて中火で熱し、玉ねぎとウインナーを炒める。玉ねぎがしんなりしたらピーマンを加えてさっと炒める。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ケチャップを炒める</h3>
+          <p class="step__text">具をフライパンの端に寄せ、空いたところにケチャップを入れて炒める。ふつふつとして色が濃くなったら、具と混ぜる。</p>
+          <span class="step__time">1分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">麺と合わせる</h3>
+          <p class="step__text">ゆでたスパゲッティとゆで汁、ウスターソース、砂糖、バターを加え、全体に絡めながら炒める。器に盛り、好みで粉チーズとタバスコを振る。</p>
+          <span class="step__time">1〜2分</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>ケチャップだけを先に炒めると酸味が飛び、甘みとコクが出ます。</li>
+          <li>スパゲッティを表示より長めにゆでて一晩冷蔵したものを使うと、喫茶店のようなもちっとした食感になります。</li>
+          <li>ゆで汁を加えるとソースが麺によく絡みます。</li>
+          <li>マッシュルームやベーコンを加えてもおいしく作れます。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/napolitan/broccoli.jpg" alt="模様入りの皿に盛ったナポリタン。ウインナーとブロッコリーが入っている" loading="lazy">
+        <figcaption>ブロッコリーを加えて彩りに</figcaption>
+      </figure>
+      <figure>
+        <img src="images/napolitan/pepper.jpg" alt="皿に盛ったナポリタン。ウインナー、ピーマン、玉ねぎが入っている" loading="lazy">
+        <figcaption>ピーマンは最後に入れると色が残る</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Naporitan_(2015-09-13).JPG">Naporitan (2015-09-13)</a>(Lombroso 撮影、CC BY-SA 4.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Naporitan_by_zenjiro.jpg">Naporitan by zenjiro</a>(zenjiro 撮影、CC BY 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Naporitan_by_kimishowota.jpg">Naporitan by kimishowota</a>(kimishowota 撮影、CC BY 2.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

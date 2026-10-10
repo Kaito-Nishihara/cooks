@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>焼きうどん | おうちレシピ帖</title>
+  <meta name="description" content="豚肉とキャベツ、にんじんをゆでうどんと醤油で炒める焼きうどん。調理時間15分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/yaki-udon/hero.jpg" alt="花模様の器に盛った焼きうどん。豚肉、キャベツ、にんじんが入り、かつお節と白ごまが振ってある">
+    <div class="hero__body">
+      <span class="hero__kicker">麺</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">YAKI UDON</span>
+        焼きうどん
+      </h1>
+      <p class="hero__lead">豚肉と野菜を炒めてから、ほぐしたうどんを醤油とだしで炒め合わせる。<br>冷蔵庫にある野菜で作れるので、あと一品に困ったときに向きます。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">15<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★☆☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約420<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">フライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">麺と具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ゆでうどん</span><span class="ing__qty" data-amount="2" data-style="frac" data-unit="玉">2玉</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豚こま切れ肉</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">キャベツ</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="枚">2枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">にんじん</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-unit="本">1/4本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">玉ねぎ</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-unit="個">1/4個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">調味料</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="1.5" data-style="frac" data-prefix="大さじ">大さじ1と1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">みりん</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">顆粒和風だし</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">仕上げ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">かつお節</span><span class="ing__qty">適量</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">紅しょうが</span><span class="ing__qty">好みで</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">キャベツはざく切り、にんじんは短冊切り、玉ねぎは薄切りにする。豚肉は大きければ食べやすく切る。</p>
+          <span class="step__time">4分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">うどんをほぐす</h3>
+          <p class="step__text">ゆでうどんは袋のまま電子レンジで1分温めるか、さっと湯通しして、ほぐしておく。</p>
+          <span class="step__time">1分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">肉と野菜を炒める</h3>
+          <p class="step__text">フライパンにサラダ油を入れて中火で熱し、豚肉を炒める。色が変わったらにんじん、玉ねぎ、キャベツの順に加えて炒める。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">うどんを炒める</h3>
+          <p class="step__text">うどんを加え、野菜と混ぜながら炒める。</p>
+          <span class="step__time">2分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">味をつける</h3>
+          <p class="step__text">醤油、みりん、顆粒和風だしを回し入れ、全体に絡める。器に盛り、かつお節をのせて好みで紅しょうがを添える。</p>
+          <span class="step__time">1分</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>うどんは先に温めてほぐしておくと、フライパンの中で切れにくくなります。</li>
+          <li>醤油をフライパンの縁から入れると、焦げた香りがうどんにつきます。</li>
+          <li>もやし、ピーマン、しめじなど、冷蔵庫にある野菜で作れます。</li>
+          <li>醤油の代わりにソースで味をつけると、ソース焼きうどんになります。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/yaki-udon/plate.jpg" alt="白い皿に盛った焼きうどん。豚肉、キャベツ、にんじん、しめじが入っている" loading="lazy">
+        <figcaption>しめじを足すとうまみが増す</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Stir-fried_noodles_(Yaki-udon)_(2320197071).jpg">Stir-fried noodles (Yaki-udon)</a>(pelican 撮影、CC BY-SA 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Yaki-udon.jpg">Yaki-udon</a>(Blue Lotus 撮影、CC BY 2.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

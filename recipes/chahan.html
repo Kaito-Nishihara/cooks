@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>チャーハン | おうちレシピ帖</title>
+  <meta name="description" content="卵と焼豚、長ねぎで作るパラッとしたチャーハン。調理時間15分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/chahan/hero.jpg" alt="白い皿に盛ったチャーハン。卵と焼豚とねぎが混ざっている">
+    <div class="hero__body">
+      <span class="hero__kicker">ご飯もの</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">CHAHAN</span>
+        チャーハン
+      </h1>
+      <p class="hero__lead">温かいご飯を半熟の卵と一緒に炒め、焼豚と長ねぎを加える。<br>卵がご飯の粒を包むので、家庭のコンロでもパラッと仕上がります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">15<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約550<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">フライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">温かいご飯</span><span class="ing__qty" data-amount="400" data-style="round5" data-unit="g">400g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">卵</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="個">2個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">焼豚(またはハム)</span><span class="ing__qty" data-amount="60" data-style="round5" data-unit="g">60g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">長ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="本">1/2本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">調味料</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">鶏がらスープの素</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">塩</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-prefix="小さじ">小さじ1/4</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">こしょう</span><span class="ing__qty">少々</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">焼豚は1cm角に切り、長ねぎはみじん切りにする。卵はボウルに溶きほぐす。冷たいご飯なら電子レンジで温めておく。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">フライパンを熱する</h3>
+          <p class="step__text">フライパンを強めの中火でしっかり熱し、サラダ油を入れて全体になじませる。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">卵とご飯を炒める</h3>
+          <p class="step__text">溶き卵を流し入れ、すぐに大きく混ぜる。卵が半熟のうちにご飯を加え、へらで切るようにほぐしながら、卵をご飯全体に絡めて炒める。</p>
+          <span class="step__time">2〜3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">具を加える</h3>
+          <p class="step__text">焼豚と長ねぎを加え、全体に散るまで炒める。</p>
+          <span class="step__time">1分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">味をつける</h3>
+          <p class="step__text">鶏がらスープの素、塩、こしょうを振って混ぜる。最後に醤油をフライパンの縁から回し入れ、香りが立ったらさっと混ぜて火を止める。</p>
+          <span class="step__time">30秒</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>ご飯は温かいものを使ってください。冷たいご飯はほぐれにくく、炒める時間が延びてべたつきます。</li>
+          <li>一度に炒めるのは2人分までにしてください。量が多いとフライパンの温度が下がります。</li>
+          <li>ご飯をへらで押しつけると粘りが出ます。切るように動かしてください。</li>
+          <li>醤油を縁から入れると、焦げた香りがご飯につきます。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/chahan/ramen.jpg" alt="八角形の皿に盛ったチャーハンと、奥にラーメンのどんぶり" loading="lazy">
+        <figcaption>ラーメンと組み合わせるのも定番</figcaption>
+      </figure>
+      <figure>
+        <img src="images/chahan/plate.jpg" alt="青い模様の皿に盛ったチャーハンとれんげ" loading="lazy">
+        <figcaption>丸く盛って、れんげを添える</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Chahan_of_Tokibe_01.jpg">Chahan of Tokibe 01</a>(ノボホショコロトソ 撮影、CC BY 4.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Chahan_in_Kochi.jpg">Chahan in Kochi</a>(ノボホショコロトソ 撮影、CC BY 4.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Cha-han_(Fried_Rice)_(2732233562).jpg">Cha-han (Fried Rice)</a>(David Pursehouse 撮影、CC BY 2.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

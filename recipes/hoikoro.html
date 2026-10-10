@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>回鍋肉 | おうちレシピ帖</title>
+  <meta name="description" content="豚バラ肉とキャベツ、ピーマンを甜麺醤の甘辛いタレで炒める回鍋肉。調理時間20分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/hoikoro/hero.jpg" alt="花模様の皿に盛った回鍋肉。豚肉、キャベツ、ピーマン、長ねぎを炒めてある">
+    <div class="hero__body">
+      <span class="hero__kicker">炒め物</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">HOIKORO</span>
+        回鍋肉
+      </h1>
+      <p class="hero__lead">キャベツとピーマンを先に炒めて取り出し、豚肉と甜麺醤のタレに戻して絡める。<br>野菜から水が出ないので、タレが薄まらずに仕上がります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">20<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★☆☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約430<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">フライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豚バラ薄切り肉</span><span class="ing__qty" data-amount="150" data-style="round5" data-unit="g">150g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">キャベツ</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-unit="個">1/4個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ピーマン</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="個">2個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">長ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="本">1/2本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">にんにく</span><span class="ing__qty" data-amount="1" data-style="frac" data-unit="かけ">1かけ</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">合わせ調味料</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">甜麺醤</span><span class="ing__qty" data-amount="1.5" data-style="frac" data-prefix="大さじ">大さじ1と1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">酒</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豆板醤</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">合わせ調味料を混ぜる</h3>
+          <p class="step__text">小さな器に合わせ調味料をすべて入れて混ぜておく。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">キャベツは4cm角のざく切りにし、芯は薄切りにする。ピーマンは乱切り、長ねぎは1cm幅の斜め切り、にんにくは薄切りにする。豚肉は4cm長さに切る。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">野菜を炒めて取り出す</h3>
+          <p class="step__text">フライパンにサラダ油の半量を入れて強めの中火で熱し、キャベツとピーマンを炒める。キャベツの縁が透き通ったら取り出す。</p>
+          <span class="step__time">1〜2分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">豚肉を炒める</h3>
+          <p class="step__text">残りの油を入れ、豚肉を広げて焼く。脂が出て縁がカリッとするまで炒める。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">香味野菜とタレを炒める</h3>
+          <p class="step__text">にんにくと長ねぎを加えて香りを出し、合わせ調味料を加えて肉に絡める。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">野菜を戻して仕上げる</h3>
+          <p class="step__text">取り出した野菜を戻し入れ、強火で手早く全体に絡める。</p>
+          <span class="step__time">30秒</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>野菜を先に炒めて取り出すと、水っぽくならずシャキッと仕上がります。</li>
+          <li>甜麺醤が無いときは、味噌大さじ1と砂糖小さじ2で代用できます。</li>
+          <li>辛いのが苦手なら豆板醤を省いてください。甘辛い味になります。</li>
+          <li>本来は塊の豚肉をゆでてから薄切りにし、鍋に戻して炒めます。料理名はこの作り方から来ています。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/hoikoro/sichuan.jpg" alt="青い模様の皿に盛った四川風の回鍋肉。豚肉と青い葉野菜と赤唐辛子を炒めてある" loading="lazy">
+        <figcaption>四川ではキャベツではなく葉にんにくを使う</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安で、ご飯は含みません。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Húi_gūo_ròu_(3958649396).jpg">Húi gūo ròu</a>(pelican 撮影、CC BY-SA 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Twice-cooked_Pork_回锅肉_(1648213963).jpg">Twice-cooked Pork 回锅肉</a>(Alpha 撮影、CC BY-SA 2.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>カツ丼 | おうちレシピ帖</title>
+  <meta name="description" content="揚げたとんかつを玉ねぎと割下で煮て卵でとじ、ご飯にのせるカツ丼。調理時間45分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/katsudon/hero.jpg" alt="どんぶりに盛ったカツ丼。卵でとじたとんかつに三つ葉がのっている">
+    <div class="hero__body">
+      <span class="hero__kicker">丼もの</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">KATSUDON</span>
+        カツ丼
+      </h1>
+      <p class="hero__lead">とんかつを揚げ、割下で煮た玉ねぎと一緒に卵でとじる。<br>卵は2回に分けて入れるので、半熟ととろとろの部分が両方残ります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">45<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★★</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約1050<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">揚げ鍋と小さめのフライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">とんかつ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豚ロース肉(とんかつ用)</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="枚">2枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">塩</span><span class="ing__qty">少々</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">こしょう</span><span class="ing__qty">少々</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">薄力粉</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">溶き卵(衣用)</span><span class="ing__qty" data-amount="1" data-style="int" data-unit="個">1個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">パン粉</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="カップ">カップ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">揚げ油</span><span class="ing__qty">適量</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">とじる具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">玉ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="個">1/2個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">卵</span><span class="ing__qty" data-amount="4" data-style="int" data-unit="個">4個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">三つ葉</span><span class="ing__qty">適量</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">割下</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="150" data-style="round5" data-unit="ml">150ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">顆粒和風だし</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">みりん</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">ご飯</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">温かいご飯</span><span class="ing__qty" data-amount="400" data-style="round5" data-unit="g">400g</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">豚肉の下ごしらえ</h3>
+          <p class="step__text">豚肉は脂身と赤身の境目の筋を数か所切り、塩とこしょうを振る。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">衣をつける</h3>
+          <p class="step__text">薄力粉、溶き卵、パン粉の順につける。パン粉は手で押さえてしっかりつける。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">揚げる</h3>
+          <p class="step__text">揚げ油を170℃に熱し、豚肉を入れる。途中で返しながら、きつね色になるまで揚げる。油を切り、2cm幅に切る。</p>
+          <span class="step__time">5〜6分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">玉ねぎを煮る</h3>
+          <p class="step__text">玉ねぎは薄切りにする。小さめのフライパンに割下の半量と玉ねぎの半量を入れて中火にかけ、玉ねぎがしんなりするまで煮る。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">カツを入れて卵でとじる</h3>
+          <p class="step__text">とんかつ1枚分をのせる。卵2個を軽く溶き、2/3を回し入れる。ふたをして30秒煮たら、残りの卵を回し入れてすぐに火を止める。</p>
+          <span class="step__time">1分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ご飯にのせる</h3>
+          <p class="step__text">三つ葉をのせてふたをし、30秒蒸らす。どんぶりにご飯を盛り、フライパンから滑らせるようにのせる。もう1人分も同じように作る。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>1人分ずつ小さめのフライパンでとじると、形を崩さずにご飯にのせられます。</li>
+          <li>卵を2回に分けて入れると、火が通った部分と半熟の部分ができます。</li>
+          <li>市販のとんかつを使えば、手順1〜3を省いて15分ほどで作れます。</li>
+          <li>割下の砂糖を減らすと甘さ控えめに、醤油を減らすと色の薄い仕上がりになります。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/katsudon/miso.jpg" alt="黒いどんぶりのカツ丼に刻みのりをのせ、味噌汁と小鉢を添えたもの" loading="lazy">
+        <figcaption>味噌汁と小鉢を添えて定食に</figcaption>
+      </figure>
+      <figure>
+        <img src="images/katsudon/sauce.jpg" alt="どんぶりのご飯にソースを絡めたカツをのせたソースカツ丼" loading="lazy">
+        <figcaption>卵でとじずにソースを絡める地域もある</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Katsudon_001.jpg">Katsudon 001</a>(Ocdp 撮影、CC0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Katsudon_and_miso_soup.jpg">Katsudon and miso soup</a>(Akahito Yamabe 撮影、CC0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Katsudon_501.jpg">Katsudon 501</a>(Ocdp 撮影、CC0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

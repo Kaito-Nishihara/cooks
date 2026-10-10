@@ -1,9 +1,19 @@
-# ローカル開発用の秘密値。このファイルをコピーして .dev.vars を作る。
-# 本番は `wrangler secret put <NAME>` で登録する。wrangler.jsonc には書かない。
+# ローカル開発用の変数。このファイルをコピーして .dev.vars を作る。
+# 本番は `wrangler secret put <NAME>` か、ダッシュボードの環境変数で設定する。
 
-# JWT の署名鍵。十分な長さのランダム文字列にする。
-AUTH_SECRET=
+# --- 認証(Cloudflare Access)---
+# 本番だけで使う。ローカルでは DEV_USER_EMAIL のほうが優先される。
+# チーム ドメイン。Zero Trust の Settings > Custom Pages で確認できる。
+ACCESS_TEAM_DOMAIN=
+# Access アプリケーションの Application Audience (AUD) タグ。
+ACCESS_AUD=
 
-# 初期ユーザー。scripts/seed.ts が参照する。
-SEED_OWNER_EMAIL=
-SEED_PARTNER_EMAIL=
+# ローカル開発でログインする利用者のメールアドレス。
+# これが設定されている間は Access の検証を飛ばす。本番には絶対に設定しない。
+DEV_USER_EMAIL=owner@example.com
+
+# --- 初期データ(scripts/seed.ts)---
+SEED_OWNER_EMAIL=owner@example.com
+SEED_OWNER_NAME=オーナー
+SEED_PARTNER_EMAIL=partner@example.com
+SEED_PARTNER_NAME=まな

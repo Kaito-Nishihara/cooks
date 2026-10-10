@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>おうちレシピ帖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <!-- 目録を先に読む。recipe.js が RECIPE_CATALOG からカードを描く -->
+  <script src="assets/catalog.js" defer></script>
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="index-header">
+    <h1>おうちレシピ帖</h1>
+    <p>いつものごはん</p>
+    <p class="index-header__nav"><a href="menu.html">今日の献立を見る →</a></p>
+  </header>
+
+  <!-- 検索欄。料理名、読み、材料、ジャンルを対象に、空白区切りの語をすべて含むカードを残す -->
+  <div class="finder">
+    <label class="finder__label" for="recipe-search">レシピを探す</label>
+    <input class="finder__input" id="recipe-search" type="search" placeholder="料理名や材料で探す(例: 鶏もも肉、丼、はんばーぐ)" autocomplete="off" data-recipe-search>
+  </div>
+
+  <!-- ジャンルの絞り込みボタン。recipe.js が目録の genres から作る -->
+  <nav class="genre-filter" aria-label="ジャンルで絞り込む" data-genre-filter></nav>
+
+  <p class="cards__status" aria-live="polite" data-catalog-status></p>
+
+  <!-- カードは recipe.js が assets/catalog.js の目録から描く。レシピを足すときは目録に 1 件足す -->
+  <main class="cards" id="recipe-cards">
+    <noscript><p>一覧の表示には JavaScript が必要です。</p></noscript>
+  </main>
+
+  <!-- 今日の献立の品数と合計カロリー。内訳は menu.html で見る -->
+  <aside class="menu" aria-label="今日の献立" data-menu-bar hidden></aside>
+
+</body>
+</html>

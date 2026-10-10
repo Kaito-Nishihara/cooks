@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>オムライス | おうちレシピ帖</title>
+  <meta name="description" content="ケチャップで炒めたチキンライスを薄焼き卵で包むオムライス。調理時間30分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/omurice/hero.jpg" alt="楕円形に包んだオムライスにケチャップをかけ、パセリをのせたもの">
+    <div class="hero__body">
+      <span class="hero__kicker">ご飯もの</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">OMURICE</span>
+        オムライス
+      </h1>
+      <p class="hero__lead">鶏肉と玉ねぎのチキンライスを作り、1人分ずつ卵で包む。<br>卵は半熟のうちにライスをのせるので、包んだ後もやわらかく仕上がります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">30<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★★</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約700<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">フライパン(直径20cm前後)</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">チキンライス</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">温かいご飯</span><span class="ing__qty" data-amount="400" data-style="round5" data-unit="g">400g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">鶏もも肉</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">玉ねぎ</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-unit="個">1/4個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">バター</span><span class="ing__qty" data-amount="10" data-style="round5" data-unit="g">10g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ケチャップ</span><span class="ing__qty" data-amount="4" data-style="frac" data-prefix="大さじ">大さじ4</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">塩</span><span class="ing__qty">少々</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">こしょう</span><span class="ing__qty">少々</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">卵(1人分ずつ半量を使う)</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">卵</span><span class="ing__qty" data-amount="4" data-style="int" data-unit="個">4個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">牛乳</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">バター</span><span class="ing__qty" data-amount="10" data-style="round5" data-unit="g">10g</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">仕上げ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ケチャップ</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">パセリ</span><span class="ing__qty">好みで</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">鶏肉は1cm角に、玉ねぎはみじん切りにする。卵2個と牛乳大さじ1を1人分として、2つのボウルに分けて溶いておく。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">チキンライスを炒める</h3>
+          <p class="step__text">フライパンにバターを溶かし、鶏肉と玉ねぎを中火で炒める。鶏肉の色が変わったらケチャップを加え、水分を飛ばすように炒める。</p>
+          <span class="step__time">4分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ご飯を混ぜる</h3>
+          <p class="step__text">ご飯を加えてほぐしながら炒め、全体が赤く色づいたら塩とこしょうで味を調える。2等分して取り出し、フライパンを拭く。</p>
+          <span class="step__time">2分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">卵を焼く</h3>
+          <p class="step__text">フライパンにバターの半量を中火で溶かし、1人分の卵液を流し入れる。菜箸で大きくかき混ぜ、半熟になったら火を弱めて表面を平らに整える。</p>
+          <span class="step__time">1分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">包む</h3>
+          <p class="step__text">卵の中央にチキンライスの半量を細長くのせ、へらで手前と奥の卵をかぶせる。フライパンを皿の上で傾け、返すように滑らせて盛る。もう1人分も同じように作る。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">仕上げる</h3>
+          <p class="step__text">キッチンペーパーをかぶせて手で形を整える。ケチャップをかけ、好みでパセリを添える。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>チキンライスはケチャップを先に炒めて水分を飛ばすと、ご飯がべたつかず酸味もやわらぎます。</li>
+          <li>卵は1人分ずつ焼いてください。2人分を一度に焼くと大きすぎて包めません。</li>
+          <li>包むのが難しいときは、皿に盛ったライスに半熟の卵をのせるだけでもおいしく食べられます。</li>
+          <li>卵にマヨネーズを小さじ1混ぜると、冷めてもふんわりします。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/omurice/home.jpg" alt="皿に盛ったオムライスにケチャップをかけ、ブロッコリーとトマトを添えたもの" loading="lazy">
+        <figcaption>野菜を添えるとワンプレートになる</figcaption>
+      </figure>
+      <figure>
+        <img src="images/omurice/demi.jpg" alt="楕円形のオムライスにデミグラスソースをかけたもの" loading="lazy">
+        <figcaption>ケチャップの代わりにデミグラスソースをかけても合う</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Omurice_(3352622289).jpg">Omurice</a>(Banzai Hiroaki 撮影、CC BY 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Ketchup_flavored_chicken_rice_omelette_正統派オムライス.jpg">Ketchup flavored chicken rice omelette 正統派オムライス</a>(naotakem 撮影、CC BY 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Omurice_001.jpg">Omurice 001</a>(Ocdp 撮影、CC0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

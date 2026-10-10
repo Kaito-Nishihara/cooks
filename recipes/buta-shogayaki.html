@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>豚の生姜焼き | おうちレシピ帖</title>
+  <meta name="description" content="豚ロース肉と玉ねぎを、しょうがを効かせた甘辛いタレで焼く生姜焼き。調理時間20分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/buta-shogayaki/hero.jpg" alt="千切りキャベツを添えた皿に盛った豚の生姜焼き。玉ねぎと一緒に焼いてある">
+    <div class="hero__body">
+      <span class="hero__kicker">焼き物</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">SHOGAYAKI</span>
+        豚の生姜焼き
+      </h1>
+      <p class="hero__lead">薄く粉をはたいた豚肉を焼き、しょうがの効いたタレを絡める。<br>タレに漬け込まずに焼いてから絡めるので、肉がやわらかく仕上がります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">20<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★☆☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約470<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">フライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豚ロース薄切り肉(生姜焼き用)</span><span class="ing__qty" data-amount="250" data-style="round5" data-unit="g">250g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">玉ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="個">1/2個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">薄力粉</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="大さじ">大さじ1/2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">タレ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">しょうが(すりおろし)</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">酒</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">みりん</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">付け合わせ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">キャベツ</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="枚">2枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ミニトマト</span><span class="ing__qty" data-amount="4" data-style="int" data-unit="個">4個</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">タレを混ぜる</h3>
+          <p class="step__text">小さな器にタレの材料をすべて入れ、砂糖が溶けるまで混ぜておく。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">キャベツは千切りにして水にさらし、水気を切る。玉ねぎは5mm幅の薄切りにする。豚肉は脂身と赤身の境目の筋を3〜4か所切る。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">豚肉に粉をまぶす</h3>
+          <p class="step__text">豚肉を広げ、茶こしで薄力粉を両面に薄くふる。余分な粉ははたいて落とす。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">豚肉を焼く</h3>
+          <p class="step__text">フライパンにサラダ油を入れて中火で熱し、豚肉を重ならないように並べる。焼き色がついたら返し、裏面もさっと焼いていったん取り出す。量が多いときは2回に分ける。</p>
+          <span class="step__time">3〜4分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">玉ねぎを炒める</h3>
+          <p class="step__text">同じフライパンで玉ねぎを炒める。油が足りなければ少し足し、しんなりするまで炒める。</p>
+          <span class="step__time">2分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">タレを絡める</h3>
+          <p class="step__text">豚肉を戻し入れ、タレを回し入れる。フライパンをゆすりながら、タレにとろみと照りが出るまで煮絡める。キャベツとミニトマトを添えて盛る。</p>
+          <span class="step__time">1〜2分</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>薄力粉をまぶすとタレがよく絡み、肉の水分が逃げにくくなります。</li>
+          <li>タレに漬け込んでから焼くと焦げやすく、肉も固くなります。焼いてから絡めてください。</li>
+          <li>チューブのしょうがを使うときは、大さじ1弱にすると辛くなりすぎません。</li>
+          <li>豚肉は焼きすぎると固くなります。表面に焼き色がつけば、タレを絡める間に中まで火が通ります。</li>
+          <li>豚こま切れ肉でも作れます。その場合は粉をまぶしてから、ほぐしながら焼いてください。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/buta-shogayaki/onion.jpg" alt="玉ねぎと一緒に焼いた生姜焼きと千切りキャベツとトマト" loading="lazy">
+        <figcaption>玉ねぎはタレを吸うので、多めに入れてもおいしい</figcaption>
+      </figure>
+      <figure>
+        <img src="images/buta-shogayaki/teishoku.jpg" alt="生姜焼きとご飯と味噌汁と漬物の定食" loading="lazy">
+        <figcaption>ご飯と味噌汁を添えて定食に</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安で、ご飯は含みません。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Shogayaki_004.jpg">Shogayaki 004</a>(Ocdp 撮影、CC0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Ginger-grilled-pork.jpg">Ginger-grilled-pork</a>(些細な日常 撮影、CC BY-SA 4.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Shogayaki_003.jpg">Shogayaki 003</a>(Ocdp 撮影、CC0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

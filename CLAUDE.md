@@ -31,6 +31,12 @@ Workers の無料プランは 1 リクエストあたり CPU 時間が 10 ms で
 - **重い依存を足さない。** バンドルの起動時間も CPU に算入される。ORM に Prisma ではなく Drizzle を使うのはこのためである。
 - **`public/data/*.json` をバンドルへ取り込まない。** 静的アセットとして配り、ブラウザが取得してキャッシュする。
 
+## 日付と日時
+
+記録した瞬間(`createdAt` 等)は Unix 時間の整数で持つ。
+暦の上の一日(献立の日付、調理した日)は `"YYYY-MM-DD"` の文字列で持つ。
+後者を時刻付きにすると時間帯の扱いで前後の日にずれる。
+
 ## ディレクトリ構成
 
 ```
@@ -72,7 +78,8 @@ compose.yaml
 
 | 性質 | 置き場 | 対象 |
 |---|---|---|
-| 読み取り専用で版ごと差し替える | `public/data/*.json` | 成分表、カテゴリ、単位換算の初期値 |
+| 読み取り専用で版ごと差し替える | `public/data/*.json` | 成分表、単位換算の初期値 |
+| 固定の集合 | `src/shared/enums.ts` | 嗜好レベル、食材の分類、レシピの分類、食事区分 |
 | 利用者が書き込む | D1 | 利用者、食材マスタ、嗜好、レシピ、献立、買い物リスト、調理ログ |
 | バイナリ | R2 | 画像 |
 
@@ -82,15 +89,29 @@ compose.yaml
 成分表(`public/data/foods.json`、URL は `/data/foods.json`)はデータベースへ入れない。
 `Ingredient.foodNumber` はこの JSON のキーを指すため外部キー制約が効かない。存在検証はアプリ側で行う。
 
+## 認証
+
+Cloudflare Access が Worker の手前で認証する。アプリはパスワードを持たない。
+`requireUser`(`src/server/middleware/auth.ts`)が、Access の確認したメールアドレスを
+`users` 表と突き合わせて利用者を解決する。
+
+- 疎通確認(`/api/health`)以外のすべての API に `requireUser` を通す。
+- ローカルでは `.dev.vars` の `DEV_USER_EMAIL` の利用者として扱う。本番の環境変数に置かないこと。
+- パスワードを扱う実装を足さない。workerd の PBKDF2 は 10 万回で頭打ちで、
+  その回数で CPU 10〜30 ms を使う。無料プランの 10 ms に収めるには強度を落とすしかない。
+
 ## コーディング規約
 
 - コメントは日本語で書く。
 - `any` は使わない。型が定まらない箇所は `unknown` から絞り込む。
 - 入力値の検証は Zod で行い、スキーマを `src/shared/` に集約する。
+  ルートでは `src/server/lib/validator.ts` の `validate` を使う。エラーの形を揃えるためである。
+- API のエラーは `{ code, message }` で返す。画面側は `src/client/api/request.ts` 経由で呼ぶ。
 - ドメインの例外は `src/domain/errors.ts` の独自例外クラスを使い、Hono のミドルウェアで HTTP ステータスへ変換する。
 - すべての公開関数に戻り値の型を明示する。
 - D1 のクエリに上限件数を設ける。`SELECT *` の無条件取得をしない。
 - 認可は必ず Worker 側で判定する。クライアント側のルートガードは表示の都合にすぎない。
+- テストの設定は `vitest.config.ts` に分ける。`@cloudflare/vite-plugin` は Vitest と同居できない。
 - Node の API(`fs`、`crypto` のネイティブ実装等)を Worker のコードで使わない。Web 標準の API を使う。
 
 ## よく使うコマンド
@@ -104,12 +125,17 @@ docker compose exec app npm run test          # Vitest
 docker compose exec app npm run test:e2e      # Playwright
 docker compose exec app npm run db:generate   # マイグレーション生成
 docker compose exec app npm run db:migrate    # ローカルの D1 へ適用
+docker compose exec app npm run db:seed       # 初期利用者を投入する
 docker compose exec app npx wrangler types    # バインディングの型を再生成
 ```
 
 `wrangler.jsonc` を変更したら `wrangler types` を実行する。`worker-configuration.d.ts` は生成物でコミットしない。
 
 Node の実行は常に Docker コンテナ内で行う。ホスト側に依存を入れない。
+
+日本語を含むリクエストを手で試すときは `curl` に直接渡さない。
+Windows のシェルを経由すると UTF-8 が壊れ、壊れた文字列がそのまま保存される。
+`docker compose exec -T app node -e '...'` の中で `fetch` を使う。
 
 ## 文章の規約
 

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>親子丼 | おうちレシピ帖</title>
+  <meta name="description" content="鶏もも肉と卵でつくる、とろとろ半熟の親子丼。調理時間20分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/oyakodon/hero.jpg" alt="白い丼に盛られた親子丼。半熟の卵と鶏肉の上に三つ葉がのっている">
+    <div class="hero__body">
+      <span class="hero__kicker">丼もの</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">OYAKODON</span>
+        親子丼
+      </h1>
+      <p class="hero__lead">甘辛い割下で煮た鶏もも肉を、半熟の卵でふんわりとじる。<br>火を止めるタイミングだけ気をつければ、20分でお店の味になります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">20<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約780<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">小さめのフライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">鶏もも肉</span><span class="ing__qty" data-amount="250" data-style="round5" data-unit="g">250g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">玉ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="個">1/2個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">卵</span><span class="ing__qty" data-amount="4" data-style="int" data-unit="個">4個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">三つ葉</span><span class="ing__qty">適量</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">温かいご飯</span><span class="ing__qty" data-amount="400" data-style="round5" data-unit="g">400g</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">割下</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="150" data-style="round5" data-unit="ml">150ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ほんだし</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">みりん</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">鶏もも肉は余分な脂を取り、2〜3cm角のひと口大に切る。玉ねぎは5mm幅の薄切り、三つ葉は3cm長さに切る。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">割下で玉ねぎを煮る</h3>
+          <p class="step__text">フライパンに割下の材料を入れて中火にかける。煮立ったら玉ねぎを広げ入れ、しんなりするまで煮る。</p>
+          <span class="step__time">2〜3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">鶏肉を煮る</h3>
+          <p class="step__text">鶏肉を皮目を下にして加え、ふたをして弱めの中火で煮る。途中で一度返し、中まで火を通す。</p>
+          <span class="step__time">5〜6分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">卵を溶く</h3>
+          <p class="step__text">煮ている間に卵をボウルに割り、菜箸で白身を切るように10回ほど混ぜる。混ぜすぎず、白身と黄身が少し分かれている程度にする。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">卵を2回に分けてとじる</h3>
+          <p class="step__text">煮汁が煮立っているところへ、溶き卵の2/3を中心から外へ回し入れる。ふたをして30秒ほど煮たら、残りの卵を回し入れてすぐ火を止める。</p>
+          <span class="step__time">1分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ご飯にのせる</h3>
+          <p class="step__text">ふたをしたまま30秒蒸らす。丼にご飯を盛り、フライパンを傾けて煮汁ごと滑らせるようにのせ、三つ葉を散らす。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>1人分ずつ小さめのフライパン(直径16〜20cm)で作ると、ご飯にきれいにのせられます。</li>
+          <li>2回目の卵を入れたら火を止め、余熱で火を通すと半熟に仕上がります。</li>
+          <li>ほんだしには塩分が入っています。味が濃いと感じたら醤油を少し減らしてください。</li>
+          <li>甘めが好みなら砂糖を、すっきりさせたいならみりんを少し減らしてください。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/oyakodon/closeup.jpg" alt="染付の丼に盛った親子丼の寄り" loading="lazy">
+        <figcaption>玉ねぎはくたっとするまで煮ると甘みが出る</figcaption>
+      </figure>
+      <figure>
+        <img src="images/oyakodon/teishoku.jpg" alt="お盆にのった親子丼と吸い物と漬物" loading="lazy">
+        <figcaption>吸い物と香の物を添えて定食に</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Oyakodon_003.jpg">Oyakodon 003</a>、
+      <a href="https://commons.wikimedia.org/wiki/File:Oyakodon_002.jpg">Oyakodon 002</a>、
+      <a href="https://commons.wikimedia.org/wiki/File:Oyakodon_004.jpg">Oyakodon 004</a>
+      (いずれも Ocdp 撮影、CC0、Wikimedia Commons)</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

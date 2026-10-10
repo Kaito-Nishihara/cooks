@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>豚汁 | おうちレシピ帖</title>
+  <meta name="description" content="豚バラ肉と根菜をごま油で炒めてから煮る、具だくさんの豚汁。調理時間30分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/tonjiru/hero.jpg" alt="木の椀に盛った豚汁。豚肉、大根、にんじん、ごぼうが入っている">
+    <div class="hero__body">
+      <span class="hero__kicker">汁物</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">TONJIRU</span>
+        豚汁
+      </h1>
+      <p class="hero__lead">豚肉と根菜をごま油で炒めてから、だしで煮て味噌を溶く。<br>具が多いので、ご飯と豚汁だけでも食事になります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">30<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★☆☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約270<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">鍋</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豚バラ薄切り肉</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">大根</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">にんじん</span><span class="ing__qty" data-amount="0.3333" data-style="frac" data-unit="本">1/3本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ごぼう</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-unit="本">1/4本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">こんにゃく</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-unit="枚">1/4枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">長ねぎ</span><span class="ing__qty" data-amount="0.3333" data-style="frac" data-unit="本">1/3本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ごま油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">汁</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">だし</span><span class="ing__qty" data-amount="500" data-style="round5" data-unit="ml">500ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">味噌</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">仕上げ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">七味唐辛子</span><span class="ing__qty">好みで</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">大根とにんじんは3mm厚さのいちょう切りにする。ごぼうはささがきにして水にさらす。こんにゃくはスプーンで小さくちぎり、2分下ゆでする。豚肉は3cm長さに、長ねぎは小口切りにする。</p>
+          <span class="step__time">10分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">具を炒める</h3>
+          <p class="step__text">鍋にごま油を入れて中火で熱し、豚肉を炒める。色が変わったら長ねぎ以外の具を加え、全体に油が回るまで炒める。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">だしで煮る</h3>
+          <p class="step__text">だしを加えて強火にし、煮立ったらアクを取る。弱めの中火にして、大根がやわらかくなるまで煮る。</p>
+          <span class="step__time">10〜15分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">味噌を溶く</h3>
+          <p class="step__text">火を止め、味噌を半量ずつお玉の中で溶きながら加える。味を見て足りなければ足す。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">温めて仕上げる</h3>
+          <p class="step__text">長ねぎを加えて再び火にかけ、煮立つ直前で火を止める。椀に盛り、好みで七味唐辛子を振る。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>具を先に炒めると、豚の脂とごま油の香りが汁に移ってコクが出ます。</li>
+          <li>味噌を入れた後に沸騰させると香りが飛びます。温め直すときも煮立てないでください。</li>
+          <li>里芋、じゃがいも、豆腐、油揚げを足すと、さらに食べごたえが出ます。</li>
+          <li>一晩おくと根菜に味が染みます。多めに作って翌日に回すのもおすすめです。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/tonjiru/daikon.jpg" alt="赤い椀に盛った豚汁。大根、にんじん、豆腐が入っている" loading="lazy">
+        <figcaption>豆腐を入れると口当たりがやわらかくなる</figcaption>
+      </figure>
+      <figure>
+        <img src="images/tonjiru/negi.jpg" alt="白い器に盛った豚汁。小口切りのねぎがのっている" loading="lazy">
+        <figcaption>ねぎをたっぷりのせても合う</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Jikasei_Tonjiru.jpg">Jikasei Tonjiru</a>(切干大根 撮影、CC BY-SA 4.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Japanese_tonjiru_2014.jpg">Japanese tonjiru 2014</a>(Kentin 撮影、CC BY-SA 4.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Butajiru_by_kina3.jpg">Butajiru by kina3</a>(kina3 撮影、CC BY 2.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

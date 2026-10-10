@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>エビチリ | おうちレシピ帖</title>
+  <meta name="description" content="えびをケチャップと豆板醤の甘辛いソースで絡めるエビチリ。調理時間20分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/ebi-chili/hero.jpg" alt="白い皿に盛ったエビチリ。赤いソースがえびに絡んでいる">
+    <div class="hero__body">
+      <span class="hero__kicker">炒め物</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">EBI CHILI</span>
+        エビチリ
+      </h1>
+      <p class="hero__lead">片栗粉をまぶして焼いたえびを、ケチャップと豆板醤のソースに絡める。<br>えびは先に焼いて取り出すので、身が縮まずぷりっと仕上がります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">20<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約210<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">フライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">えびと下味</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">むきえび(大)</span><span class="ing__qty" data-amount="200" data-style="round5" data-unit="g">200g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">塩</span><span class="ing__qty">少々</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">酒</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">片栗粉</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">香味野菜と油</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">長ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="本">1/2本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">にんにく</span><span class="ing__qty" data-amount="1" data-style="frac" data-unit="かけ">1かけ</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">しょうが</span><span class="ing__qty" data-amount="1" data-style="frac" data-unit="かけ">1かけ</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豆板醤</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">合わせ調味料</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="ml">100ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ケチャップ</span><span class="ing__qty" data-amount="3" data-style="frac" data-prefix="大さじ">大さじ3</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">酒</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">鶏がらスープの素</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">とろみ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">片栗粉</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">えびの下ごしらえ</h3>
+          <p class="step__text">えびは背に浅く切り込みを入れて背わたを取る。片栗粉と塩をそれぞれ少々(分量外)まぶしてもみ、水で洗い流す。キッチンペーパーで水気をしっかり拭く。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">下味をつける</h3>
+          <p class="step__text">えびに塩と酒をもみ込み、片栗粉をまぶす。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ほかの準備</h3>
+          <p class="step__text">長ねぎ、にんにく、しょうがはみじん切りにする。合わせ調味料を混ぜ、片栗粉を分量の水で溶いておく。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">えびを焼いて取り出す</h3>
+          <p class="step__text">フライパンにサラダ油の半量を入れて中火で熱し、えびを並べて焼く。両面の色が変わったら取り出す。中まで火が通っていなくてよい。</p>
+          <span class="step__time">2分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ソースを作る</h3>
+          <p class="step__text">残りの油を入れて弱火にし、豆板醤、にんにく、しょうがを炒める。香りが立ったら合わせ調味料を加えて中火で煮立てる。</p>
+          <span class="step__time">2分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">えびを戻して仕上げる</h3>
+          <p class="step__text">えびと長ねぎを加えて1分煮る。水溶き片栗粉をもう一度混ぜて回し入れ、手早く混ぜてとろみをつける。</p>
+          <span class="step__time">1〜2分</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>片栗粉と塩でもみ洗いすると、えびの汚れと臭みが取れます。</li>
+          <li>えびは火を通しすぎると固くなります。焼く段階では色が変わる程度で止めてください。</li>
+          <li>豆板醤は弱火で炒めると辛さの角が取れます。辛いのが苦手なら小さじ1/2に減らしてください。</li>
+          <li>仕上げに溶き卵1個を回し入れると、辛さがやわらいでまろやかになります。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/ebi-chili/lunch.jpg" alt="エビチリとご飯とシュウマイとスープの定食" loading="lazy">
+        <figcaption>シュウマイやスープと合わせて中華の定食に</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安で、ご飯は含みません。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Ebichiri12.jpg">Ebichiri12</a>(Hykw-a4 撮影、CC BY-SA 3.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Lunch_in_Haneda_(1183898815).jpg">Lunch in Haneda</a>(Yamaguchi Yoshiaki 撮影、CC BY-SA 2.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>スンドゥブチゲ | おうちレシピ帖</title>
+  <meta name="description" content="絹ごし豆腐と豚肉、あさり、キムチを辛いスープで煮るスンドゥブチゲ。調理時間25分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/sundubu/hero.jpg" alt="土鍋で煮立っている赤いスンドゥブチゲ。卵とえのきと豆腐が入っている">
+    <div class="hero__body">
+      <span class="hero__kicker">汁物</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">SUNDUBU JJIGAE</span>
+        スンドゥブチゲ
+      </h1>
+      <p class="hero__lead">豚肉とキムチをごま油で炒めてから、あさりと豆腐を辛いスープで煮る。<br>最後に卵を落とすと、辛さがやわらぎます。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">25<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★☆☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約420<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">鍋</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">絹ごし豆腐</span><span class="ing__qty" data-amount="300" data-style="round5" data-unit="g">300g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豚バラ薄切り肉</span><span class="ing__qty" data-amount="80" data-style="round5" data-unit="g">80g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">あさり(砂抜き済み)</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">白菜キムチ</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">長ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="本">1/2本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">にんにく</span><span class="ing__qty" data-amount="1" data-style="frac" data-unit="かけ">1かけ</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">卵</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="個">2個</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">スープ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ごま油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">粉唐辛子(または一味唐辛子)</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="400" data-style="round5" data-unit="ml">400ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">鶏がらスープの素</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">コチュジャン</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">豚肉は3cm長さに切る。長ねぎは斜め切り、にんにくはみじん切りにする。あさりは殻をこすり合わせて洗う。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">豚肉とキムチを炒める</h3>
+          <p class="step__text">鍋にごま油、にんにく、粉唐辛子を入れて弱火で炒め、香りが出たら中火にして豚肉を加える。肉の色が変わったらキムチを加えて炒める。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">スープを煮立てる</h3>
+          <p class="step__text">水、鶏がらスープの素、コチュジャン、醤油を加えて煮立てる。アクを取る。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">あさりと豆腐を煮る</h3>
+          <p class="step__text">あさりを加え、豆腐を大きめのスプーンですくって入れる。あさりの口が開くまで中火で煮る。</p>
+          <span class="step__time">3〜4分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">卵を落として仕上げる</h3>
+          <p class="step__text">長ねぎを加え、卵を割り入れる。卵の白身が固まり始めたら火を止める。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>唐辛子は油で炒めると辛みと色がスープに移ります。焦がさないように弱火で炒めてください。</li>
+          <li>豆腐は切らずにスプーンですくって入れると、スープがよく絡みます。</li>
+          <li>辛いのが苦手なら、粉唐辛子を省いてコチュジャンだけで作ってください。</li>
+          <li>あさりがなければ、えびやいかでも作れます。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/sundubu/pot.jpg" alt="黒い土鍋に入った赤いスンドゥブチゲ" loading="lazy">
+        <figcaption>土鍋で作ると冷めにくい</figcaption>
+      </figure>
+      <figure>
+        <img src="images/sundubu/set.jpg" alt="スンドゥブチゲとご飯と3種のおかずの定食" loading="lazy">
+        <figcaption>ご飯とナムル、キムチを添えて定食に</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安で、ご飯は含みません。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Korean_stew-Sundubu_jjigae-05.jpg">Korean stew-Sundubu jjigae-05</a>(titanium22 撮影、CC BY-SA 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Korean_stew-Sundubu_jjigae-10.jpg">Korean stew-Sundubu jjigae-10</a>(yoppy 撮影、CC BY 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Korea.cuisine-Sundubu_jjigae-03.jpg">Korea.cuisine-Sundubu jjigae-03</a>(avlxyz 撮影、CC BY-SA 2.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

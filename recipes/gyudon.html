@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>牛丼 | おうちレシピ帖</title>
+  <meta name="description" content="牛こま切れ肉と玉ねぎを甘辛い割下で煮てご飯にのせる牛丼。調理時間20分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/gyudon/hero.jpg" alt="どんぶりに盛った牛丼。牛肉の上に紅しょうがと小口切りのねぎがのっている">
+    <div class="hero__body">
+      <span class="hero__kicker">丼もの</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">GYUDON</span>
+        牛丼
+      </h1>
+      <p class="hero__lead">だしの効いた割下で玉ねぎを煮てから、牛肉を加えてさっと煮る。<br>牛肉は煮すぎないので、固くならずにやわらかく仕上がります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">20<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★☆☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約670<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">鍋</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">牛こま切れ肉</span><span class="ing__qty" data-amount="200" data-style="round5" data-unit="g">200g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">玉ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="個">1/2個</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">割下</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="150" data-style="round5" data-unit="ml">150ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">顆粒和風だし</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">みりん</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">酒</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">しょうが(すりおろし)</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">盛り付け</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">温かいご飯</span><span class="ing__qty" data-amount="400" data-style="round5" data-unit="g">400g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">紅しょうが</span><span class="ing__qty">適量</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">七味唐辛子</span><span class="ing__qty">好みで</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">玉ねぎは1cm幅のくし形切りにする。牛肉は大きければ食べやすく切る。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">玉ねぎを煮る</h3>
+          <p class="step__text">鍋に割下の材料を入れて中火にかけ、煮立ったら玉ねぎを加える。玉ねぎがしんなりするまで煮る。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">牛肉を煮る</h3>
+          <p class="step__text">牛肉を広げながら加え、ほぐして煮汁に沈める。アクを取り、肉の色が変わるまで煮る。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">味を含ませる</h3>
+          <p class="step__text">火を止めて5分ほど置き、味を染み込ませる。食べる直前に温め直す。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">盛り付ける</h3>
+          <p class="step__text">どんぶりにご飯を盛り、牛肉と玉ねぎを煮汁ごとのせる。紅しょうがを添え、好みで七味唐辛子を振る。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>牛肉は長く煮ると固くなります。色が変わったら火を止めてください。</li>
+          <li>火を止めて置いておくと、冷める間に味が染み込みます。</li>
+          <li>牛バラ肉を使うと、脂の甘みが出てお店の味に近くなります。</li>
+          <li>卵黄や温泉卵をのせると、味がまろやかになります。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/gyudon/egg.jpg" alt="牛丼に半熟の卵をのせ、味噌汁を添えた定食" loading="lazy">
+        <figcaption>卵をのせて味噌汁を添えると定食になる</figcaption>
+      </figure>
+      <figure>
+        <img src="images/gyudon/benishoga.jpg" alt="紅しょうがを山盛りにのせた牛丼" loading="lazy">
+        <figcaption>紅しょうがは好みの量で</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Beef_Bowl,_Gyūdon.jpg">Beef Bowl, Gyūdon</a>(Calgary Reviews 撮影、CC BY 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Gyudon-withegg-top.jpg">Gyudon-withegg-top</a>(Nesnad 撮影、CC BY-SA 3.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Gyudon_by_Kossy@FINEDAYS.jpg">Gyudon by Kossy@FINEDAYS</a>(Kossy@FINEDAYS 撮影、CC BY 2.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

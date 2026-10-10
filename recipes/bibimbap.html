@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ビビンバ | おうちレシピ帖</title>
+  <meta name="description" content="3種のナムルと甘辛い牛そぼろをご飯にのせ、混ぜて食べるビビンバ。調理時間30分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/bibimbap/hero.jpg" alt="器のご飯の上に、にんじん、いんげん、しいたけ、錦糸卵、肉を放射状に並べ、中央にコチュジャンをのせたビビンバ">
+    <div class="hero__body">
+      <span class="hero__kicker">ご飯もの</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">BIBIMBAP</span>
+        ビビンバ
+      </h1>
+      <p class="hero__lead">ほうれん草、豆もやし、にんじんのナムルと牛そぼろをご飯に並べる。<br>ナムルは同じタレで和えるので、3種類でも手間はかかりません。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">30<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約660<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">鍋とフライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">ナムルの野菜</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ほうれん草</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="束">1/2束</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豆もやし</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="袋">1/2袋</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">にんじん</span><span class="ing__qty" data-amount="0.3333" data-style="frac" data-unit="本">1/3本</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">ナムルのタレ(3種分)</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ごま油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">塩</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">にんにく(すりおろし)</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">白いりごま</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">牛そぼろ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">牛ひき肉</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ごま油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">盛り付け</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">温かいご飯</span><span class="ing__qty" data-amount="400" data-style="round5" data-unit="g">400g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">卵黄</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="個">2個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">コチュジャン</span><span class="ing__qty">適量</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">ナムルのタレを作る</h3>
+          <p class="step__text">小さな器にナムルのタレの材料を混ぜ、3等分しておく。</p>
+        </li>
+        <li class="step">
+          <h3 class="step__title">野菜をゆでる</h3>
+          <p class="step__text">鍋に湯を沸かし、にんじんの細切り、豆もやし、ほうれん草の順に同じ湯でゆでる。にんじんは1分、豆もやしは3分、ほうれん草は30秒が目安。</p>
+          <span class="step__time">8分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ナムルを和える</h3>
+          <p class="step__text">ほうれん草は水に取って絞り、4cm長さに切る。豆もやしとにんじんはざるに上げて冷ます。それぞれの水気を絞り、タレを1/3ずつ加えて和える。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">牛そぼろを作る</h3>
+          <p class="step__text">フライパンにごま油を入れて中火で熱し、牛ひき肉をほぐしながら炒める。色が変わったら醤油と砂糖を加え、汁気がなくなるまで炒める。</p>
+          <span class="step__time">4分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">盛り付ける</h3>
+          <p class="step__text">器にご飯を盛り、ナムルと牛そぼろを放射状に並べる。中央に卵黄をのせ、コチュジャンを添える。全体をよく混ぜて食べる。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>野菜はにんじん、豆もやし、ほうれん草の順にゆでると、同じ湯を使い回せます。</li>
+          <li>ナムルは水気をしっかり絞ってから和えると、味がぼやけません。</li>
+          <li>ナムルは冷蔵で3日ほど持ちます。多めに作って副菜にも回せます。</li>
+          <li>ごま油を塗った厚手の鍋で底を焼くと、石焼きビビンバのようなおこげができます。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/bibimbap/dolsot.jpg" alt="石鍋に盛ったビビンバ。中央に卵黄とコチュジャン、周りにナムル" loading="lazy">
+        <figcaption>石鍋で温めると、底のご飯がおこげになる</figcaption>
+      </figure>
+      <figure>
+        <img src="images/bibimbap/egg.jpg" alt="器のビビンバに目玉焼きをのせたもの" loading="lazy">
+        <figcaption>卵黄の代わりに目玉焼きをのせてもよい</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Bibimbap_6.jpg">Bibimbap 6</a>(Chloe Lim 撮影、CC BY 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Bibimbap_(8111593238).jpg">Bibimbap</a>(Korea.net / Korean Culture and Information Service (Jeon Han) 撮影、CC BY-SA 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Bibimbap_with_egg.jpg">Bibimbap with egg</a>(Cjkennedy15 撮影、CC BY-SA 4.0)。
+      いずれも Wikimedia Commons より</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

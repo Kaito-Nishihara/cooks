@@ -16,6 +16,13 @@
     "enabled": true
   },
 
+  // 認証は Cloudflare Access が Worker の手前で行う。ここは検証用の設定値。
+  // 実際の値はダッシュボードか `wrangler secret put` で入れる。
+  "vars": {
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": ""
+  },
+
   // database_id は `wrangler d1 create mana-cooks` で採番された値へ差し替える。
   "d1_databases": [
     {
