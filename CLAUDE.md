@@ -1,142 +1,82 @@
-# mana-cooks
+# おうちレシピ帖
 
-二人で使うクッキングアプリ。
-好き嫌いの食材管理、レシピ管理、嗜好に基づくレシピ提案、献立カレンダーと買い物リスト、栄養値の概算表示を持つ。
+Claude Code が作ったレシピを、ブラウザで見て、直して、栄養の値を確かめるアプリ。
+直した内容と献立はレシピ帳に保存し、別のアカウントの人を招待して共有できる。
+
+このプロジェクトは、Next.js、Quarkus、マイクロサービス、Kubernetes を学ぶことと、この構成で AI 駆動開発を試すことも目的にしている。
+技術の選び方は「最小の手間」よりも「標準的なやり方を経験できること」を優先する。
+構成を簡単にする提案(サービスをまとめる、Kubernetes をやめる等)はしない。
 
 要件定義は [docs/requirements.md](docs/requirements.md) が正本である。
+仕様に迷ったら、推測せずにここを読む。書かれていなければ利用者に聞く。
+全体の図は [docs/architecture.html](docs/architecture.html) にある。構成を変えたら図も直す。
 
-## 技術構成
+## 構成
 
-| レイヤ | 採用 |
-|---|---|
-| 画面 | Vite + React + TypeScript + Tailwind CSS(SPA) |
-| API | Hono on Cloudflare Workers |
-| ORM | Drizzle ORM |
-| データベース | Cloudflare D1 (SQLite 互換) |
-| マスタデータ | `public/data/*.json`。静的アセットとして配信する |
-| 画像保存 | Cloudflare R2 |
-| ローカル開発 | Docker Compose 上の `vite dev`(@cloudflare/vite-plugin が Worker も動かす) |
-| テスト | Vitest(単体) / Playwright(E2E) |
+| ディレクトリ | 中身 | 決まり |
+|---|---|---|
+| `frontend/` | Next.js。静的に書き出す | [frontend/CLAUDE.md](frontend/CLAUDE.md) |
+| `services/` | Quarkus のマイクロサービス 3 つ(`auth-service`、`book-service`、`kitchen-service`) | [services/CLAUDE.md](services/CLAUDE.md) |
+| `deploy/` | 手元のクラスタ(kind)の設定と Kubernetes のマニフェスト | |
+| `data/` | 元のレシピ、食材マスタ、成分表 | `recipe` スキル |
+| `api/` | 画面と API の約束。サービスごとの OpenAPI の仕様 | 手で編集しない |
+| `docs/` | 仕様書の中身。Markdown と図 | `.claude/rules/spec-authoring.md` |
+| `docs-site/` | 仕様書をブラウザで読むサイト。アプリ本体とは別のもの | [docs-site/README.md](docs-site/README.md) |
 
-## 最優先の制約: Workers 無料プランの CPU 10 ms
+アプリ本体と仕様書のサイトは分けて管理する。
+直下の `compose.yaml` にはアプリのコンテナだけを書き、仕様書のサイトは `docs-site/compose.yaml` で起動する。
+`docs/` には文書の中身だけを置き、サイトの設定や見た目を置かない。
 
-Workers の無料プランは 1 リクエストあたり CPU 時間が 10 ms である。
-これを超えると `Error 1102` で失敗する。運用費 0 円が要件のため、有料プランへの移行という逃げ道はない。
+## 破ってはいけない決まり
 
-この制約から次が決まっている。
+- **権限はバックエンドで判定する。** 画面でボタンを隠すのは表示の都合で、権限の判定にならない。
+- **栄養計算と分量の換算はブラウザだけで行う。** バックエンドに同じ計算を書かない。2 つの言語で書くと結果が食い違う。
+- **Next.js のサーバー側の機能を使わない。** Route Handlers、Server Actions、実行時のサーバーでの描画を使わない。
+- **サービスは、ほかのサービスのデータベースを読まない。**
+- **API を変えたら、そのサービスの仕様(`api/`)と画面側の型を作り直す。** 手で型を書かない。
+- **元のレシピ、食材マスタ、成分表をデータベースに入れない。** アプリから書き換えない読み取り専用のデータである。
+- **栄養の値をレシピのデータに書かない。** 材料から計算した値と食い違う。
+- **パスワード、セッションの識別子、トークンを、そのままの形で保存もログ出力もしない。**
 
-- **サーバー側で React を描画しない。** 画面は静的アセットとして配り、ブラウザが描画する。
-- **Worker のハンドラで重い計算をしない。** 仕事は検証、D1 のクエリ、JSON の整形に留める。
-- **栄養値の算出とレシピ提案のスコア計算はブラウザ側で動かす。** どちらも `src/domain/` に置き、Worker では実行しない。
-- **重い依存を足さない。** バンドルの起動時間も CPU に算入される。ORM に Prisma ではなく Drizzle を使うのはこのためである。
-- **`public/data/*.json` をバンドルへ取り込まない。** 静的アセットとして配り、ブラウザが取得してキャッシュする。
+## 確かめてから終える
+
+作ったものは、動かして確かめてから「できた」と報告する。
+確かめられなかったときは、何を確かめていないかを報告に書く。
+
+確かめ方は 2 段階である。
+
+1. **書いている間**: Docker Compose で、変えたサービスか画面だけを動かし、型検査、lint、テストを走らせる。
+2. **つないで確かめる**: kind に一式を載せ、ブラウザのテストを走らせる。サービスをまたぐ変更と、画面を変えたときに行う。
+
+コマンドは段階 0(開発の土台)で確定し、ここに書く。
+それまでは、この節にコマンドがないことを前提に、使う前に利用者に確かめる。
+
+Node と Java は常に Docker コンテナの中で動かす。ホスト側に依存を入れない。
+Docker が起動していないときは、確かめられないことを利用者に伝え、起動を頼む。
+
+画面を変えたときは、Playwright でその画面を開き、スクリーンショットを見て確かめる。
+型検査とテストが通っても、表示が崩れていることがある。
 
 ## 日付と日時
 
-記録した瞬間(`createdAt` 等)は Unix 時間の整数で持つ。
-暦の上の一日(献立の日付、調理した日)は `"YYYY-MM-DD"` の文字列で持つ。
-後者を時刻付きにすると時間帯の扱いで前後の日にずれる。
+記録した瞬間(作成日時など)は時刻帯付きの日時で持つ。
+暦の上の一日(献立の日付)は `"YYYY-MM-DD"` で持ち、時刻を付けない。
+時刻を付けると、時間帯の扱いで前後の日にずれる。
 
-## ディレクトリ構成
+## 作業の進め方
 
-```
-src/
-├── client/            # React SPA
-│   ├── routes/        # 画面(React Router)
-│   ├── components/    # 再利用UI
-│   └── api/           # Worker API を呼ぶ fetch クライアント
-├── server/            # Hono の Worker
-│   ├── index.ts       # エントリ。静的アセットと /api/* の振り分け
-│   ├── routes/        # リソースごとのハンドラ
-│   ├── middleware/    # 認証、エラー変換
-│   └── db/
-│       ├── schema.ts  # Drizzle のスキーマ
-│       └── queries/   # クエリ
-├── domain/            # 業務ロジック。client と server の両方から使う
-│   ├── nutrition/     # 栄養値の算出(ブラウザで実行)
-│   ├── suggestion/    # レシピ提案のスコア計算(ブラウザで実行)
-│   └── errors.ts
-└── shared/            # Zod スキーマと型。client と server で共有する
-drizzle/               # drizzle-kit が生成するマイグレーション
-public/data/           # マスタデータの JSON。/data/*.json として配信される
-scripts/               # 成分表の変換、初期データ投入
-e2e/                   # Playwright
-index.html             # SPA のシェル
-wrangler.jsonc
-vite.config.ts
-compose.yaml
-```
+- 1 回の作業は、1 つのサービスの 1 つの機能か、1 つの画面にする。
+- サービスをまたぐ変更は、呼ばれる側、呼ぶ側、画面の順に分けて進める。
+- `main` に直接コミットしない。ブランチで作業する。
+- 受け入れ条件(要件定義の 4 章)を先にテストにし、それが通るように実装する。
+- うまくいかなかったことと、その直し方は、この文書か該当する Skill に書き足す。
 
-型検査は `tsconfig.app.json`(`src/`)と `tsconfig.node.json`(設定と `scripts/`)に分かれている。
-`src/` からは Node の型を見せない。Worker でもブラウザでも動かないコードが型検査を通るのを防ぐためである。
+## Windows のシェルでの注意
 
-`src/domain/` は React にも Hono にも Drizzle にも依存させない。
-同じコードをブラウザと Worker の両方で動かすための制約である。
-`src/shared/` の Zod スキーマは、画面の入力検証と API の入力検証で同じものを使う。
-
-## データの置き場の使い分け
-
-| 性質 | 置き場 | 対象 |
-|---|---|---|
-| 読み取り専用で版ごと差し替える | `public/data/*.json` | 成分表、単位換算の初期値 |
-| 固定の集合 | `src/shared/enums.ts` | 嗜好レベル、食材の分類、レシピの分類、食事区分 |
-| 利用者が書き込む | D1 | 利用者、食材マスタ、嗜好、レシピ、献立、買い物リスト、調理ログ |
-| バイナリ | R2 | 画像 |
-
-利用者が書き込むデータを JSON ファイルで持たない。
-二人が同時に触る場面で読み書きが競合し、後から書いた側が相手の変更を消すためである。
-
-成分表(`public/data/foods.json`、URL は `/data/foods.json`)はデータベースへ入れない。
-`Ingredient.foodNumber` はこの JSON のキーを指すため外部キー制約が効かない。存在検証はアプリ側で行う。
-
-## 認証
-
-Cloudflare Access が Worker の手前で認証する。アプリはパスワードを持たない。
-`requireUser`(`src/server/middleware/auth.ts`)が、Access の確認したメールアドレスを
-`users` 表と突き合わせて利用者を解決する。
-
-- 疎通確認(`/api/health`)以外のすべての API に `requireUser` を通す。
-- ローカルでは `.dev.vars` の `DEV_USER_EMAIL` の利用者として扱う。本番の環境変数に置かないこと。
-- パスワードを扱う実装を足さない。workerd の PBKDF2 は 10 万回で頭打ちで、
-  その回数で CPU 10〜30 ms を使う。無料プランの 10 ms に収めるには強度を落とすしかない。
-
-## コーディング規約
-
-- コメントは日本語で書く。
-- `any` は使わない。型が定まらない箇所は `unknown` から絞り込む。
-- 入力値の検証は Zod で行い、スキーマを `src/shared/` に集約する。
-  ルートでは `src/server/lib/validator.ts` の `validate` を使う。エラーの形を揃えるためである。
-- API のエラーは `{ code, message }` で返す。画面側は `src/client/api/request.ts` 経由で呼ぶ。
-- ドメインの例外は `src/domain/errors.ts` の独自例外クラスを使い、Hono のミドルウェアで HTTP ステータスへ変換する。
-- すべての公開関数に戻り値の型を明示する。
-- D1 のクエリに上限件数を設ける。`SELECT *` の無条件取得をしない。
-- 認可は必ず Worker 側で判定する。クライアント側のルートガードは表示の都合にすぎない。
-- テストの設定は `vitest.config.ts` に分ける。`@cloudflare/vite-plugin` は Vitest と同居できない。
-- Node の API(`fs`、`crypto` のネイティブ実装等)を Worker のコードで使わない。Web 標準の API を使う。
-
-## よく使うコマンド
-
-```bash
-docker compose up -d                          # 開発環境の起動。http://localhost:5173
-docker compose logs -f app                    # 開発サーバーのログ
-docker compose exec app npm run typecheck     # 型検査
-docker compose exec app npm run build         # 本番バンドルとサイズの確認
-docker compose exec app npm run test          # Vitest
-docker compose exec app npm run test:e2e      # Playwright
-docker compose exec app npm run db:generate   # マイグレーション生成
-docker compose exec app npm run db:migrate    # ローカルの D1 へ適用
-docker compose exec app npm run db:seed       # 初期利用者を投入する
-docker compose exec app npx wrangler types    # バインディングの型を再生成
-```
-
-`wrangler.jsonc` を変更したら `wrangler types` を実行する。`worker-configuration.d.ts` は生成物でコミットしない。
-
-Node の実行は常に Docker コンテナ内で行う。ホスト側に依存を入れない。
-
-日本語を含むリクエストを手で試すときは `curl` に直接渡さない。
-Windows のシェルを経由すると UTF-8 が壊れ、壊れた文字列がそのまま保存される。
-`docker compose exec -T app node -e '...'` の中で `fetch` を使う。
+- ヒアドキュメントの中にアポストロフィがあると、シェルの解釈が崩れる。複数行の文字列をファイルに書くときは Write を使う。
+- 日本語を含む要求を `curl` に直接渡さない。UTF-8 が壊れる。コンテナの中の `fetch` を使う。
 
 ## 文章の規約
 
 日本語の文章は [.claude/rules/writing-style.md](.claude/rules/writing-style.md) に従う。
+コード中のコメントは日本語で書く。

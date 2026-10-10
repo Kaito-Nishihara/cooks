@@ -1,0 +1,171 @@
+/* 仕様書サイトの見た目。レシピ集と同じ和紙の色合いと書体に合わせる */
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap");
+
+:root {
+  --md-text-font: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+  --md-code-font: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  --doc-serif: "Shippori Mincho", "Yu Mincho", serif;
+}
+
+/* 明るい配色: 和紙 */
+[data-md-color-scheme="washi"] {
+  --doc-washi: #f7f1e3;
+  --doc-washi-deep: #efe5cf;
+  --doc-paper: #fffdf7;
+  --doc-ink: #2b2118;
+  --doc-ink-soft: #6b5a48;
+  --doc-shu: #c0392b;
+  --doc-tamago: #f2b63d;
+  --doc-mitsuba: #4f7a3a;
+  --doc-wood: #8a5a33;
+  --doc-line: #dccfb3;
+
+  --md-default-bg-color: var(--doc-washi);
+  --md-default-fg-color: var(--doc-ink);
+  --md-default-fg-color--light: var(--doc-ink-soft);
+  --md-default-fg-color--lighter: #a8977f;
+  --md-default-fg-color--lightest: var(--doc-line);
+  --md-primary-fg-color: var(--doc-shu);
+  --md-primary-fg-color--light: #d65a4c;
+  --md-primary-fg-color--dark: #9c2d21;
+  --md-primary-bg-color: #fff;
+  --md-accent-fg-color: var(--doc-wood);
+  --md-typeset-color: var(--doc-ink);
+  --md-typeset-a-color: var(--doc-shu);
+  --md-code-bg-color: var(--doc-washi-deep);
+  --md-code-fg-color: var(--doc-ink);
+  --md-typeset-table-color: var(--doc-line);
+  --md-footer-bg-color: var(--doc-ink);
+  --md-footer-bg-color--dark: #1d1610;
+}
+
+/* 暗い配色: 墨 */
+[data-md-color-scheme="slate"] {
+  --doc-washi: #1d1915;
+  --doc-washi-deep: #2f2921;
+  --doc-paper: #26211b;
+  --doc-ink: #f1e9da;
+  --doc-ink-soft: #b9aa94;
+  --doc-shu: #ef8b7d;
+  --doc-tamago: #d9a431;
+  --doc-mitsuba: #9fc48a;
+  --doc-wood: #d2a373;
+  --doc-line: #54493a;
+
+  --md-default-bg-color: var(--doc-washi);
+  --md-default-fg-color: var(--doc-ink);
+  --md-default-fg-color--light: var(--doc-ink-soft);
+  --md-default-fg-color--lightest: var(--doc-line);
+  --md-primary-fg-color: #7d2a20;
+  --md-primary-bg-color: #fff;
+  --md-accent-fg-color: var(--doc-wood);
+  --md-typeset-color: var(--doc-ink);
+  --md-typeset-a-color: var(--doc-shu);
+  --md-code-bg-color: var(--doc-washi-deep);
+  --md-code-fg-color: var(--doc-ink);
+  --md-typeset-table-color: var(--doc-line);
+}
+
+/* 和紙の繊維をうっすら表現する */
+[data-md-color-scheme="washi"] body {
+  background-image:
+    radial-gradient(rgba(138, 90, 51, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(138, 90, 51, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px, 37px 37px;
+  background-position: 0 0, 11px 17px;
+}
+
+/* 本文 */
+.md-typeset {
+  font-size: 0.8rem;
+  line-height: 1.95;
+}
+.md-typeset p { margin: 0.9em 0; }
+
+/* 見出しは明朝体にする */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-header__title {
+  font-family: var(--doc-serif);
+  letter-spacing: 0.04em;
+}
+.md-typeset h1 {
+  font-weight: 800;
+  color: var(--doc-ink);
+  border-bottom: 3px double var(--doc-line);
+  padding-bottom: 0.4em;
+  margin-bottom: 1.2em;
+}
+.md-typeset h2 {
+  font-weight: 700;
+  margin-top: 2.4em;
+  padding-left: 0.6em;
+  border-left: 6px solid var(--doc-shu);
+}
+.md-typeset h3 {
+  font-weight: 700;
+  margin-top: 2em;
+  color: var(--doc-wood);
+}
+.md-typeset h4 {
+  font-weight: 700;
+  color: var(--doc-ink-soft);
+  border-bottom: 2px solid var(--doc-tamago);
+  display: inline-block;
+}
+
+/* 表は紙の色の上に置き、横にあふれたら表だけを横に送る */
+.md-typeset table:not([class]) {
+  background: var(--doc-paper);
+  border: 1px solid var(--doc-line);
+  border-radius: 10px;
+  font-size: 0.74rem;
+  box-shadow: 0 6px 18px rgba(74, 48, 20, 0.08);
+}
+.md-typeset table:not([class]) th {
+  background: var(--doc-washi-deep);
+  color: var(--doc-ink-soft);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.md-typeset table:not([class]) td { vertical-align: top; }
+
+/* 太字は朱色で引き立てる。文章の規約で、太字は要所にだけ使うことになっている */
+.md-typeset strong { color: var(--doc-shu); }
+.md-typeset table strong { color: inherit; }
+
+/* コード */
+.md-typeset code {
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.86em;
+}
+.md-typeset pre > code { padding: 0.9em 1.1em; font-size: 0.72rem; }
+
+/* 引用と注記 */
+.md-typeset blockquote {
+  border-left: 4px solid var(--doc-tamago);
+  color: var(--doc-ink-soft);
+}
+.md-typeset .admonition,
+.md-typeset details {
+  background: var(--doc-paper);
+  border-radius: 8px;
+}
+
+/* 箇条書きの行間を少し詰める */
+.md-typeset ul li,
+.md-typeset ol li { margin-bottom: 0.35em; }
+
+/* 目次と横の一覧 */
+.md-nav { font-size: 0.72rem; }
+/* 暗い配色の既定では青になるので、どちらの配色でも朱色にそろえる */
+.md-nav__item .md-nav__link--active,
+.md-nav__item .md-nav__link--active:hover { font-weight: 700; color: var(--doc-shu); }
+
+/* 印刷では見出しの直後で改ページしない */
+@media print {
+  .md-typeset h2, .md-typeset h3 { break-after: avoid; }
+  .md-typeset table:not([class]) { box-shadow: none; }
+}

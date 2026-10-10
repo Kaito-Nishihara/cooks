@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>おうちレシピ帖 アーキテクチャ</title>
+  <style>
+    :root {
+      --bg: #f7f4ec;
+      --panel: #fffdf7;
+      --ink: #2b2118;
+      --ink-soft: #6b5a48;
+      --line: #cdbf9f;
+      --edge: #8a5a33;
+      --gateway: #f2b63d;
+      --frontend: #dfe9d6;
+      --auth: #f6d9d3;
+      --book: #dbe6f3;
+      --kitchen: #f8ebc4;
+      --db: #ece4d2;
+      --cluster: rgba(138, 90, 51, 0.06);
+      --accent: #c0392b;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1d1915;
+        --panel: #26211b;
+        --ink: #f1e9da;
+        --ink-soft: #b9aa94;
+        --line: #54493a;
+        --edge: #d2a373;
+        --gateway: #8a6418;
+        --frontend: #34452b;
+        --auth: #5a302a;
+        --book: #2c4059;
+        --kitchen: #5c4b1c;
+        --db: #3a342a;
+        --cluster: rgba(210, 163, 115, 0.07);
+        --accent: #ef8b7d;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.8;
+    }
+    main { max-width: 1080px; margin: 0 auto; padding: 32px 16px 64px; }
+    h1 { font-size: 28px; margin: 0 0 4px; }
+    h2 { font-size: 20px; margin: 48px 0 12px; border-left: 6px solid var(--accent); padding-left: 10px; }
+    p { margin: 0 0 12px; }
+    a { color: var(--accent); }
+    .back { font-size: 14px; margin-bottom: 16px; }
+    td:first-child { white-space: nowrap; }
+    .lead { color: var(--ink-soft); }
+    .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; overflow-x: auto; }
+    .figure svg { display: block; min-width: 860px; width: 100%; height: auto; }
+    svg text { fill: var(--ink); font-size: 14px; font-family: inherit; }
+    svg .small { font-size: 12px; fill: var(--ink-soft); }
+    svg .title { font-size: 15px; font-weight: 700; }
+    svg .tech { font-size: 11px; font-weight: 700; fill: var(--accent); letter-spacing: 0.03em; }
+    svg .box { stroke: var(--edge); stroke-width: 1.5; }
+    svg .edge { stroke: var(--edge); stroke-width: 1.8; fill: none; }
+    svg .edge--inner { stroke: var(--accent); stroke-dasharray: 6 4; }
+    svg .edge--build { stroke: var(--ink-soft); stroke-dasharray: 2 4; }
+    svg .label { font-size: 12px; fill: var(--ink); }
+    svg .label--inner { fill: var(--accent); }
+    svg .label-bg { fill: var(--panel); }
+    table { border-collapse: collapse; width: 100%; background: var(--panel); border-radius: 12px; overflow: hidden; }
+    th, td { border-bottom: 1px solid var(--line); padding: 8px 12px; text-align: left; vertical-align: top; font-size: 14px; }
+    th { color: var(--ink-soft); font-weight: 400; font-size: 12px; }
+    .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--edge); margin-right: 6px; vertical-align: middle; }
+    ol.flow { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; margin: 0; padding: 16px 16px 16px 40px; }
+    ol.flow li { margin-bottom: 6px; }
+    ol.flow li:last-child { margin-bottom: 0; }
+    code { background: var(--db); border-radius: 4px; padding: 1px 5px; font-size: 13px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--ink-soft); margin-top: 10px; }
+    .legend span::before { content: ""; display: inline-block; width: 28px; margin-right: 6px; vertical-align: middle; border-top: 2px solid var(--edge); }
+    .legend .inner::before { border-top: 2px dashed var(--accent); }
+    .legend .build::before { border-top: 2px dotted var(--ink-soft); }
+    footer { margin-top: 48px; font-size: 12px; color: var(--ink-soft); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="back"><a href="./">← 仕様書の一覧へ</a></p>
+  <h1>おうちレシピ帖 アーキテクチャ</h1>
+  <p class="lead">2026-10-10 時点の設計。正本は <a href="requirements/">要件定義</a> の 6 章で、この図はその内容を絵にしたものである。</p>
+
+  <h2>全体の構成</h2>
+  <p>ブラウザからの要求は、すべて入口を通る。入口はパスで振り分け、ログインが要る要求は先に <code>auth-service</code> に確かめさせる。データベースはサービスごとに分け、ほかのサービスのデータベースを読まない。</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 1000 640" role="img" aria-labelledby="fig1-title fig1-desc">
+      <title id="fig1-title">全体の構成図</title>
+      <desc id="fig1-desc">ブラウザが入口に要求を送り、入口が frontend、auth-service、book-service、kitchen-service に振り分ける。3 つのサービスはそれぞれ自分のデータベースを持つ。kitchen-service は book-service に役割を問い合わせ、book-service は auth-service から表示名を取り、kitchen-service に中身を消させる。frontend にはビルド時に data ディレクトリのファイルを組み込む。</desc>
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="var(--edge)"/>
+        </marker>
+        <marker id="arrow-inner" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+        </marker>
+        <marker id="arrow-build" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-soft)"/>
+        </marker>
+      </defs>
+
+      <!-- クラスタの枠 -->
+      <rect x="190" y="20" width="790" height="600" rx="16" fill="var(--cluster)" stroke="var(--line)" stroke-dasharray="8 6"/>
+      <text x="206" y="44" class="small">Kubernetes(手元では kind)</text>
+
+      <!-- ブラウザ -->
+      <rect class="box" x="20" y="270" width="130" height="90" rx="10" fill="var(--panel)"/>
+      <text x="85" y="294" text-anchor="middle" class="tech">React / Zod</text>
+      <text x="85" y="318" text-anchor="middle" class="title">ブラウザ</text>
+      <text x="85" y="340" text-anchor="middle" class="small">栄養計算はここ</text>
+
+      <!-- 入口 -->
+      <rect class="box" x="220" y="250" width="120" height="130" rx="10" fill="var(--gateway)"/>
+      <text x="280" y="288" text-anchor="middle" class="tech">Gateway API</text>
+      <text x="280" y="314" text-anchor="middle" class="title">入口</text>
+      <text x="280" y="336" text-anchor="middle" class="small">パスで振り分け</text>
+      <text x="280" y="354" text-anchor="middle" class="small">実装は未決</text>
+
+      <!-- サービス -->
+      <rect class="box" x="440" y="60" width="220" height="80" rx="10" fill="var(--frontend)"/>
+      <text x="550" y="82" text-anchor="middle" class="tech">Next.js / React / Tailwind CSS</text>
+      <text x="550" y="104" text-anchor="middle" class="title">frontend</text>
+      <text x="550" y="124" text-anchor="middle" class="small">書き出した静的ファイルを配る</text>
+
+      <rect class="box" x="440" y="190" width="220" height="80" rx="10" fill="var(--auth)"/>
+      <text x="550" y="212" text-anchor="middle" class="tech">Quarkus REST / Java 21</text>
+      <text x="550" y="234" text-anchor="middle" class="title">auth-service</text>
+      <text x="550" y="254" text-anchor="middle" class="small">登録、ログイン、セッション</text>
+
+      <rect class="box" x="440" y="350" width="220" height="80" rx="10" fill="var(--book)"/>
+      <text x="550" y="372" text-anchor="middle" class="tech">Quarkus REST / Java 21</text>
+      <text x="550" y="394" text-anchor="middle" class="title">book-service</text>
+      <text x="550" y="414" text-anchor="middle" class="small">レシピ帳、メンバー、招待</text>
+
+      <rect class="box" x="440" y="510" width="220" height="80" rx="10" fill="var(--kitchen)"/>
+      <text x="550" y="532" text-anchor="middle" class="tech">Quarkus REST / Java 21</text>
+      <text x="550" y="554" text-anchor="middle" class="title">kitchen-service</text>
+      <text x="550" y="574" text-anchor="middle" class="small">レシピの編集内容、献立</text>
+
+      <!-- データ -->
+      <rect class="box" x="770" y="60" width="180" height="80" rx="10" fill="var(--panel)" stroke-dasharray="4 3"/>
+      <text x="860" y="82" text-anchor="middle" class="tech">JSON / Zod で検証</text>
+      <text x="860" y="104" text-anchor="middle" class="title">data/</text>
+      <text x="860" y="124" text-anchor="middle" class="small">元のレシピ、食材、成分表</text>
+
+      <rect class="box" x="770" y="195" width="180" height="70" rx="35" fill="var(--db)"/>
+      <text x="860" y="215" text-anchor="middle" class="tech">PostgreSQL / Flyway</text>
+      <text x="860" y="235" text-anchor="middle" class="title">auth のデータベース</text>
+      <text x="860" y="253" text-anchor="middle" class="small">利用者、セッション</text>
+
+      <rect class="box" x="770" y="355" width="180" height="70" rx="35" fill="var(--db)"/>
+      <text x="860" y="375" text-anchor="middle" class="tech">PostgreSQL / Flyway</text>
+      <text x="860" y="395" text-anchor="middle" class="title">book のデータベース</text>
+      <text x="860" y="413" text-anchor="middle" class="small">レシピ帳、メンバー、招待</text>
+
+      <rect class="box" x="770" y="515" width="180" height="70" rx="35" fill="var(--db)"/>
+      <text x="860" y="535" text-anchor="middle" class="tech">PostgreSQL / Flyway</text>
+      <text x="860" y="555" text-anchor="middle" class="title">kitchen のデータベース</text>
+      <text x="860" y="573" text-anchor="middle" class="small">編集内容、献立</text>
+
+      <!-- ブラウザから入口 -->
+      <path class="edge" d="M150 315 H218" marker-end="url(#arrow)"/>
+      <text x="184" y="302" text-anchor="middle" class="label">クッキー</text>
+
+      <!-- 入口から各サービス -->
+      <path class="edge" d="M340 270 C390 270 390 100 438 100" marker-end="url(#arrow)"/>
+      <path class="edge" d="M340 300 C395 300 395 245 438 245" marker-end="url(#arrow)"/>
+      <path class="edge" d="M340 335 C395 335 395 390 438 390" marker-end="url(#arrow)"/>
+      <path class="edge" d="M340 360 C390 360 390 550 438 550" marker-end="url(#arrow)"/>
+
+      <!-- 入口から auth へのログインの確認 -->
+      <path class="edge edge--inner" d="M340 285 C380 285 400 215 438 215" marker-end="url(#arrow-inner)"/>
+      <rect class="label-bg" x="216" y="222" width="124" height="20" rx="4"/>
+      <text x="278" y="236" text-anchor="middle" class="label label--inner">ログインを確かめる</text>
+
+      <!-- サービスの間 -->
+      <path class="edge edge--inner" d="M490 510 V432" marker-end="url(#arrow-inner)"/>
+      <rect class="label-bg" x="408" y="460" width="76" height="20" rx="4"/>
+      <text x="446" y="474" text-anchor="middle" class="label label--inner">役割を確認</text>
+
+      <path class="edge edge--inner" d="M600 430 V508" marker-end="url(#arrow-inner)"/>
+      <rect class="label-bg" x="606" y="460" width="104" height="20" rx="4"/>
+      <text x="658" y="474" text-anchor="middle" class="label label--inner">中身を消させる</text>
+
+      <path class="edge edge--inner" d="M550 350 V272" marker-end="url(#arrow-inner)"/>
+      <rect class="label-bg" x="556" y="300" width="104" height="20" rx="4"/>
+      <text x="608" y="314" text-anchor="middle" class="label label--inner">表示名を取る</text>
+
+      <!-- データベース -->
+      <path class="edge" d="M660 230 H768" marker-end="url(#arrow)"/>
+      <path class="edge" d="M660 390 H768" marker-end="url(#arrow)"/>
+      <path class="edge" d="M660 550 H768" marker-end="url(#arrow)"/>
+
+      <!-- ビルド時 -->
+      <path class="edge edge--build" d="M770 100 H662" marker-end="url(#arrow-build)"/>
+      <rect class="label-bg" x="676" y="72" width="80" height="20" rx="4"/>
+      <text x="716" y="86" text-anchor="middle" class="label">ビルド時に読む</text>
+    </svg>
+    <div class="legend">
+      <span>外からの要求と、データベースの読み書き</span>
+      <span class="inner">サービスの間だけの呼び出し(<code>/internal</code>、REST と署名付きトークン)</span>
+      <span class="build">ビルド時</span>
+    </div>
+  </div>
+
+  <h2>サービスの受け持ち</h2>
+  <table>
+    <tr><th>サービス</th><th>受け持つもの</th><th>入口が振り分けるパス</th><th>持つデータ</th></tr>
+    <tr>
+      <td><span class="swatch" style="background: var(--frontend)"></span>frontend</td>
+      <td>画面の静的なファイルを配る</td>
+      <td>ほかに当てはまらないパス</td>
+      <td>なし。元のレシピはビルド時に組み込む</td>
+    </tr>
+    <tr>
+      <td><span class="swatch" style="background: var(--auth)"></span>auth-service</td>
+      <td>登録、ログイン、セッション、パスワード。入口からのログインの確認に答える</td>
+      <td><code>/api/auth</code>、<code>/api/me</code></td>
+      <td>利用者、セッション</td>
+    </tr>
+    <tr>
+      <td><span class="swatch" style="background: var(--book)"></span>book-service</td>
+      <td>レシピ帳、メンバー、招待。「誰がどのレシピ帳で何をできるか」の正本</td>
+      <td><code>/api/books</code>、<code>/api/invitations</code></td>
+      <td>レシピ帳、メンバー、招待</td>
+    </tr>
+    <tr>
+      <td><span class="swatch" style="background: var(--kitchen)"></span>kitchen-service</td>
+      <td>レシピの編集内容、献立</td>
+      <td><code>/api/books/{bookId}/recipe-edits</code>、<code>/api/books/{bookId}/menus</code></td>
+      <td>編集内容、献立</td>
+    </tr>
+  </table>
+
+  <h2>使う技術</h2>
+  <p>版は、開発の土台を作るときに、その時点の安定版に決めて書き足す。</p>
+  <table>
+    <tr><th>場所</th><th>役割</th><th>使うもの</th></tr>
+    <tr><td rowspan="6"><span class="swatch" style="background: var(--frontend)"></span>frontend</td><td>画面の枠組み</td><td>Next.js(App Router、<code>output: "export"</code> で静的に書き出す)</td></tr>
+    <tr><td>部品</td><td>React、TypeScript</td></tr>
+    <tr><td>見た目</td><td>Tailwind CSS</td></tr>
+    <tr><td>入力値とデータの検証</td><td>Zod</td></tr>
+    <tr><td>API の型</td><td>OpenAPI の仕様から生成する</td></tr>
+    <tr><td>テスト</td><td>Vitest(単体)、Playwright(ブラウザ)</td></tr>
+    <tr><td rowspan="8"><span class="swatch" style="background: var(--auth)"></span><span class="swatch" style="background: var(--book)"></span><span class="swatch" style="background: var(--kitchen)"></span>services</td><td>言語</td><td>Java 21</td></tr>
+    <tr><td>枠組み</td><td>Quarkus(Quarkus REST、Jackson)</td></tr>
+    <tr><td>データベースの読み書き</td><td>Hibernate ORM with Panache</td></tr>
+    <tr><td>テーブルの変更管理</td><td>Flyway</td></tr>
+    <tr><td>入力値の検証</td><td>Hibernate Validator(Bean Validation)</td></tr>
+    <tr><td>署名付きトークン</td><td>SmallRye JWT</td></tr>
+    <tr><td>API の仕様の出力、ほかのサービスの呼び出し</td><td>SmallRye OpenAPI、Quarkus REST Client</td></tr>
+    <tr><td>テスト</td><td>JUnit 5、REST Assured</td></tr>
+    <tr><td><span class="swatch" style="background: var(--db)"></span>データベース</td><td>保存</td><td>PostgreSQL(サービスごとに 1 つ)</td></tr>
+    <tr><td rowspan="3"><span class="swatch" style="background: var(--gateway)"></span>実行環境</td><td>コンテナの実行</td><td>Kubernetes(手元では kind)</td></tr>
+    <tr><td>入口</td><td>Gateway API(実装は未決)</td></tr>
+    <tr><td>書いている間の実行</td><td>Docker Compose</td></tr>
+    <tr><td>文書</td><td>仕様書の表示</td><td>MkDocs Material</td></tr>
+  </table>
+
+  <h2>レシピの編集を保存するときの流れ</h2>
+  <p>ログインの確認と権限の確認が、どのサービスで行われるかを示す。</p>
+  <ol class="flow">
+    <li>ブラウザが、セッションのクッキーを付けて <code>PUT /api/books/{bookId}/recipe-edits/{slug}</code> を送る。</li>
+    <li>入口が、要求を渡す前に <code>auth-service</code> にクッキーを確かめさせる。</li>
+    <li><code>auth-service</code> は、セッションが有効なら、利用者の識別子を入れた署名付きトークン(期限は 1 分)を返す。無効なら入口が 401 を返す。</li>
+    <li>入口が、トークンを付けて要求を <code>kitchen-service</code> へ渡す。</li>
+    <li><code>kitchen-service</code> が、トークンの署名を確かめて利用者を特定する。</li>
+    <li><code>kitchen-service</code> が、<code>book-service</code> にその人のレシピ帳での役割を問い合わせる。</li>
+    <li>メンバーでなければ 404、見るだけの人なら 403 を返す。<code>book-service</code> が応答しなければ 503 を返す。どの場合も保存しない。</li>
+    <li>改訂番号が合えば保存し、合わなければ 409 を返す。</li>
+  </ol>
+
+  <h2>この図で読み取ってほしい決まり</h2>
+  <ol class="flow">
+    <li>ブラウザに見えるのはクッキーだけである。トークンは入口より後ろでしか使わない。</li>
+    <li>権限は <code>book-service</code> が正本である。ほかのサービスは、権限を自分で判断せずに問い合わせる。</li>
+    <li>権限が確かめられないときは拒む。</li>
+    <li>栄養計算と分量の換算はブラウザだけで行う。どのサービスも同じ計算を持たない。</li>
+    <li>元のレシピ、食材マスタ、成分表はデータベースに入れない。リポジトリのファイルとして持ち、ビルド時に画面へ組み込む。</li>
+  </ol>
+
+  <footer>入口の実装と、クラスタへ載せる道具は未決である(requirements.md の 12 章)。決まったらこの図に名前を書き足す。</footer>
+</main>
+</body>
+</html>

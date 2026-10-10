@@ -1,0 +1,78 @@
+# 仕様書をブラウザで読むサイトの設定。アプリ本体とは別のもので、アプリの起動やビルドに関わらない
+# 文書の中身は ../docs/ にあり、このディレクトリには表示の仕組みだけを置く
+# 起動: docker compose -f docs-site/compose.yaml up -d  →  http://localhost:8000
+site_name: おうちレシピ帖 仕様書
+site_description: おうちレシピ帖の要件定義、設計、開発の決まり
+docs_dir: ../docs
+site_dir: /tmp/site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: ja
+  # 見た目の上書き。overrides/assets/docs.css がサイトの assets/docs.css として配られる
+  custom_dir: overrides
+  # 書体は docs.css で指定する
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: washi
+      toggle:
+        icon: material/weather-night
+        name: 暗い配色にする
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 明るい配色にする
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.highlight
+    - content.code.copy
+
+extra_css:
+  - assets/docs.css
+
+# 一文ごとに改行して書いた日本語を、表示のときだけ 1 つの段落に詰める
+hooks:
+  - hooks/join_japanese_lines.py
+
+# 文書のほかに、見た目と変換の処理を変えたときも表示を更新する
+watch:
+  - overrides
+  - hooks
+
+markdown_extensions:
+  - tables
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3
+      # 日本語の見出しでも、見出しへのリンクが作られるようにする
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  # ```mermaid のコードブロックを図として描く
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+# 文書を足したら、ここに 1 行足す。足さなくても表示されるが、並び順が名前順になる
+nav:
+  - はじめに: index.md
+  - 要件定義: requirements.md
+  - アーキテクチャ図: architecture.html
