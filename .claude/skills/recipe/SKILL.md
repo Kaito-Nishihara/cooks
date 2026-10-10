@@ -58,7 +58,7 @@ https://commons.wikimedia.org/w/api.php?action=query&titles=File:<名前>|File:<
 - 1280px の縮小版をダウンロードし、`recipes/images/<ファイル名の語幹>/` に保存する。直リンクはしない。
 
 ```bash
-UA="mana-cooks-recipe/1.0"
+UA="cooks-recipe/1.0"
 curl -sSL -A "$UA" -o hero.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/<a>/<ab>/<File>.jpg/1280px-<File>.jpg"
 ```
 

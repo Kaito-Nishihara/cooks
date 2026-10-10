@@ -26,7 +26,7 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 
 ## 書き方
 
-文章は [日本語文章規範](https://github.com/Kaito-Nishihara/mana-cooks/blob/main/.claude/rules/writing-style.md) に従う。
+文章は [日本語文章規範](https://github.com/Kaito-Nishihara/cooks/blob/main/.claude/rules/writing-style.md) に従う。
 一文ごとに改行して書く。
 表示のときは、改行を詰めて 1 つの段落にしている。
 
