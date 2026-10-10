@@ -9,9 +9,10 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 |---|---|
 | [要件定義](requirements.md) | 何を作るか、何を作らないか。機能ごとの受け入れ条件、技術構成、データモデル、API |
 | [アーキテクチャ図](architecture.html) | サービスの構成、使う技術、保存するときの流れを絵にしたもの |
-| [共通設計: API の共通仕様](design/common-api.md) | パス、JSON、エラーの形と種類、識別子、日時、上限、改訂番号、OpenAPI の決まり |
+| [共通設計: API の共通仕様](design/common-api.md) | パス、JSON、エラーの形と種類、識別子、日時、件数の上限、一覧の分け方、改訂番号、OpenAPI の決まり |
 | [決定の記録 0001](decisions/0001-revision-in-body.md) | 改訂番号を要求の本文で渡す |
 | [決定の記録 0002](decisions/0002-no-api-version.md) | API のパスに版の番号を入れない |
+| [決定の記録 0003](decisions/0003-cursor-pagination.md) | 一覧をカーソルで分けて返す |
 
 仕様に迷ったときは、要件定義を正本とする。
 図と要件定義が食い違っていたら、要件定義が正しい。
