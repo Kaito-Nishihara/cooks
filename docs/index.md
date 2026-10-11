@@ -13,6 +13,7 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 | [共通設計: 認証、セッション、サービスの間の本人確認](design/common-auth.md) | パスワードの保存、セッションとクッキー、ログインの失敗の制限、ほかのサイトからの要求の拒み方、入口での確認、トークンと署名の鍵 |
 | [共通設計: データベースの共通仕様](design/common-database.md) | データベースの分け方、名前と型、共通の列、JSON の列、行の消し方、インデックス、テーブルを変える手順、同時に書き込まれたときの守り方 |
 | [共通設計: サービスの共通構成](design/common-service.md) | パッケージと層、共通するコードの持ち方、例外の変換、ログ、設定、稼働の確認、ほかのサービスの呼び出し方、テストの方針 |
+| [共通設計: 実行環境](design/common-runtime.md) | 手元で使う道具、kind のクラスタ、入口の実装と振り分け、イメージ、マニフェスト、秘密の値、PostgreSQL、Compose での再現 |
 | [決定の記録 0001](decisions/0001-revision-in-body.md) | 改訂番号を要求の本文で渡す |
 | [決定の記録 0002](decisions/0002-no-api-version.md) | API のパスに版の番号を入れない |
 | [決定の記録 0003](decisions/0003-cursor-pagination.md) | 一覧をカーソルで分けて返す |
@@ -25,6 +26,10 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 | [決定の記録 0010](decisions/0010-in-service-scheduler.md) | 期限が切れた行を、サービスの中の定期の処理で消す |
 | [決定の記録 0011](decisions/0011-maven.md) | サービスのビルドに Maven を使う |
 | [決定の記録 0012](decisions/0012-domain-centered-layers.md) | サービスを、ドメインを中心にした層で作る |
+| [決定の記録 0013](decisions/0013-envoy-gateway.md) | 入口に Envoy Gateway を使う |
+| [決定の記録 0014](decisions/0014-tools-in-container.md) | kind、kubectl、helm をコンテナの中で動かす |
+| [決定の記録 0015](decisions/0015-kustomize.md) | クラスタへ載せるのに Kustomize を使う |
+| [決定の記録 0016](decisions/0016-postgres-statefulset.md) | 手元のクラスタでは PostgreSQL を 1 つの Pod で動かす |
 
 仕様に迷ったときは、要件定義を正本とする。
 図と要件定義が食い違っていたら、要件定義が正しい。
