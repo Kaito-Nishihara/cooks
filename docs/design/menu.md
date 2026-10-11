@@ -68,6 +68,8 @@
 
 ## 3. 画面
 
+見た目の試作は、画面一覧の [今日の献立](../screens/menu.md)、[レシピ一覧](../screens/recipe-list.md)、[レシピ詳細](../screens/recipe-detail.md) にある。
+
 ### 3.1 献立の画面(`/menu`)
 
 | 項目 | 内容 |

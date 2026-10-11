@@ -41,7 +41,9 @@
       sheet = '<a href="list-anonymous.html">レシピ</a><a href="login.html">今日の献立</a><hr><a href="login.html">ログイン</a><a href="register.html">登録</a>';
     }
     return (
-      '<div class="mock-note">見た目の試作です。ボタンを押しても保存されません。 <a href="../design/mockups/" target="_top">試作の一覧へ</a></div>' +
+      (window.self === window.top
+        ? '<div class="mock-note">見た目の試作です。ボタンを押しても保存されません。 <a href="../screens/">画面一覧へ</a></div>'
+        : "") +
       '<header class="header"><div class="wrap"><div class="header__bar">' +
       '<a class="header__name" href="' + (state.auth === "in" ? "list.html" : "list-anonymous.html") + '">おうちレシピ帖</a>' +
       '<nav class="header__nav" aria-label="画面">' + nav + "</nav>" +

@@ -88,7 +88,7 @@ docker compose -f docs-site/compose.yaml down    # 停止
 | [共通設計: 画面の共通仕様](docs/design/common-frontend.md) | 色と書体、共通の部品、エラーの `code` ごとの動き、ログインが要る画面の守り方、アクセシビリティ |
 | [共通設計: 実行環境](docs/design/common-runtime.md) | kind、入口の実装と振り分け、イメージ、マニフェスト、Compose での再現 |
 | [画面設計: 画面の一覧と遷移](docs/design/screens.md) | 画面の一覧とパス、画面の間の遷移、ヘッダーの出し分け、招待リンクの流れ、各画面の骨組み |
-| [画面設計: 見た目の試作](docs/design/mockups.md) | 主な画面の見た目の試作。仕様書のサイトで、スマホの幅と広い幅で見られる |
+| [画面一覧](docs/screens/index.md) | 画面ごとのページ。見た目の試作と、対応する機能設計へのリンク。仕様書のサイトで見る |
 | [データ設計: レシピ、食材マスタ、成分表](docs/design/data-recipe.md) | レシピの JSON の形、単位、換算率、成分表の変換、データの検証、38 品の移行 |
 | [機能設計: レシピ一覧と詳細](docs/design/recipe-browse.md) | 検索の正規化、ジャンルと URL、人数の換算と分量の表記、編集後の表示、写真の小さい版 |
 | [機能設計: 栄養計算](docs/design/nutrition.md) | 材料から栄養の値を出す式、丸め方、「概算値」の決まり、献立の合計 |
