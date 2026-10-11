@@ -86,6 +86,8 @@ nav:
       - 画面の一覧と遷移: design/screens.md
   - データの設計:
       - 元のレシピ、食材マスタ、成分表: design/data-recipe.md
+  - 機能の設計:
+      - レシピ帳とレシピの編集: design/recipe-edit.md
   - 決定の記録:
       - 0001 改訂番号を要求の本文で渡す: decisions/0001-revision-in-body.md
       - 0002 API のパスに版の番号を入れない: decisions/0002-no-api-version.md
@@ -112,3 +114,7 @@ nav:
       - 0027 分量の丸め方を単位と食材マスタから決める: decisions/0027-rounding-from-unit.md
       - 0028 成分表の「微量」を 0 として読む: decisions/0028-trace-as-zero.md
       - 0029 栄養の値がない食材に印を付ける: decisions/0029-no-nutrition-flag.md
+      - 0049 編集内容を行ごとの差分で持つ: decisions/0049-edit-as-row-diff.md
+      - 0050 編集内容の単位と識別子は形だけを検証する: decisions/0050-backend-validates-shape-only.md
+      - 0051 フォームのライブラリを入れない: decisions/0051-no-form-library.md
+      - 0052 応答が届かなかった保存を内容を比べて見分ける: decisions/0052-detect-own-save-on-conflict.md

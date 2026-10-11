@@ -159,7 +159,7 @@
   "message": "入力に誤りがあります。",
   "details": {
     "fields": [
-      { "path": "ingredientGroups[0].items[2].amount", "code": "MIN", "message": "0 より大きい数を入れてください。" }
+      { "path": "content.ingredients.rows[2].amount", "code": "MIN", "message": "0 より大きい数を入れてください。" }
     ]
   }
 }
