@@ -197,7 +197,7 @@
 
 - 入力の検証で見つかった誤りは、最初の 1 件で止めず、すべてを `fields` に入れて返す。
 - `fields` の `path` は、入力の JSON の中の位置を、項目名と添字で書く。
-- `fields` の `code` は、`REQUIRED`、`MIN`、`MAX`、`TOO_LONG`、`TOO_MANY`、`INVALID_FORMAT`、`UNKNOWN_FIELD` のいずれかとする。
+- `fields` の `code` は、`REQUIRED`、`MIN`、`MAX`、`TOO_SHORT`、`TOO_LONG`、`TOO_MANY`、`INVALID_FORMAT`、`UNKNOWN_FIELD` のいずれかとする。
 - `INVITATION_INVALID` は、期限切れ、使用済み、取り消し済みを区別しない。招待の状態を外から調べられないようにするためである。
 - `INTERNAL_ERROR` の `message` は、いつも同じ文にする。原因はログに出し、応答には出さない。
 - この表にない `code` を足すときは、先にこの仕様書に足す。

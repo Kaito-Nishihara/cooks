@@ -53,7 +53,7 @@
 | `POST /api/auth/login` | ログインする | 不要 |
 | `POST /api/auth/logout` | ログアウトする | 必要 |
 | `PUT /api/me/password` | パスワードを変える | 必要 |
-| `GET /internal/auth/verify` | 入口から呼ばれ、要求の送り主を確かめる(4.6) | 入口だけが呼ぶ |
+| `/internal/auth/verify` で始まるパス。どのメソッドでも受ける | 入口から呼ばれ、要求の送り主を確かめる(4.6) | 入口だけが呼ぶ |
 | `GET /internal/auth/keys` | 署名を確かめるための公開の鍵を返す(4.8) | サービスだけが呼ぶ |
 
 ### 4.1 全体の流れ
@@ -158,12 +158,18 @@
 
 確かめる場所は次のとおりとする。
 
-- ログインが要る要求: `GET /internal/auth/verify` の中で確かめる(4.6)。すべてのサービスの要求が通るので、1 か所で済む。
+- ログインが要る要求: `/internal/auth/verify` の中で確かめる(4.6)。すべてのサービスの要求が通るので、1 か所で済む。
 - ログインが要らない要求(登録とログイン): `auth-service` が自分で確かめる。
 
 ### 4.6 入口での確認
 
-入口は、ログインが要る要求を後ろのサービスへ渡す前に、`auth-service` の `GET /internal/auth/verify` を呼ぶ。
+入口は、ログインが要る要求を後ろのサービスへ渡す前に、`auth-service` の `/internal/auth/verify` を呼ぶ。
+入口(Envoy Gateway)は、元の要求と同じメソッドで、`/internal/auth/verify` の後ろに元のパスを付けて呼ぶ。
+例: `PUT /api/books/b1` の確認は、`PUT /internal/auth/verify/api/books/b1` になる。
+`auth-service` は、このパスで始まる要求をどのメソッドでも受け、届いた要求のメソッドを元のメソッドとして扱う。
+後ろに付いたパスは使わない。
+入口が渡すヘッダーは、`Cookie`、`Origin`、`X-Request-Id` だけである。
+この動きは「共通設計: 実行環境」の 4.5 で確かめた。
 
 ```mermaid
 sequenceDiagram
@@ -172,7 +178,7 @@ sequenceDiagram
     participant A as auth-service
     participant K as kitchen-service
     B->>G: PUT /api/books/.../recipe-edits/oyakodon(クッキー付き)
-    G->>A: GET /internal/auth/verify(クッキー、元のメソッド、Origin を渡す)
+    G->>A: PUT /internal/auth/verify/api/books/...(元と同じメソッド。クッキーと Origin を渡す)
     alt セッションが有効で、送り元も正しい
         A-->>G: 200 と Authorization: Bearer <トークン>
         G->>K: 元の要求に、トークンを付けて渡す
@@ -358,7 +364,7 @@ JWT は、いくつかの項目を書いた JSON に署名を付けて、1 行�
 
 ## 8. 未決事項
 
-- **入口が `verify` の決まりを満たせるか**: 4.6 は、入口が「後ろへ渡す前に別のサービスへ確認を任せる」「返ってきたヘッダーで置き換える」「クッキーを後ろへ渡さない」ことを前提にしている。候補の製品でできるかを「共通設計: 実行環境」で確かめる。できないときは、この文書を直す。
+- **入口が `verify` の決まりを満たせるか**: 確かめて、満たせると分かった。入口に Envoy Gateway を使う(決定の記録 0013)。入口が呼ぶときのメソッドとパスが製品で決まるので、4.6 をそれに合わせて直した。
 - **送り元ごとの制限**: 4.4 は、メールアドレスごとに数える。1 つの送り元から、たくさんのメールアドレスを試す攻撃は防げない。送り元の住所(IP アドレス)ごとの制限は、入口の後ろで正しい住所が取れるかが配置する場所によるので、配置を決めるときに決める。
 - **`localhost` での `Secure` のクッキー**: Chrome と Firefox は `http://localhost` でも受け付ける。Safari で受け付けないときは、手元だけ HTTPS にする。実装の段階 0 で確かめる。
 - **メールアドレスの確認とパスワードの再設定**: 要件定義の 12 章のとおり、配置する場所が決まってから足す。
