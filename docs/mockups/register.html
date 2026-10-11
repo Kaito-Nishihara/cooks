@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>登録 | おうちレシピ帖(見た目の試作)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body data-auth="out" data-current="">
+<main>
+  <div class="wrap wrap--form stack">
+    <h1 class="page-title">登録</h1>
+    <div class="notice notice--info" role="status">
+      <span class="notice__mark">お知らせ</span>
+      <div>招待を受けるには、ログインか登録が必要です。</div>
+    </div>
+    <label class="field"><span class="field__label">表示名 <span class="field__req">必須</span></span>
+      <span class="field__help">50 文字まで。レシピ帳のメンバーに見えます</span>
+      <input class="input" value="けんた"></label>
+    <label class="field"><span class="field__label">メールアドレス <span class="field__req">必須</span></span>
+      <span class="field__help">確認のメールは送りません</span>
+      <input class="input is-error" type="email" value="kenta@example">
+      <span class="field__error">メールアドレスの形で入れてください</span></label>
+    <label class="field"><span class="field__label">パスワード <span class="field__req">必須</span></span>
+      <span class="field__help">12 文字以上。忘れたときの再設定は、まだできません</span>
+      <input class="input" type="password" value="xxxxxxxxxxxx"></label>
+    <label class="check"><input type="checkbox"> パスワードを表示する</label>
+    <button class="btn btn--primary btn--block" type="button">登録する</button>
+    <p>登録済みの方は <a href="login.html">ログインする</a></p>
+  </div>
+</main>
+<script src="mock.js"></script>
+</body>
+</html>

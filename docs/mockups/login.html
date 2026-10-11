@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ログイン | おうちレシピ帖(見た目の試作)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body data-auth="out" data-current="">
+<main>
+  <div class="wrap wrap--form stack">
+    <h1 class="page-title">ログイン</h1>
+    <div class="notice notice--error" role="alert">
+      <span class="notice__mark">エラー</span>
+      <div>メールアドレスかパスワードが違います。</div>
+    </div>
+    <label class="field"><span class="field__label">メールアドレス <span class="field__req">必須</span></span>
+      <input class="input" type="email" value="misaki@example.com"></label>
+    <label class="field"><span class="field__label">パスワード <span class="field__req">必須</span></span>
+      <input class="input" type="password" value="xxxxxxxxxxxx"></label>
+    <label class="check"><input type="checkbox"> パスワードを表示する</label>
+    <button class="btn btn--primary btn--block" type="button">ログインする</button>
+    <p>はじめての方は <a href="register.html">登録する</a></p>
+  </div>
+</main>
+<script src="mock.js"></script>
+</body>
+</html>

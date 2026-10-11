@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>レシピ帳の設定 | おうちレシピ帖(見た目の試作)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body data-auth="in" data-current="">
+<main>
+  <div class="wrap wrap--narrow stack-lg">
+    <div>
+      <h1 class="page-title">レシピ帳の設定</h1>
+      <p class="soft">レシピ帳: みさきのレシピ帳(持ち主)</p>
+    </div>
+    <section class="stack-sm" aria-labelledby="b-name">
+      <h2 class="sec-title" id="b-name">名前</h2>
+      <div class="row">
+        <label class="field grow"><span class="field__label">レシピ帳の名前 <span class="field__req">必須</span></span>
+          <span class="field__help">40 文字まで</span>
+          <input class="input" value="みさきのレシピ帳"></label>
+      </div>
+      <button class="btn btn--primary" type="button">名前を変える</button>
+    </section>
+    <section class="stack-sm" aria-labelledby="b-mem">
+      <h2 class="sec-title" id="b-mem">メンバー</h2>
+      <ul class="rows">
+        <li><strong>みさき <span class="badge badge--quiet">あなた</span></strong><span>持ち主</span><span></span></li>
+        <li><strong>けんた</strong><span><select class="select select--auto" aria-label="けんた さんの役割"><option selected>編集できる</option><option>見るだけ</option></select></span><span class="rows__ops"><button class="btn btn--danger btn--sm" type="button" data-open="dlg-remove">外す</button></span></li>
+        <li><strong>おかあさん</strong><span><select class="select select--auto" aria-label="おかあさん さんの役割"><option>編集できる</option><option selected>見るだけ</option></select></span><span class="rows__ops"><button class="btn btn--danger btn--sm" type="button" data-open="dlg-remove">外す</button></span></li>
+      </ul>
+    </section>
+    <section class="stack-sm" aria-labelledby="b-inv">
+      <h2 class="sec-title" id="b-inv">招待</h2>
+      <p class="soft t-sm">リンクを受け取った人が、ログインして開くと、このレシピ帳に参加できます。リンクは 7 日で切れ、1 回だけ使えます。</p>
+      <div class="row">
+        <label class="field"><span class="field__label">役割</span>
+          <select class="select select--auto"><option>編集できる</option><option selected>見るだけ</option></select></label>
+      </div>
+      <button class="btn btn--primary" type="button">招待のリンクを作る</button>
+      <div class="notice notice--ok" role="status">
+        <span class="notice__mark">できました</span>
+        <div class="grow stack-sm">
+          <p>招待のリンクを作りました。このリンクは、この画面を離れると、もう表示できません。</p>
+          <div class="copybox">
+            <input class="input" readonly aria-label="招待のリンク" value="https://recipe-book.example/invite#Xk3vQ9mT1bZr7LpA2cNw8YdE5fHs0GuJ4iOe6RtKaBc">
+            <button class="btn btn--sub btn--sm" type="button">リンクを写す</button>
+          </div>
+        </div>
+      </div>
+      <h3 class="sub-title">有効な招待</h3>
+      <ul class="rows">
+        <li><span>見るだけ</span><span>2026年10月18日まで</span><span class="rows__ops"><button class="btn btn--danger btn--sm" type="button">取り消す</button></span></li>
+      </ul>
+    </section>
+    <section class="stack-sm" aria-labelledby="b-leave">
+      <h2 class="sec-title" id="b-leave">このレシピ帳を抜ける</h2>
+      <p class="soft t-sm">持ち主は抜けられません。この節は、持ち主でないメンバーにだけ出します。試作では、見た目を示すために出しています。</p>
+      <button class="btn btn--danger" type="button" disabled>このレシピ帳を抜ける</button>
+    </section>
+  </div>
+</main>
+<dialog class="dialog" id="dlg-remove" aria-labelledby="dlg-remove-t">
+  <h2 id="dlg-remove-t">けんた さんを外しますか</h2>
+  <p>けんた さんを「みさきのレシピ帳」から外します。けんた さんは、このレシピ帳を見られなくなります。</p>
+  <div class="dialog__actions">
+    <button class="btn btn--quiet" type="button" data-close autofocus>やめる</button>
+    <button class="btn btn--danger" type="button" data-close>外す</button>
+  </div>
+</dialog>
+<script src="mock.js"></script>
+</body>
+</html>
