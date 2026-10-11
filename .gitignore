@@ -14,3 +14,6 @@ data/source/
 
 .DS_Store
 *.log
+
+# Claude Code が並行の作業のために作る作業場所
+.claude/worktrees/
