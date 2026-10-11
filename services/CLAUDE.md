@@ -14,30 +14,36 @@ Quarkus REST、Java 21、PostgreSQL、Flyway、Hibernate ORM with Panache。
 
 ## サービスの中の構成
 
-機能ごとのパッケージの中を、入口(`*Resource`)、業務(`*Service`)、保存(`*Repository` と Entity)に分ける。
-ほかのサービスを呼ぶ処理は `client` パッケージにまとめ、業務の処理から直接 HTTP を呼ばない。
+ドメインを中心にした構成で作る。
+詳しくは [共通設計: サービスの共通構成](../docs/design/common-service.md) の 4.2 にある。
 
 ```
 src/main/java/app/recipebook/<auth、book、kitchen のいずれか>/
-├── <機能>/        # 入口、業務、保存
-├── client/        # ほかのサービスを呼ぶ処理
-└── config/        # このサービスだけの設定
+├── <機能>/
+│   ├── presentation/    # 入口。*Resource と DTO
+│   ├── application/     # *UseCase、ほかのサービスを呼ぶための約束(*Gateway)
+│   ├── domain/          # 集約、値オブジェクト、リポジトリの約束
+│   └── infrastructure/  # リポジトリの実装、*JpaEntity、*Gateway の実装
+├── shared/domain/       # 複数の機能で使う値オブジェクト
+└── config/              # このサービスだけの設定
 src/main/resources/db/migration/   # Flyway
 src/test/java/
 ```
 
-エラーの形、例外の変換、要求の識別子、ログの項目、本人の特定は、`services/service-common` に置く。
-サービスの中に写しを作らない。
-`service-common` に、Entity と業務の決まりを置かない。
-
-層の決まりは次のとおりである。
-詳しくは [共通設計: サービスの共通構成](../docs/design/common-service.md) にある。
-
-- **入口は、権限の判定も、データベースの読み書きもしない。** 業務の層を 1 回呼ぶ。
-- **Entity を、業務の層の外に出さない。**
+- **業務の決まりは `domain` に書く。** ユースケースや入口の `if` で判定しない。
+- **`domain` は、Java の標準の部品と `app.recipebook.common.core` だけを使う。** Quarkus、JPA、Jackson の注釈を付けない。
+- **頼る向きは、入口、ユースケース、ドメインの順の一方だけ。** 基盤は、ドメインとユースケースの `interface` を実装する。
+- **集約と `*JpaEntity` を分ける。** リポジトリの実装が、互いに変える。
+- **集約を、ユースケースの外に出さない。** 結果は `record` で返し、入口が DTO にする。
+- **ユースケースは、1 つの操作につき 1 つのクラスにする。**
 - **エラーは、`AppException` を投げて伝える。** 応答を自分で組み立てない。
 - **ほかのサービスの呼び出しは、トランザクションを始める前に済ませる。**
-- **今の時刻は `Clock` から取る。** `Instant.now()` を直接呼ばない。
+- **今の時刻は、ユースケースが `Clock` から取り、ドメインへ引数で渡す。** `Instant.now()` を直接呼ばない。
+- **層の決まりは、ArchUnit のテストで守る。** テストを外して通さない。
+
+エラーの形、例外の変換、要求の識別子、ログの項目、本人の特定は、`services/service-common` に置く。
+サービスの中に写しを作らない。
+`service-common` に、集約と業務の決まりを置かない。
 
 ## サービスの間の決まり
 
@@ -56,7 +62,7 @@ src/test/java/
 - **レシピ帳に関わる入口は、すべて役割を確かめてから処理する。** 確かめずにレシピ帳の識別子でデータを引かない。
 - **メンバーでない人には 404 を返す。** 403 にしない。レシピ帳があることを知らせないためである。
 - **役割が足りないメンバーには 403 を返す。**
-- **入力は DTO で受け、Bean Validation で検証する。** Entity を入口の引数と戻り値に使わない。文字列と配列には長さの上限を付ける。
+- **入力は DTO で受け、Bean Validation で検証する。** 集約と `*JpaEntity` を入口の引数と戻り値に使わない。文字列と配列には長さの上限を付ける。
 - **エラーは `{ code, message, details }` の形で返す。** どのサービスも同じ形にする。入口で個別に応答を組み立てない。
 - **改訂番号が合わない保存は 409 を返し、保存しない。**
 - **一覧を返すクエリには上限の件数を付ける。**
@@ -78,6 +84,7 @@ src/test/java/
 
 ## テスト
 
+- 業務の決まりの場合分けは、`domain` のテストで確かめる。Quarkus もデータベースも起動しない。
 - 入口ごとに、REST Assured で API のテストを書く。テストは本物の PostgreSQL に対して走らせる。
 - テストの名前に、受け入れ条件の識別子(`AC-SVC-09` など)を書く。
 - 時刻は、テスト用の `Clock` で固定する。

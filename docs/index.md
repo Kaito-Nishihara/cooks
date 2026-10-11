@@ -24,6 +24,7 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 | [決定の記録 0009](decisions/0009-shared-library.md) | サービスに共通するコードを 1 つのライブラリにまとめる |
 | [決定の記録 0010](decisions/0010-in-service-scheduler.md) | 期限が切れた行を、サービスの中の定期の処理で消す |
 | [決定の記録 0011](decisions/0011-maven.md) | サービスのビルドに Maven を使う |
+| [決定の記録 0012](decisions/0012-domain-centered-layers.md) | サービスを、ドメインを中心にした層で作る |
 
 仕様に迷ったときは、要件定義を正本とする。
 図と要件定義が食い違っていたら、要件定義が正しい。

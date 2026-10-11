@@ -93,3 +93,4 @@ nav:
       - 0009 共通するコードを 1 つのライブラリにまとめる: decisions/0009-shared-library.md
       - 0010 期限が切れた行をサービスの中の定期の処理で消す: decisions/0010-in-service-scheduler.md
       - 0011 サービスのビルドに Maven を使う: decisions/0011-maven.md
+      - 0012 サービスをドメインを中心にした層で作る: decisions/0012-domain-centered-layers.md
