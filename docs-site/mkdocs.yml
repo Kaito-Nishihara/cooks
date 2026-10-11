@@ -81,6 +81,8 @@ nav:
       - 認証、セッション、サービスの間の本人確認: design/common-auth.md
       - データベースの共通仕様: design/common-database.md
       - サービスの共通構成: design/common-service.md
+  - データの設計:
+      - 元のレシピ、食材マスタ、成分表: design/data-recipe.md
   - 決定の記録:
       - 0001 改訂番号を要求の本文で渡す: decisions/0001-revision-in-body.md
       - 0002 API のパスに版の番号を入れない: decisions/0002-no-api-version.md
@@ -94,3 +96,8 @@ nav:
       - 0010 期限が切れた行をサービスの中の定期の処理で消す: decisions/0010-in-service-scheduler.md
       - 0011 サービスのビルドに Maven を使う: decisions/0011-maven.md
       - 0012 サービスをドメインを中心にした層で作る: decisions/0012-domain-centered-layers.md
+      - 0025 材料、手順、コツに変わらない識別子を付ける: decisions/0025-stable-item-ids.md
+      - 0026 換算率を食材ごと、単位ごとに書いて持つ: decisions/0026-grams-per-unit-explicit.md
+      - 0027 分量の丸め方を単位と食材マスタから決める: decisions/0027-rounding-from-unit.md
+      - 0028 成分表の「微量」を 0 として読む: decisions/0028-trace-as-zero.md
+      - 0029 栄養の値がない食材に印を付ける: decisions/0029-no-nutrition-flag.md
