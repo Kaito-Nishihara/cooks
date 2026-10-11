@@ -365,6 +365,8 @@ frontend/              # Next.js
 │   └── api/           # API を呼ぶクライアント。型は OpenAPI から生成する
 └── e2e/               # Playwright
 services/
+├── pom.xml            # 親。Quarkus と拡張の版を決める
+├── service-common/    # 3 つのサービスが使う共通のコード
 ├── auth-service/      # Quarkus
 ├── book-service/      # Quarkus
 └── kitchen-service/   # Quarkus
