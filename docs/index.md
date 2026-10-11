@@ -74,6 +74,9 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 | [決定の記録 0057](decisions/0057-invitation-token-format.md) | 招待の文字列を 256 ビットの乱数にし、SHA-256 のハッシュで持つ |
 | [決定の記録 0058](decisions/0058-members-need-display-names.md) | 表示名を取れないときは、メンバーの一覧を返さない |
 | [決定の記録 0059](decisions/0059-accept-by-existing-member.md) | すでにメンバーの人が招待を受けても、役割を変えず、招待を使わない |
+| [決定の記録 0060](decisions/0060-book-name-from-display-name.md) | 自分のレシピ帳の最初の名前に、表示名を入れる |
+| [決定の記録 0061](decisions/0061-entries-for-anonymous.md) | ログインしていない人にも、献立と編集の入口を出す |
+| [決定の記録 0062](decisions/0062-one-step-under-ten.md) | g と ml の分量は、換算した値が 10 未満のとき 1 刻みで出す |
 
 仕様に迷ったときは、要件定義を正本とする。
 図と要件定義が食い違っていたら、要件定義が正しい。
