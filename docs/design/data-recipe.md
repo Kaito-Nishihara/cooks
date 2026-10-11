@@ -767,8 +767,8 @@ PR の本文に、値が変わった食品のうち、食材マスタが指し�
 | 形 | 使う画面 | 中身 | 大きさ |
 |---|---|---|---|
 | レシピの全体 | レシピ詳細、レシピの編集 | `data/recipes/<slug>.json` の全項目。1 品分 | 親子丼で 4.3KB(測った値)。上限は 32KB |
-| レシピの要約の一覧 | レシピ一覧 | 全レシピの `slug`、`version`、`name`、`arrangeLabel`、`genres`、`time`、ヒーローの写真の `file` と `alt`、検索用の文字列 | 38 品で 15KB 前後の見込み |
-| レシピの材料の一覧 | 今日の献立 | 全レシピの `slug`、`version`、`name`、`servings`、ヒーローの写真の `file`、材料(`id`、`ingredientId`、`name`、`amount`、`unit`、`note`、`intakeRatio`) | 38 品で 50KB 前後の見込み |
+| レシピの要約の一覧 | レシピ一覧、今日の献立(料理を選ぶダイアログ) | 全レシピの `slug`、`version`、`name`、`arrangeLabel`、`genres`、`time`、ヒーローの写真の `file` と `alt`、検索用の文字列 | 38 品で 15KB 前後の見込み |
+| レシピの材料の一覧 | 今日の献立、レシピ一覧(献立の枠。後から読み込む) | 全レシピの `slug`、`version`、`name`、`servings`、ヒーローの写真の `file`、材料(`id`、`ingredientId`、`name`、`amount`、`unit`、`note`、`intakeRatio`) | 38 品で 50KB 前後の見込み |
 | 栄養計算のデータ | レシピ詳細、レシピの編集、今日の献立 | 食材マスタの全件(`note` を除く)と、食材マスタが指している食品だけ | 食材 150 件で 40KB 前後の見込み |
 
 見込みの大きさは、空白を詰めた JSON の、圧縮する前のバイト数である。
