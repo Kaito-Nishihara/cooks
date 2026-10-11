@@ -149,3 +149,6 @@ nav:
       - 0057 招待の文字列を 256 ビットの乱数にし SHA-256 のハッシュで持つ: decisions/0057-invitation-token-format.md
       - 0058 表示名を取れないときはメンバーの一覧を返さない: decisions/0058-members-need-display-names.md
       - 0059 すでにメンバーの人が招待を受けても役割を変えず招待を使わない: decisions/0059-accept-by-existing-member.md
+      - 0060 自分のレシピ帳の最初の名前に表示名を入れる: decisions/0060-book-name-from-display-name.md
+      - 0061 ログインしていない人にも献立と編集の入口を出す: decisions/0061-entries-for-anonymous.md
+      - 0062 g と ml の分量は換算した値が 10 未満のとき 1 刻みで出す: decisions/0062-one-step-under-ten.md
