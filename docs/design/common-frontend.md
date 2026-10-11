@@ -311,6 +311,11 @@ API が失敗したときの動きを 1 か所で決め、画面ごとに違う�
 
 `Header`、`Footer`、`BookSwitcher`、`ReLoginDialog`(4.4)、`ConflictDialog`(4.5)は、アプリの事情を知る部品なので `src/components/layout/` に置く。
 
+アプリの中のリンクは、`AppLink` を通す。
+`AppLink` は、移る前に `src/hooks/useNavigationGuard.ts` に登録された処理に尋ね、「よい」と返ったときだけ移る。
+自動保存の画面が、保存を済ませてから移るために使う(「機能設計: レシピ帳とレシピの編集」の 3.7)。
+Next.js の `Link` を、画面から直接使わない。直接使うと、保存の前に画面を移れてしまう。
+
 #### 部品ごとの決まり
 
 **ボタン**
