@@ -84,6 +84,8 @@ nav:
       - 画面の共通仕様: design/common-frontend.md
   - 画面の設計:
       - 画面の一覧と遷移: design/screens.md
+  - 機能の設計:
+      - 登録とログイン: design/auth.md
   - データの設計:
       - 元のレシピ、食材マスタ、成分表: design/data-recipe.md
   - 決定の記録:
@@ -112,3 +114,6 @@ nav:
       - 0027 分量の丸め方を単位と食材マスタから決める: decisions/0027-rounding-from-unit.md
       - 0028 成分表の「微量」を 0 として読む: decisions/0028-trace-as-zero.md
       - 0029 栄養の値がない食材に印を付ける: decisions/0029-no-nutrition-flag.md
+      - 0046 メールアドレスを小文字にそろえて重複を判定する: decisions/0046-email-lowercase-uniqueness.md
+      - 0047 登録済みのメールアドレスを EMAIL_TAKEN で知らせる: decisions/0047-email-taken-disclosure.md
+      - 0048 アカウントの画面を段階 0 で作る: decisions/0048-account-screen-in-stage-0.md

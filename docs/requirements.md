@@ -461,6 +461,7 @@ Claude Code が作り、Git で履歴を持ち、版ごとに差し替える。
 |---|---|---|
 | `auth-service` | `users` | 利用者。メールアドレス、表示名、パスワードのハッシュ |
 | `auth-service` | `sessions` | ログインのセッション。利用者、識別子のハッシュ、期限、最後に使った日時 |
+| `auth-service` | `login_attempts` | ログインの失敗の記録。メールアドレスのハッシュ、失敗の回数、受け付けない期限 |
 | `book-service` | `books` | レシピ帳。名前、持ち主 |
 | `book-service` | `book_members` | レシピ帳のメンバー。利用者と役割(持ち主、編集できる、見るだけ) |
 | `book-service` | `invitations` | 招待。レシピ帳、役割、リンクのハッシュ、期限、作った人、使った人、使った日時、取り消した日時 |
@@ -489,7 +490,7 @@ Claude Code が作り、Git で履歴を持ち、版ごとに差し替える。
 | メソッドとパス | 内容 | 必要な役割 |
 |---|---|---|
 | `GET /api/health` | 稼働の確認 | なし |
-| `POST /api/auth/register` | 登録する。利用者とレシピ帳を作り、ログインした状態にする | なし |
+| `POST /api/auth/register` | 登録する。利用者を作り、ログインした状態にする。レシピ帳は、最初の `GET /api/books` で作る | なし |
 | `POST /api/auth/login` | ログインする | なし |
 | `POST /api/auth/logout` | ログアウトする | ログイン |
 | `PUT /api/me/password` | パスワードを変える。今のパスワードを付けて送る | ログイン |
