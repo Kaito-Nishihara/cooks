@@ -31,7 +31,7 @@
 
 - 外に出す API は `/api`、サービスの間だけで使う API は `/internal` の下に置く。
 - 名詞の複数形を、英小文字とハイフンで書く。例: `/api/books/{bookId}/recipe-edits`
-- 動詞は HTTP のメソッドで表す。メソッドで表せない操作だけ、末尾に動詞を置く。例: `POST /api/invitations/{token}/accept`
+- 動詞は HTTP のメソッドで表す。メソッドで表せない操作だけ、末尾に動詞を置く。例: `POST /api/invitations/accept`
 - パスの変数は、何の識別子かが分かる名前にする。`{id}` ではなく `{bookId}` と書く。
 - 絞り込みと件数の指定は、クエリの変数で渡す。
 
@@ -197,7 +197,7 @@
 
 - 入力の検証で見つかった誤りは、最初の 1 件で止めず、すべてを `fields` に入れて返す。
 - `fields` の `path` は、入力の JSON の中の位置を、項目名と添字で書く。
-- `fields` の `code` は、`REQUIRED`、`MIN`、`MAX`、`TOO_LONG`、`TOO_MANY`、`INVALID_FORMAT`、`UNKNOWN_FIELD` のいずれかとする。
+- `fields` の `code` は、`REQUIRED`、`MIN`、`MAX`、`TOO_SHORT`、`TOO_LONG`、`TOO_MANY`、`INVALID_FORMAT`、`UNKNOWN_FIELD` のいずれかとする。
 - `INVITATION_INVALID` は、期限切れ、使用済み、取り消し済みを区別しない。招待の状態を外から調べられないようにするためである。
 - `INTERNAL_ERROR` の `message` は、いつも同じ文にする。原因はログに出し、応答には出さない。
 - この表にない `code` を足すときは、先にこの仕様書に足す。
