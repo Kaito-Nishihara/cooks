@@ -81,6 +81,8 @@ nav:
       - 認証、セッション、サービスの間の本人確認: design/common-auth.md
       - データベースの共通仕様: design/common-database.md
       - サービスの共通構成: design/common-service.md
+  - デザイン:
+      - アプリのメインアイコン: design/app-icon.md
   - 決定の記録:
       - 0001 改訂番号を要求の本文で渡す: decisions/0001-revision-in-body.md
       - 0002 API のパスに版の番号を入れない: decisions/0002-no-api-version.md
