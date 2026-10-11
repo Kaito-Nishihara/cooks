@@ -355,6 +355,7 @@ frontend/              # Next.js
 ├── src/
 │   ├── app/           # ページ(App Router)
 │   ├── components/    # 再利用する部品
+│   ├── hooks/         # 画面の状態と、API の取得をまとめる処理
 │   ├── domain/        # 業務ロジック。React と Next.js に依存させない
 │   │   ├── nutrition/ # 栄養計算
 │   │   ├── quantity/  # 分量の換算と表記
