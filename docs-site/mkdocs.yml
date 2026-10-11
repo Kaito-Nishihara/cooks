@@ -79,6 +79,7 @@ nav:
   - 共通の設計:
       - API の共通仕様: design/common-api.md
       - 認証、セッション、サービスの間の本人確認: design/common-auth.md
+      - データベースの共通仕様: design/common-database.md
   - 決定の記録:
       - 0001 改訂番号を要求の本文で渡す: decisions/0001-revision-in-body.md
       - 0002 API のパスに版の番号を入れない: decisions/0002-no-api-version.md
@@ -86,3 +87,5 @@ nav:
       - 0004 ログインの状態をセッションとクッキーで持つ: decisions/0004-session-cookie.md
       - 0005 サービスの間では署名付きトークンで本人を伝える: decisions/0005-internal-jwt.md
       - 0006 パスワードのハッシュに bcrypt を使う: decisions/0006-bcrypt.md
+      - 0007 PostgreSQL のサーバーを 1 つにしデータベースを分ける: decisions/0007-one-postgres-three-databases.md
+      - 0008 行を消すときは実際に消す: decisions/0008-physical-delete.md
