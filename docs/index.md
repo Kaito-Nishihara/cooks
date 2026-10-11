@@ -14,6 +14,7 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 | [共通設計: データベースの共通仕様](design/common-database.md) | データベースの分け方、名前と型、共通の列、JSON の列、行の消し方、インデックス、テーブルを変える手順、同時に書き込まれたときの守り方 |
 | [共通設計: サービスの共通構成](design/common-service.md) | パッケージと層、共通するコードの持ち方、例外の変換、ログ、設定、稼働の確認、ほかのサービスの呼び出し方、テストの方針 |
 | [共通設計: 画面の共通仕様](design/common-frontend.md) | 色と書体と余白、画面の幅の区切り、レイアウト、共通の部品、読み込み中と空とエラーと保存中の表し方、入力欄の検証、ログインの状態と画面の守り方、API を呼ぶクライアント、アクセシビリティ、ディレクトリと名前 |
+| [画面設計: 画面の一覧と遷移](design/screens.md) | 画面の一覧とパス、URL の決まり、画面の間の遷移、ヘッダーの出し分け、ログインが要る画面と招待リンクの流れ、見つからないページ、各画面の骨組み |
 | [決定の記録 0001](decisions/0001-revision-in-body.md) | 改訂番号を要求の本文で渡す |
 | [決定の記録 0002](decisions/0002-no-api-version.md) | API のパスに版の番号を入れない |
 | [決定の記録 0003](decisions/0003-cursor-pagination.md) | 一覧をカーソルで分けて返す |
@@ -31,6 +32,9 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 | [決定の記録 0022](decisions/0022-openapi-typescript.md) | 画面側の型を openapi-typescript で作り、API を呼ぶ関数は手で書く |
 | [決定の記録 0023](decisions/0023-client-side-login-guard.md) | ログインが要る画面を、ブラウザの中の処理で守る |
 | [決定の記録 0024](decisions/0024-current-book-in-local-storage.md) | 今開いているレシピ帳を、ブラウザの localStorage に持つ |
+| [決定の記録 0030](decisions/0030-query-for-values-unknown-at-build.md) | ビルドのときに分からない値は、パスに入れずクエリで渡す |
+| [決定の記録 0031](decisions/0031-invitation-token-in-fragment.md) | 招待の文字列を、URL のフラグメントで渡す |
+| [決定の記録 0032](decisions/0032-header-navigation.md) | ヘッダーの入口を 2 つに絞り、設定の画面は利用者のメニューに入れる |
 
 仕様に迷ったときは、要件定義を正本とする。
 図と要件定義が食い違っていたら、要件定義が正しい。

@@ -82,6 +82,8 @@ nav:
       - データベースの共通仕様: design/common-database.md
       - サービスの共通構成: design/common-service.md
       - 画面の共通仕様: design/common-frontend.md
+  - 画面の設計:
+      - 画面の一覧と遷移: design/screens.md
   - 決定の記録:
       - 0001 改訂番号を要求の本文で渡す: decisions/0001-revision-in-body.md
       - 0002 API のパスに版の番号を入れない: decisions/0002-no-api-version.md
@@ -100,3 +102,6 @@ nav:
       - 0022 画面側の型を openapi-typescript で作り関数は手で書く: decisions/0022-openapi-typescript.md
       - 0023 ログインが要る画面をブラウザの中の処理で守る: decisions/0023-client-side-login-guard.md
       - 0024 今開いているレシピ帳を localStorage に持つ: decisions/0024-current-book-in-local-storage.md
+      - 0030 ビルドのときに分からない値はクエリで渡す: decisions/0030-query-for-values-unknown-at-build.md
+      - 0031 招待の文字列を URL のフラグメントで渡す: decisions/0031-invitation-token-in-fragment.md
+      - 0032 ヘッダーの入口を 2 つに絞る: decisions/0032-header-navigation.md
