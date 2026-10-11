@@ -13,7 +13,10 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 | [共通設計: 認証、セッション、サービスの間の本人確認](design/common-auth.md) | パスワードの保存、セッションとクッキー、ログインの失敗の制限、ほかのサイトからの要求の拒み方、入口での確認、トークンと署名の鍵 |
 | [共通設計: データベースの共通仕様](design/common-database.md) | データベースの分け方、名前と型、共通の列、JSON の列、行の消し方、インデックス、テーブルを変える手順、同時に書き込まれたときの守り方 |
 | [共通設計: サービスの共通構成](design/common-service.md) | パッケージと層、共通するコードの持ち方、例外の変換、ログ、設定、稼働の確認、ほかのサービスの呼び出し方、テストの方針 |
+| [共通設計: 画面の共通仕様](design/common-frontend.md) | 色と書体と余白、画面の幅の区切り、レイアウト、共通の部品、読み込み中と空とエラーと保存中の表し方、入力欄の検証、ログインの状態と画面の守り方、API を呼ぶクライアント、アクセシビリティ、ディレクトリと名前 |
+| [共通設計: 実行環境](design/common-runtime.md) | 手元で使う道具、kind のクラスタ、入口の実装と振り分け、イメージ、マニフェスト、秘密の値、PostgreSQL、Compose での再現 |
 | [データ設計: 元のレシピ、食材マスタ、成分表](design/data-recipe.md) | レシピの JSON の全項目、単位と分量の表記、食材マスタ、換算率、成分表の入手と変換、データの検証、38 品の移行、写真と出典 |
+| [開発の進め方: Claude Code のハーネス](design/dev-harness.md) | 自動で走らせる検査、許可の設定、Skill、受け入れ条件とテストの対応、CI、実装の Issue の立て方 |
 | [決定の記録 0001](decisions/0001-revision-in-body.md) | 改訂番号を要求の本文で渡す |
 | [決定の記録 0002](decisions/0002-no-api-version.md) | API のパスに版の番号を入れない |
 | [決定の記録 0003](decisions/0003-cursor-pagination.md) | 一覧をカーソルで分けて返す |
@@ -26,11 +29,21 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 | [決定の記録 0010](decisions/0010-in-service-scheduler.md) | 期限が切れた行を、サービスの中の定期の処理で消す |
 | [決定の記録 0011](decisions/0011-maven.md) | サービスのビルドに Maven を使う |
 | [決定の記録 0012](decisions/0012-domain-centered-layers.md) | サービスを、ドメインを中心にした層で作る |
+| [決定の記録 0013](decisions/0013-envoy-gateway.md) | 入口に Envoy Gateway を使う |
+| [決定の記録 0014](decisions/0014-tools-in-container.md) | kind、kubectl、helm をコンテナの中で動かす |
+| [決定の記録 0015](decisions/0015-kustomize.md) | クラスタへ載せるのに Kustomize を使う |
+| [決定の記録 0016](decisions/0016-postgres-statefulset.md) | 手元のクラスタでは PostgreSQL を 1 つの Pod で動かす |
+| [決定の記録 0020](decisions/0020-self-made-ui-components.md) | 画面の部品を自分で作り、外の部品集を入れない |
+| [決定の記録 0021](decisions/0021-tanstack-query.md) | API から取った内容を TanStack Query で持つ |
+| [決定の記録 0022](decisions/0022-openapi-typescript.md) | 画面側の型を openapi-typescript で作り、API を呼ぶ関数は手で書く |
+| [決定の記録 0023](decisions/0023-client-side-login-guard.md) | ログインが要る画面を、ブラウザの中の処理で守る |
+| [決定の記録 0024](decisions/0024-current-book-in-local-storage.md) | 今開いているレシピ帳を、ブラウザの localStorage に持つ |
 | [決定の記録 0025](decisions/0025-stable-item-ids.md) | 材料、手順、コツに、レシピの中で変わらない識別子を付ける |
 | [決定の記録 0026](decisions/0026-grams-per-unit-explicit.md) | 単位から g への換算率を、食材ごと、単位ごとに書いて持つ |
 | [決定の記録 0027](decisions/0027-rounding-from-unit.md) | 分量の丸め方を、単位と食材マスタから決める |
 | [決定の記録 0028](decisions/0028-trace-as-zero.md) | 成分表の「微量」を 0 として読む |
 | [決定の記録 0029](decisions/0029-no-nutrition-flag.md) | 栄養の値がない食材に、印を付ける |
+| [決定の記録 0035](decisions/0035-acceptance-pending-list.md) | テストのない受け入れ条件を、「まだ作らない」の一覧で管理する |
 
 仕様に迷ったときは、要件定義を正本とする。
 図と要件定義が食い違っていたら、要件定義が正しい。

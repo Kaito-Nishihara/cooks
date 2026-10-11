@@ -85,7 +85,10 @@ docker compose -f docs-site/compose.yaml down    # 停止
 | [共通設計: 認証](docs/design/common-auth.md) | パスワード、セッションとクッキー、入口での確認、サービスの間のトークン |
 | [共通設計: データベース](docs/design/common-database.md) | データベースの分け方、名前と型、テーブルを変える手順 |
 | [共通設計: サービスの共通構成](docs/design/common-service.md) | パッケージと層、ログ、設定、ほかのサービスの呼び出し方、テストの方針 |
+| [共通設計: 画面の共通仕様](docs/design/common-frontend.md) | 色と書体、共通の部品、エラーの `code` ごとの動き、ログインが要る画面の守り方、アクセシビリティ |
+| [共通設計: 実行環境](docs/design/common-runtime.md) | kind、入口の実装と振り分け、イメージ、マニフェスト、Compose での再現 |
 | [データ設計: レシピ、食材マスタ、成分表](docs/design/data-recipe.md) | レシピの JSON の形、単位、換算率、成分表の変換、データの検証、38 品の移行 |
+| [開発の進め方: ハーネス](docs/design/dev-harness.md) | 自動の検査、許可の設定、Skill、CI、実装の Issue の立て方 |
 | [決定の記録](docs/decisions/) | 技術や設計の選択と、その理由 |
 
 ## 進め方
