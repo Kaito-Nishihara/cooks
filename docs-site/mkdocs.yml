@@ -86,6 +86,8 @@ nav:
       - 画面の一覧と遷移: design/screens.md
   - データの設計:
       - 元のレシピ、食材マスタ、成分表: design/data-recipe.md
+  - 機能の設計:
+      - 招待と共有: design/sharing.md
   - 決定の記録:
       - 0001 改訂番号を要求の本文で渡す: decisions/0001-revision-in-body.md
       - 0002 API のパスに版の番号を入れない: decisions/0002-no-api-version.md
@@ -112,3 +114,7 @@ nav:
       - 0027 分量の丸め方を単位と食材マスタから決める: decisions/0027-rounding-from-unit.md
       - 0028 成分表の「微量」を 0 として読む: decisions/0028-trace-as-zero.md
       - 0029 栄養の値がない食材に印を付ける: decisions/0029-no-nutrition-flag.md
+      - 0056 招待の文字列を API の本文で渡す: decisions/0056-invitation-token-in-body.md
+      - 0057 招待の文字列を 256 ビットの乱数にし SHA-256 のハッシュで持つ: decisions/0057-invitation-token-format.md
+      - 0058 表示名を取れないときはメンバーの一覧を返さない: decisions/0058-members-need-display-names.md
+      - 0059 すでにメンバーの人が招待を受けても役割を変えず招待を使わない: decisions/0059-accept-by-existing-member.md

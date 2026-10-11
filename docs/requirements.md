@@ -507,9 +507,9 @@ Claude Code が作り、Git で履歴を持ち、版ごとに差し替える。
 | `DELETE /api/books/{bookId}/members/{userId}` | メンバーを外す。自分を指定すると抜ける | 持ち主、または本人 |
 | `GET /api/books/{bookId}/invitations` | 有効な招待の一覧 | 持ち主 |
 | `POST /api/books/{bookId}/invitations` | 招待を作る。リンクの文字列はこの応答でだけ返す | 持ち主 |
-| `DELETE /api/books/{bookId}/invitations/{id}` | 招待を取り消す | 持ち主 |
-| `GET /api/invitations/{token}` | 招待の内容を確認する | ログイン |
-| `POST /api/invitations/{token}/accept` | 招待を受けてメンバーになる | ログイン |
+| `DELETE /api/books/{bookId}/invitations/{invitationId}` | 招待を取り消す | 持ち主 |
+| `POST /api/invitations/lookup` | 招待の内容を確認する。リンクの文字列は本文で渡す。何も書き換えない | ログイン |
+| `POST /api/invitations/accept` | 招待を受けてメンバーになる。リンクの文字列は本文で渡す | ログイン |
 
 サービスの間だけで使う API は次のとおりとする。入口からは届かない。
 

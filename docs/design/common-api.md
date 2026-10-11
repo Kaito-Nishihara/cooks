@@ -31,7 +31,7 @@
 
 - 外に出す API は `/api`、サービスの間だけで使う API は `/internal` の下に置く。
 - 名詞の複数形を、英小文字とハイフンで書く。例: `/api/books/{bookId}/recipe-edits`
-- 動詞は HTTP のメソッドで表す。メソッドで表せない操作だけ、末尾に動詞を置く。例: `POST /api/invitations/{token}/accept`
+- 動詞は HTTP のメソッドで表す。メソッドで表せない操作だけ、末尾に動詞を置く。例: `POST /api/invitations/accept`
 - パスの変数は、何の識別子かが分かる名前にする。`{id}` ではなく `{bookId}` と書く。
 - 絞り込みと件数の指定は、クエリの変数で渡す。
 
