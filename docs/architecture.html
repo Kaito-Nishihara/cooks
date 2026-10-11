@@ -87,7 +87,7 @@
 <main>
   <p class="back"><a href="./">← 仕様書の一覧へ</a></p>
   <h1>おうちレシピ帖 アーキテクチャ</h1>
-  <p class="lead">2026-10-10 時点の設計。正本は <a href="requirements/">要件定義</a> の 6 章で、この図はその内容を絵にしたものである。</p>
+  <p class="lead">2026-10-11 時点の設計。正本は <a href="requirements/">要件定義</a> の 6 章で、この図はその内容を絵にしたものである。</p>
 
   <h2>全体の構成</h2>
   <p>ブラウザからの要求は、すべて入口を通る。入口はパスで振り分け、ログインが要る要求は先に <code>auth-service</code> に確かめさせる。データベースはサービスごとに分け、ほかのサービスのデータベースを読まない。</p>
@@ -120,10 +120,10 @@
 
       <!-- 入口 -->
       <rect class="box" x="220" y="250" width="120" height="130" rx="10" fill="var(--gateway)"/>
-      <text x="280" y="288" text-anchor="middle" class="tech">Gateway API</text>
+      <text x="280" y="288" text-anchor="middle" class="tech">Envoy Gateway</text>
       <text x="280" y="314" text-anchor="middle" class="title">入口</text>
       <text x="280" y="336" text-anchor="middle" class="small">パスで振り分け</text>
-      <text x="280" y="354" text-anchor="middle" class="small">実装は未決</text>
+      <text x="280" y="354" text-anchor="middle" class="small">Gateway API</text>
 
       <!-- サービス -->
       <rect class="box" x="440" y="60" width="220" height="80" rx="10" fill="var(--frontend)"/>
@@ -261,7 +261,7 @@
     <tr><td>テスト</td><td>JUnit 5、REST Assured</td></tr>
     <tr><td><span class="swatch" style="background: var(--db)"></span>データベース</td><td>保存</td><td>PostgreSQL(サービスごとに 1 つ)</td></tr>
     <tr><td rowspan="3"><span class="swatch" style="background: var(--gateway)"></span>実行環境</td><td>コンテナの実行</td><td>Kubernetes(手元では kind)</td></tr>
-    <tr><td>入口</td><td>Gateway API(実装は未決)</td></tr>
+    <tr><td>入口</td><td>Gateway API(実装は Envoy Gateway)</td></tr>
     <tr><td>書いている間の実行</td><td>Docker Compose</td></tr>
     <tr><td>文書</td><td>仕様書の表示</td><td>MkDocs Material</td></tr>
   </table>

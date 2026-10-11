@@ -83,11 +83,21 @@ nav:
       - サービスの共通構成: design/common-service.md
       - 画面の共通仕様: design/common-frontend.md
   - 画面の設計:
+      - 実行環境(kind、入口、Compose): design/common-runtime.md
       - 画面の一覧と遷移: design/screens.md
   - データの設計:
+      - 画面の共通仕様: design/common-frontend.md
       - 元のレシピ、食材マスタ、成分表: design/data-recipe.md
   - 機能の設計:
+      - 元のレシピ、食材マスタ、成分表: design/data-recipe.md
+      - レシピ一覧と詳細: design/recipe-browse.md
+      - 栄養計算: design/nutrition.md
+      - 登録とログイン: design/auth.md
+      - レシピ帳とレシピの編集: design/recipe-edit.md
       - 今日の献立: design/menu.md
+      - 招待と共有: design/sharing.md
+  - 開発の進め方:
+      - Claude Code のハーネス: design/dev-harness.md
   - 決定の記録:
       - 0001 改訂番号を要求の本文で渡す: decisions/0001-revision-in-body.md
       - 0002 API のパスに版の番号を入れない: decisions/0002-no-api-version.md
@@ -101,19 +111,41 @@ nav:
       - 0010 期限が切れた行をサービスの中の定期の処理で消す: decisions/0010-in-service-scheduler.md
       - 0011 サービスのビルドに Maven を使う: decisions/0011-maven.md
       - 0012 サービスをドメインを中心にした層で作る: decisions/0012-domain-centered-layers.md
+      - 0013 入口に Envoy Gateway を使う: decisions/0013-envoy-gateway.md
+      - 0014 kind、kubectl、helm をコンテナの中で動かす: decisions/0014-tools-in-container.md
+      - 0015 クラスタへ載せるのに Kustomize を使う: decisions/0015-kustomize.md
+      - 0016 手元のクラスタでは PostgreSQL を 1 つの Pod で動かす: decisions/0016-postgres-statefulset.md
       - 0020 画面の部品を自分で作り外の部品集を入れない: decisions/0020-self-made-ui-components.md
       - 0021 API から取った内容を TanStack Query で持つ: decisions/0021-tanstack-query.md
       - 0022 画面側の型を openapi-typescript で作り関数は手で書く: decisions/0022-openapi-typescript.md
       - 0023 ログインが要る画面をブラウザの中の処理で守る: decisions/0023-client-side-login-guard.md
       - 0024 今開いているレシピ帳を localStorage に持つ: decisions/0024-current-book-in-local-storage.md
-      - 0030 ビルドのときに分からない値はクエリで渡す: decisions/0030-query-for-values-unknown-at-build.md
-      - 0031 招待の文字列を URL のフラグメントで渡す: decisions/0031-invitation-token-in-fragment.md
-      - 0032 ヘッダーの入口を 2 つに絞る: decisions/0032-header-navigation.md
       - 0025 材料、手順、コツに変わらない識別子を付ける: decisions/0025-stable-item-ids.md
       - 0026 換算率を食材ごと、単位ごとに書いて持つ: decisions/0026-grams-per-unit-explicit.md
       - 0027 分量の丸め方を単位と食材マスタから決める: decisions/0027-rounding-from-unit.md
       - 0028 成分表の「微量」を 0 として読む: decisions/0028-trace-as-zero.md
       - 0029 栄養の値がない食材に印を付ける: decisions/0029-no-nutrition-flag.md
+      - 0030 ビルドのときに分からない値はクエリで渡す: decisions/0030-query-for-values-unknown-at-build.md
+      - 0031 招待の文字列を URL のフラグメントで渡す: decisions/0031-invitation-token-in-fragment.md
+      - 0032 ヘッダーの入口を 2 つに絞る: decisions/0032-header-navigation.md
+      - 0035 テストのない受け入れ条件を一覧で管理する: decisions/0035-acceptance-pending-list.md
+      - 0040 分量は人数を変えたときだけ丸める: decisions/0040-round-only-when-scaled.md
+      - 0041 検索の語を URL のクエリに残す: decisions/0041-search-term-in-query.md
+      - 0042 写真の小さい版を画面のビルドのときに作る: decisions/0042-resized-photos-at-build.md
+      - 0043 栄養の値は表示するときに 1 回だけ丸める: decisions/0043-round-once-at-display.md
+      - 0044 寄与が 0 と決まっている材料は計算から除かない: decisions/0044-zero-lines-are-not-excluded.md
+      - 0045 範囲や目安に収まるかを画面に出る数で判定する: decisions/0045-judge-by-displayed-number.md
+      - 0046 メールアドレスを小文字にそろえて重複を判定する: decisions/0046-email-lowercase-uniqueness.md
+      - 0047 登録済みのメールアドレスを EMAIL_TAKEN で知らせる: decisions/0047-email-taken-disclosure.md
+      - 0048 アカウントの画面を段階 0 で作る: decisions/0048-account-screen-in-stage-0.md
+      - 0049 編集内容を行ごとの差分で持つ: decisions/0049-edit-as-row-diff.md
+      - 0050 編集内容の単位と識別子は形だけを検証する: decisions/0050-backend-validates-shape-only.md
+      - 0051 フォームのライブラリを入れない: decisions/0051-no-form-library.md
+      - 0052 応答が届かなかった保存を内容を比べて見分ける: decisions/0052-detect-own-save-on-conflict.md
       - 0053 献立の保存はその日の全体を置き換える: decisions/0053-menu-whole-replace.md
       - 0054 保存されていない日の献立は空の献立を返す: decisions/0054-empty-menu-instead-of-404.md
       - 0055 今日でない日の献立には献立の画面の中で料理を足す: decisions/0055-add-dish-on-menu-page.md
+      - 0056 招待の文字列を API の本文で渡す: decisions/0056-invitation-token-in-body.md
+      - 0057 招待の文字列を 256 ビットの乱数にし SHA-256 のハッシュで持つ: decisions/0057-invitation-token-format.md
+      - 0058 表示名を取れないときはメンバーの一覧を返さない: decisions/0058-members-need-display-names.md
+      - 0059 すでにメンバーの人が招待を受けても役割を変えず招待を使わない: decisions/0059-accept-by-existing-member.md
