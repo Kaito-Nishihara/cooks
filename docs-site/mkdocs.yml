@@ -82,6 +82,8 @@ nav:
       - データベースの共通仕様: design/common-database.md
       - サービスの共通構成: design/common-service.md
       - 実行環境(kind、入口、Compose): design/common-runtime.md
+  - 開発の進め方:
+      - Claude Code のハーネス: design/dev-harness.md
   - 決定の記録:
       - 0001 改訂番号を要求の本文で渡す: decisions/0001-revision-in-body.md
       - 0002 API のパスに版の番号を入れない: decisions/0002-no-api-version.md
@@ -99,3 +101,4 @@ nav:
       - 0014 kind、kubectl、helm をコンテナの中で動かす: decisions/0014-tools-in-container.md
       - 0015 クラスタへ載せるのに Kustomize を使う: decisions/0015-kustomize.md
       - 0016 手元のクラスタでは PostgreSQL を 1 つの Pod で動かす: decisions/0016-postgres-statefulset.md
+      - 0035 テストのない受け入れ条件を一覧で管理する: decisions/0035-acceptance-pending-list.md
