@@ -1,8 +1,9 @@
 # サービスのビルドとテストを、コンテナの中の Maven で動かす。ホスト側に Java と Maven を入れない。
 #
 # 使い方(リポジトリの直下で):
-#   共通のライブラリをテストする  docker compose -f services/compose.yaml run --rm maven -pl service-common verify
-#   全部をテストする              docker compose -f services/compose.yaml run --rm maven verify
+#   全部をテストする      docker compose -f services/compose.yaml run --rm maven verify
+#   1 つだけテストする    docker compose -f services/compose.yaml run --rm maven -pl auth-service -am verify
+#   後片付け              docker compose -f services/compose.yaml down
 name: recipe-book-services
 
 services:
@@ -17,6 +18,29 @@ services:
       - .:/work/services
       # 取ってきたライブラリを残す。コンテナを作り直すたびに取り直さないためである
       - maven-repository:/root/.m2
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+
+  # テストだけで使う PostgreSQL。配置するものと同じ大きい番号の版にする。
+  # ホスト側にポートを出さず、データをメモリに置く。止めると、中身は消える。
+  postgres-test:
+    image: postgres:18-alpine
+    environment:
+      # 外から届かない、消えてよいデータベースなので、パスワードを確かめない。
+      # リポジトリに、パスワードを書かないためである
+      POSTGRES_HOST_AUTH_METHOD: trust
+      TZ: UTC
+    volumes:
+      - ./test-db/init-test-databases.sh:/docker-entrypoint-initdb.d/init-test-databases.sh:ro
+    tmpfs:
+      - /var/lib/postgresql
+    healthcheck:
+      # 最初の起動の途中(初期化用の仮のサーバー)を、起動済みと見なさないように、TCP で確かめる
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U postgres -d kitchen_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
 
 volumes:
   maven-repository:

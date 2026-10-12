@@ -301,7 +301,8 @@ deploy/
 | kubectl をそのまま動かす | `... run --rm tools kubectl <引数>`。調べものに使う |
 | クラスタの作成と削除を確かめる | `... run --rm tools test`。今あるクラスタは消える |
 | 書いている間の起動 | `docker compose up <名前>` |
-| サービスのビルドとテスト | `docker compose -f services/compose.yaml run --rm maven verify`。1 つだけのときは `-pl <名前>` を前に足す |
+| サービスのビルドとテスト | `docker compose -f services/compose.yaml run --rm maven verify`。1 つだけのときは `-pl <名前> -am` を前に足す。テスト用の PostgreSQL も一緒に起動する |
+| テスト用の PostgreSQL を止める | `docker compose -f services/compose.yaml down` |
 
 `up`、`status`、`down`、`kubectl`、`test`、サービスのビルドとテストは作ってあり、動かして確かめた。
 今の `up` は、クラスタと名前空間を作るところまでを行う。一式を載せる処理は、入口とマニフェストを作るとき(段階 0-8)に足す。
@@ -324,7 +325,7 @@ PostgreSQL は、クラスタの中で動かす。
 | データベースと利用者 | 最初の起動のときに、3 つのデータベースと 3 つの利用者を作る(「共通設計: データベースの共通仕様」の 5.1) |
 
 - 版は、大きい番号だけを固定する。小さい番号は、開発の土台を作る時点の最新にする。
-- テストのときの PostgreSQL は、Compose で先に起動しておく。Quarkus に起動させない。Java をコンテナの中で動かすので、コンテナの中から別のコンテナを起動する仕組みを避けるためである。テスト用のデータベースは、開発用とは別の名前にする。
+- テストのときの PostgreSQL は、Compose(`services/compose.yaml`)で先に起動しておく。データベースの名前は `auth_test`、`book_test`、`kitchen_test` とする。ホスト側にポートを出さず、データをメモリに置き、パスワードを確かめない。Quarkus に起動させない。Java をコンテナの中で動かすので、コンテナの中から別のコンテナを起動する仕組みを避けるためである。テスト用のデータベースは、開発用とは別の名前にする。
 - バックアップは取らない。手元のデータは、消えてよいものとして扱う。
 
 ## 6. サービスの間のやり取り

@@ -361,7 +361,7 @@ HTTP の状態と `message` は、`code` から決まる。
 - Quarkus の設定は、Quarkus が決めた名前の環境変数で渡す。例: `QUARKUS_DATASOURCE_JDBC_URL`
 - このアプリが足す設定は、名前を `app.` で始める。環境変数では `APP_` で始まる。例: `app.session.sliding-days` は `APP_SESSION_SLIDING_DAYS`
 - このアプリが足す設定は、型の付いた 1 つのクラスにまとめて読む。コードのあちこちで、設定の名前を文字列で書かない。
-- 必要な設定が欠けているときは、起動を失敗させる。動き出してから気付くのを防ぐためである。
+- 必要な設定が欠けているときは、起動を失敗させる。動き出してから気付くのを防ぐためである。確かめる設定の名前は、サービスが `app.required-settings` に並べる。
 - 起動のときに、設定の値をログに出さない。
 
 Quarkus は、動かし方ごとに設定を切り替えられる。
@@ -529,6 +529,7 @@ Kubernetes の定期実行(CronJob)は使わない。
 | `AC-SVC-19` | `application` のクラスが `infrastructure` と `presentation` のクラスを使っていない。`presentation` のクラスが `infrastructure` と `domain` のリポジトリを使っていない |
 | `AC-SVC-20` | `domain` のパッケージのクラスに、`jakarta`、`io.quarkus`、`com.fasterxml` の注釈が付いていない |
 
+`AC-SVC-15` は、テストでは、PostgreSQL のサーバーを止める代わりに、そのデータベースが接続を受け付けない状態にして確かめる。
 `AC-SVC-17` は、定期の処理を持つサービスだけで確かめる。
 `AC-SVC-18` から `AC-SVC-20` は、クラスの間の依存を調べるテスト(ArchUnit)で確かめる。
 層の決まりを破るコードを足すと、このテストが失敗する。
