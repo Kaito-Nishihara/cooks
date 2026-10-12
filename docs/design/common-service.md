@@ -423,6 +423,7 @@ Kubernetes の定期実行(CronJob)は使わない。
 | 期限とやり直し | `quarkus-smallrye-fault-tolerance` | `book-service`、`kitchen-service` |
 | JSON のログ | `io.quarkiverse.loggingjson:quarkus-logging-json`(決定の記録 0063) | すべて |
 | 定期の処理 | `quarkus-scheduler` | `auth-service`、`book-service` |
+| bcrypt の計算 | `quarkus-elytron-security-common` | `auth-service` |
 
 - 拡張を足すときは、先にこの表に足す。
 - 表にない拡張を、1 つのサービスだけに入れない。入れる理由があるときは、決定の記録に書く。

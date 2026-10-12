@@ -22,6 +22,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.hibernate.validator.engine.HibernateConstraintViolation;
 
 /** Bean Validation の違反を、応答の fields の 1 件に変える。 */
 final class ViolationTranslator {
@@ -45,8 +46,14 @@ final class ViolationTranslator {
     }
 
     private static FieldError translate(ConstraintViolation<?> violation) {
-        FieldErrorCode code = codeOf(violation);
         String path = pathOf(violation.getPropertyPath());
+        // 機能が自分で種類と文を決めた違反(FieldViolation で知らせたもの)は、そのまま使う
+        Object reported = violation.unwrap(HibernateConstraintViolation.class)
+                .getDynamicPayload(FieldErrorCode.class);
+        if (reported instanceof FieldErrorCode code) {
+            return FieldError.of(path, code, violation.getMessage());
+        }
+        FieldErrorCode code = codeOf(violation);
         // 機能が文を決めていない違反(文が既定の鍵のまま)には、種類ごとの文を使う
         boolean hasOwnMessage = !violation.getMessageTemplate().startsWith("{");
         return hasOwnMessage ? FieldError.of(path, code, violation.getMessage()) : FieldError.of(path, code);
