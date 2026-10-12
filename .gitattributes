@@ -1,0 +1,6 @@
+# コンテナの中で動かすスクリプトは、Windows で取り出しても改行を LF に保つ。
+# CRLF になると、Linux のシェルが行末の文字を命令の一部として読み、動かなくなる。
+*.sh text eol=lf
+deploy/tools/bin/* text eol=lf
+Dockerfile text eol=lf
+deploy/**/*.yaml text eol=lf
