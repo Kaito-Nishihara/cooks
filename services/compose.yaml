@@ -1,0 +1,22 @@
+# サービスのビルドとテストを、コンテナの中の Maven で動かす。ホスト側に Java と Maven を入れない。
+#
+# 使い方(リポジトリの直下で):
+#   共通のライブラリをテストする  docker compose -f services/compose.yaml run --rm maven -pl service-common verify
+#   全部をテストする              docker compose -f services/compose.yaml run --rm maven verify
+name: recipe-book-services
+
+services:
+  maven:
+    image: maven:3.9.11-eclipse-temurin-21
+    working_dir: /work/services
+    entrypoint: ["mvn", "--batch-mode", "--no-transfer-progress"]
+    command: ["verify"]
+    environment:
+      TZ: UTC
+    volumes:
+      - .:/work/services
+      # 取ってきたライブラリを残す。コンテナを作り直すたびに取り直さないためである
+      - maven-repository:/root/.m2
+
+volumes:
+  maven-repository:

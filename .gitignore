@@ -17,3 +17,6 @@ data/source/
 
 # Claude Code が並行の作業のために作る作業場所
 .claude/worktrees/
+
+# Maven のビルドの出力
+target/

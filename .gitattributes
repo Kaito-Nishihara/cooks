@@ -4,3 +4,7 @@
 deploy/tools/bin/* text eol=lf
 Dockerfile text eol=lf
 deploy/**/*.yaml text eol=lf
+pom.xml text eol=lf
+*.java text eol=lf
+*.properties text eol=lf
+services/**/*.yaml text eol=lf
