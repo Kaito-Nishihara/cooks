@@ -274,8 +274,8 @@ PR を出すたびに、GitHub Actions で次を走らせる。
 |---|---|---|
 | 0-1 | 道具のコンテナと、kind のクラスタの起動と削除 | `AC-RT-01` の前半、`AC-RT-12` |
 | 0-2 | `services/` の親の構成、`service-common`(エラーの形、例外の変換、要求の識別子、ログ) | `AC-API-01` から `AC-API-06`、`AC-SVC-01` から `AC-SVC-08` |
-| 0-3 | `auth-service` の骨組み。データベースへの接続、Flyway、稼働の確認、層の検査 | `AC-DB-01` から `AC-DB-03`、`AC-SVC-14` から `AC-SVC-20` |
-| 0-4 | `auth-service` の登録、ログイン、ログアウト、`GET /api/me`、パスワードの変更 | `AC-AUTHN-01` から `AC-AUTHN-08`、`AC-AUTHN-22`、「機能設計: 登録とログイン」の `AC-AUTH` のうち API の条件 |
+| 0-3 | `auth-service` の骨組み。データベースへの接続、Flyway、稼働の確認、層の検査 | `AC-DB-01` から `AC-DB-03`、`AC-SVC-14` から `AC-SVC-16`、`AC-SVC-18` から `AC-SVC-20` |
+| 0-4 | `auth-service` の登録、ログイン、ログアウト、`GET /api/me`、パスワードの変更 | `AC-AUTHN-01` から `AC-AUTHN-08`、`AC-AUTHN-22`、`AC-SVC-17`、「機能設計: 登録とログイン」の `AC-AUTH` のうち API の条件 |
 | 0-5 | `auth-service` の `verify` と、トークン、公開の鍵 | `AC-AUTHN-09` から `AC-AUTHN-17`、`AC-AUTHN-19`、`AC-AUTHN-20` |
 | 0-6 | `book-service` と `kitchen-service` の骨組み。トークンの確認まで | `AC-DB-04`、`AC-AUTHN-16`、`AC-AUTHN-17` |
 | 0-7 | `frontend` の骨組み。テーマ、レイアウト、共通の部品、API のクライアント、ログインの状態 | 「画面の共通仕様」の `AC-UI` と、「画面の一覧と遷移」の `AC-NAV` のうち、土台に関わるもの |
