@@ -70,6 +70,7 @@ Docker が起動していないときは、確かめられないことを利用�
 - 変更は PR で `main` に入れる。`main` に直接コミットしない。
 - 1 つの Issue ごとにブランチを切る。名前は `<種類>/<内容>` とする。例: `docs/common-api`、`feat/recipe-edit`
 - PR は draft で作り、本文は [.claude/rules/pr-authoring.md](.claude/rules/pr-authoring.md) に従う。対応する Issue を本文の先頭に `Closes #番号` で書く。
+- 1 つの PR の修正量が多くなるときは、複数の PR に分ける。目安と分け方は [.claude/rules/pr-size.md](.claude/rules/pr-size.md) に従う。
 - マージは利用者が行う。Claude はマージしない。
 - 前の PR がマージされる前に、その内容を前提にした次の作業を始めるときは、前のブランチから切り、PR の本文にそのことを書く。
 - 作業を終えたら、今いるブランチと、まだマージされていない PR を報告に書く。
