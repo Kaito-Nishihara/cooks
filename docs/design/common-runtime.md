@@ -301,8 +301,9 @@ deploy/
 | kubectl をそのまま動かす | `... run --rm tools kubectl <引数>`。調べものに使う |
 | クラスタの作成と削除を確かめる | `... run --rm tools test`。今あるクラスタは消える |
 | 書いている間の起動 | `docker compose up <名前>` |
+| サービスのビルドとテスト | `docker compose -f services/compose.yaml run --rm maven verify`。1 つだけのときは `-pl <名前>` を前に足す |
 
-`up`、`status`、`down`、`kubectl`、`test` は作ってあり、動かして確かめた。
+`up`、`status`、`down`、`kubectl`、`test`、サービスのビルドとテストは作ってあり、動かして確かめた。
 今の `up` は、クラスタと名前空間を作るところまでを行う。一式を載せる処理は、入口とマニフェストを作るとき(段階 0-8)に足す。
 `deploy`、`logs`、書いている間の起動は、作る予定の形である。
 すべてが確定したら、`CLAUDE.md` に書く。

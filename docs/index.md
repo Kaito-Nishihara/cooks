@@ -78,6 +78,7 @@ Claude Code が作ったレシピを、ブラウザで見て、直して、栄�
 | [決定の記録 0060](decisions/0060-book-name-from-display-name.md) | 自分のレシピ帳の最初の名前に、表示名を入れる |
 | [決定の記録 0061](decisions/0061-entries-for-anonymous.md) | ログインしていない人にも、献立と編集の入口を出す |
 | [決定の記録 0062](decisions/0062-one-step-under-ten.md) | g と ml の分量は、換算した値が 10 未満のとき 1 刻みで出す |
+| [決定の記録 0063](decisions/0063-json-log-extension.md) | JSON のログに、Quarkiverse の拡張を使う |
 
 仕様に迷ったときは、要件定義を正本とする。
 図と要件定義が食い違っていたら、要件定義が正しい。

@@ -166,3 +166,4 @@ nav:
       - 0060 自分のレシピ帳の最初の名前に表示名を入れる: decisions/0060-book-name-from-display-name.md
       - 0061 ログインしていない人にも献立と編集の入口を出す: decisions/0061-entries-for-anonymous.md
       - 0062 g と ml の分量は換算した値が 10 未満のとき 1 刻みで出す: decisions/0062-one-step-under-ten.md
+      - 0063 JSON のログに Quarkiverse の拡張を使う: decisions/0063-json-log-extension.md
