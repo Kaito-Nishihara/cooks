@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>親子丼(ログインしていない) | おうちレシピ帖(見た目の試作)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body data-auth="out" data-current="recipes">
+<main>
+  <div class="wrap stack">
+    <p><a href="list-anonymous.html">レシピ一覧へ</a></p>
+    <div class="hero">
+      <img class="hero__img" src="https://kaito-nishihara.github.io/cooks/images/oyakodon/hero.jpg" alt="どんぶりに盛った親子丼。三つ葉をのせている" width="1280" height="960">
+      <div class="hero__body">
+        <span class="badge badge--shu">丼もの</span>
+        <h1 class="hero__title">親子丼</h1>
+        <p>甘辛い割下で煮た鶏もも肉を、半熟の卵でふんわりとじる。<br>火を止めるタイミングだけ気をつければ、20分でお店の味になります。</p>
+      </div>
+    </div>
+    <div class="row">
+      <a class="btn btn--sub" href="login.html">編集する</a>
+      <a class="btn btn--sub" href="login.html">＋ 夕食に追加</a>
+    </div>
+    <dl class="statline statline--3">
+      <div><dt>調理時間</dt><dd>20<small>分</small></dd></div>
+      <div><dt>難易度</dt><dd>★★☆</dd></div>
+      <div><dt>道具</dt><dd class="t-lg" style="font-family:var(--sans)">小さめのフライパン</dd></div>
+    </dl>
+    <section class="stack-sm" aria-labelledby="nut">
+      <h2 class="sec-title" id="nut">栄養(1 人分) <span class="badge badge--quiet">概算値</span></h2>
+      <dl class="statline statline--5">
+        <div><dt>エネルギー</dt><dd>786<small>kcal</small></dd></div>
+        <div><dt>たんぱく質</dt><dd>40.1<small>g</small></dd></div>
+        <div><dt>脂質</dt><dd>28.6<small>g</small></dd></div>
+        <div><dt>炭水化物</dt><dd>93.2<small>g</small></dd></div>
+        <div><dt>食塩相当量</dt><dd>3.6<small>g</small></dd></div>
+      </dl>
+      <details class="excluded">
+        <summary>計算から除いた材料(1)</summary>
+        <p class="t-sm">三つ葉: 分量が数で書かれていないため</p>
+      </details>
+      <p class="t-xs soft">出典: 文部科学省「日本食品標準成分表(八訂)増補2023年」。栄養の値は、この成分表の値をもとに、このアプリが計算したものです。</p>
+    </section>
+    <div class="two-col">
+      <section class="card sticky stack-sm" aria-labelledby="ing">
+        <h2 class="sec-title" id="ing">材料</h2>
+        <div class="servings">
+          <button class="icon-btn" type="button" aria-label="人数を減らす">−</button>
+          <strong class="num t-lg">2人分</strong>
+          <button class="icon-btn" type="button" aria-label="人数を増やす">＋</button>
+        </div>
+        <p class="ing-group">具</p>
+        <ul>
+          <li class="ing"><input type="checkbox" aria-label="鶏もも肉"><span class="ing__name">鶏もも肉</span><span class="ing__qty">250g</span></li>
+          <li class="ing"><input type="checkbox" aria-label="玉ねぎ" checked><span class="ing__name">玉ねぎ</span><span class="ing__qty">1/2個</span></li>
+          <li class="ing"><input type="checkbox" aria-label="卵"><span class="ing__name">卵</span><span class="ing__qty">4個</span></li>
+          <li class="ing"><input type="checkbox" aria-label="ご飯"><span class="ing__name">ご飯</span><span class="ing__qty">400g</span></li>
+          <li class="ing"><input type="checkbox" aria-label="三つ葉"><span class="ing__name">三つ葉</span><span class="ing__qty">適量</span></li>
+        </ul>
+        <p class="ing-group">割下</p>
+        <ul>
+          <li class="ing"><input type="checkbox" aria-label="だし"><span class="ing__name">だし</span><span class="ing__qty">150ml</span></li>
+          <li class="ing"><input type="checkbox" aria-label="醤油"><span class="ing__name">醤油</span><span class="ing__qty">大さじ2</span></li>
+          <li class="ing"><input type="checkbox" aria-label="みりん"><span class="ing__name">みりん</span><span class="ing__qty">大さじ2</span></li>
+          <li class="ing"><input type="checkbox" aria-label="砂糖"><span class="ing__name">砂糖</span><span class="ing__qty">大さじ1</span></li>
+        </ul>
+      </section>
+      <div class="stack">
+        <section class="stack-sm" aria-labelledby="how">
+          <h2 class="sec-title" id="how">作り方</h2>
+          <ol class="stack-sm">
+            <li class="step is-done">
+              <span class="step__no">1</span>
+              <div class="step__head"><h3 class="step__title">下ごしらえ</h3><button class="btn btn--quiet btn--sm" type="button" data-done aria-pressed="true">✓ 済</button></div>
+              <p class="step__text">鶏もも肉は一口大に、玉ねぎは 5mm 幅の薄切りにする。卵は白身を切るように、ざっくり溶く。</p>
+              <p class="step__time">目安 5分</p>
+            </li>
+            <li class="step">
+              <span class="step__no">2</span>
+              <div class="step__head"><h3 class="step__title">割下で玉ねぎを煮る</h3><button class="btn btn--quiet btn--sm" type="button" data-done aria-pressed="false">済</button></div>
+              <p class="step__text">フライパンに割下の材料と玉ねぎを入れ、中火にかける。煮立ったら 2 分煮る。</p>
+              <p class="step__time">目安 3分</p>
+            </li>
+            <li class="step">
+              <span class="step__no">3</span>
+              <div class="step__head"><h3 class="step__title">鶏肉に火を通す</h3><button class="btn btn--quiet btn--sm" type="button" data-done aria-pressed="false">済</button></div>
+              <p class="step__text">鶏もも肉を加え、ときどき返しながら 5 分煮る。</p>
+              <p class="step__time">目安 5分</p>
+            </li>
+          </ol>
+          <p class="soft t-sm">試作では 3 つだけを並べています。</p>
+        </section>
+        <section class="tips stack-sm" aria-labelledby="tips">
+          <h2 class="t-lg" id="tips"><strong>おいしく作るコツ</strong></h2>
+          <ul>
+            <li>卵は 2 回に分けて入れる。1 回目で土台を作り、2 回目は半熟で止める。</li>
+            <li>溶きすぎない。白身が残るくらいが、ふんわり仕上がる。</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <section class="stack-sm" aria-labelledby="gal">
+      <h2 class="sec-title" id="gal">盛り付けの参考</h2>
+      <div class="gallery">
+        <img src="https://kaito-nishihara.github.io/cooks/images/oyakodon/closeup.jpg" alt="親子丼を近くから写した写真" loading="lazy" width="640" height="480">
+        <img src="https://kaito-nishihara.github.io/cooks/images/oyakodon/teishoku.jpg" alt="味噌汁と漬物を添えた親子丼の定食" loading="lazy" width="640" height="480">
+      </div>
+    </section>
+    <p class="t-xs soft">写真の出典は、今のレシピ集と同じ形でここに並べます。</p>
+    <p><a href="list-anonymous.html">レシピ一覧へ</a></p>
+  </div>
+</main>
+<script src="mock.js"></script>
+</body>
+</html>

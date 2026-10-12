@@ -57,6 +57,8 @@
 
 ## 3. 画面
 
+見た目の試作は、画面一覧の [レシピ詳細](../screens/recipe-detail.md)、[レシピの編集](../screens/recipe-edit.md)、[今日の献立](../screens/menu.md) にある。
+
 この機能だけの画面はない。
 栄養の値は、レシピ詳細(`/recipes/<slug>`)、レシピの編集(`/recipes/<slug>/edit`)、今日の献立(`/menu`)の 3 つの画面に、同じ枠で出す。
 枠の部品は `frontend/src/components/nutrition/NutritionSummary.tsx` に置き、3 つの画面が使う。

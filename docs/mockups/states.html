@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>状態と部品 | おうちレシピ帖(見た目の試作)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body data-auth="in" data-current="">
+<main>
+  <div class="wrap wrap--narrow stack-lg">
+    <div>
+      <h1 class="page-title">状態と部品</h1>
+      <p class="soft">どの画面にも出る、知らせ、通知、ダイアログ、読み込めないときの表示を並べます。</p>
+    </div>
+    <section class="stack-sm">
+      <h2 class="sec-title">ボタン</h2>
+      <div class="row">
+        <button class="btn btn--primary" type="button">主のボタン</button>
+        <button class="btn btn--sub" type="button">副のボタン</button>
+        <button class="btn btn--quiet" type="button">控えめ</button>
+        <button class="btn btn--danger" type="button">取り消せない操作</button>
+        <button class="btn btn--primary" type="button" disabled>使えない</button>
+      </div>
+    </section>
+    <section class="stack-sm">
+      <h2 class="sec-title">知らせ</h2>
+      <div class="notice notice--info" role="status"><span class="notice__mark">お知らせ</span><div>元のレシピが更新されています。</div></div>
+      <div class="notice notice--ok" role="status"><span class="notice__mark">できました</span><div>パスワードを変えました。ほかの端末はログアウトされました。</div></div>
+      <div class="notice notice--warn" role="status"><span class="notice__mark">注意</span><div>このレシピ帳では、見ることだけができます。</div></div>
+      <div class="notice notice--error" role="alert"><span class="notice__mark">エラー</span><div>保存できませんでした。入力を確かめてください。</div></div>
+    </section>
+    <section class="stack-sm">
+      <h2 class="sec-title">自動保存の状態</h2>
+      <p class="save-status">保存しました 12:34</p>
+      <p class="t-sm soft">保存しています…</p>
+      <p class="t-sm" style="color:var(--shu-deep);font-weight:700">保存できませんでした <button class="btn btn--quiet btn--sm" type="button">もう一度</button></p>
+    </section>
+    <section class="stack-sm">
+      <h2 class="sec-title">読み込めないとき、中身がないとき</h2>
+      <div class="card card--soft stack-sm" style="text-align:center">
+        <p class="t-lg"><strong>読み込めませんでした</strong></p>
+        <p class="soft">しばらくしてから、もう一度お試しください。</p>
+        <p class="t-xs soft">問い合わせ番号: 7f3a9c2e</p>
+        <div><button class="btn btn--sub" type="button">もう一度</button></div>
+      </div>
+      <div class="card card--soft stack-sm" style="text-align:center">
+        <p class="t-lg"><strong>まだ献立がありません</strong></p>
+        <p class="soft">レシピの「献立に追加」か、下の「料理を足す」から足せます。</p>
+        <div><a class="btn btn--sub" href="list.html">レシピを探す</a></div>
+      </div>
+    </section>
+    <section class="stack-sm">
+      <h2 class="sec-title">ダイアログ</h2>
+      <div class="row">
+        <button class="btn btn--quiet" type="button" data-open="dlg-conflict">ほかの人が先に変更したとき</button>
+        <button class="btn btn--quiet" type="button" data-open="dlg-relogin">ログインが切れたとき</button>
+        <button class="btn btn--quiet" type="button" data-open="dlg-confirm">取り消せない操作の確認</button>
+      </div>
+    </section>
+    <section class="stack-sm">
+      <h2 class="sec-title">通知</h2>
+      <p class="soft">画面の下に出ます。成功は 5 秒で消え、エラーは閉じるまで残ります。</p>
+    </section>
+  </div>
+</main>
+<div class="toast" role="status"><span>親子丼を、夕食に足しました</span><button class="toast__close" type="button" aria-label="通知を閉じる" onclick="this.parentElement.remove()">閉じる</button></div>
+<dialog class="dialog" id="dlg-conflict" aria-labelledby="dlg-conflict-t">
+  <h2 id="dlg-conflict-t">ほかの人が先に変更しました</h2>
+  <p>12:31 に保存された内容があります。あなたの変更は、まだ保存されていません。</p>
+  <div class="dialog__actions">
+    <button class="btn btn--quiet" type="button" data-close autofocus>相手の内容を読み込む</button>
+    <button class="btn btn--danger" type="button" data-close>自分の内容で上書きする</button>
+  </div>
+</dialog>
+<dialog class="dialog" id="dlg-relogin" aria-labelledby="dlg-relogin-t">
+  <h2 id="dlg-relogin-t">もう一度ログインしてください</h2>
+  <p>ログインが切れました。入力した内容は、残っています。</p>
+  <div class="stack-sm" style="margin-top:12px">
+    <label class="field"><span class="field__label">メールアドレス</span><input class="input" type="email" value="misaki@example.com" readonly></label>
+    <label class="field"><span class="field__label">パスワード <span class="field__req">必須</span></span><input class="input" type="password"></label>
+  </div>
+  <div class="dialog__actions">
+    <button class="btn btn--quiet" type="button" data-close>やめる</button>
+    <button class="btn btn--primary" type="button" data-close>ログインする</button>
+  </div>
+</dialog>
+<dialog class="dialog" id="dlg-confirm" aria-labelledby="dlg-confirm-t">
+  <h2 id="dlg-confirm-t">招待を取り消しますか</h2>
+  <p>この招待のリンクは、使えなくなります。この操作は取り消せません。</p>
+  <div class="dialog__actions">
+    <button class="btn btn--quiet" type="button" data-close autofocus>やめる</button>
+    <button class="btn btn--danger" type="button" data-close>招待を取り消す</button>
+  </div>
+</dialog>
+<script src="mock.js"></script>
+</body>
+</html>

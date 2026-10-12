@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>レシピ一覧(ログインしていない) | おうちレシピ帖(見た目の試作)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body data-auth="out" data-current="recipes">
+<main>
+  <div class="wrap stack">
+    <div>
+      <h1 class="page-title">おうちレシピ帖</h1>
+      <p class="soft">いつものごはん</p>
+    </div>
+    <label class="field">
+      <span class="field__label">レシピを探す</span>
+      <input class="input input--pill" type="search" placeholder="例: 鶏もも肉、丼、はん">
+    </label>
+    <div class="chips" role="group" aria-label="ジャンル">
+      <button class="chip" type="button" aria-pressed="true">すべて</button>
+      <button class="chip" type="button" aria-pressed="false">和食</button>
+      <button class="chip" type="button" aria-pressed="false">洋食</button>
+      <button class="chip" type="button" aria-pressed="false">中華</button>
+      <button class="chip" type="button" aria-pressed="false">丼もの</button>
+      <button class="chip" type="button" aria-pressed="false">麺</button>
+      <button class="chip" type="button" aria-pressed="false">煮物</button>
+      <button class="chip" type="button" aria-pressed="false">副菜</button>
+      <button class="chip" type="button" aria-pressed="false">汁物</button>
+    </div>
+    <p class="soft" role="status">38品</p>
+    <ul class="cards">
+      <li class="rcard">
+        <a class="rcard__link" href="detail-anonymous.html">
+          <img class="rcard__img" src="https://kaito-nishihara.github.io/cooks/images/oyakodon/hero.jpg" alt="" loading="lazy" width="640" height="480">
+          <div class="rcard__body">
+            <h2 class="rcard__name">親子丼</h2>
+            <p class="soft t-sm">丼もの 20分</p>
+          </div>
+        </a>
+        <div class="rcard__add"><a class="btn btn--sub btn--block" href="login.html">＋ 夕食に追加</a></div>
+      </li>
+      <li class="rcard">
+        <a class="rcard__link" href="detail-anonymous.html">
+          <img class="rcard__img" src="https://kaito-nishihara.github.io/cooks/images/nikujaga/hero.jpg" alt="" loading="lazy" width="640" height="480">
+          <div class="rcard__body">
+            <h2 class="rcard__name">肉じゃが</h2>
+            <p class="soft t-sm">煮物 40分</p>
+          </div>
+        </a>
+        <div class="rcard__add"><a class="btn btn--sub btn--block" href="login.html">＋ 夕食に追加</a></div>
+      </li>
+      <li class="rcard">
+        <a class="rcard__link" href="detail-anonymous.html">
+          <img class="rcard__img" src="https://kaito-nishihara.github.io/cooks/images/gyoza/hero.jpg" alt="" loading="lazy" width="640" height="480">
+          <div class="rcard__body">
+            <h2 class="rcard__name">焼き餃子</h2>
+            <p class="soft t-sm">中華 45分</p>
+          </div>
+        </a>
+        <div class="rcard__add"><a class="btn btn--sub btn--block" href="login.html">＋ 夕食に追加</a></div>
+      </li>
+      <li class="rcard">
+        <a class="rcard__link" href="detail-anonymous.html">
+          <img class="rcard__img" src="https://kaito-nishihara.github.io/cooks/images/hijiki/hero.jpg" alt="" loading="lazy" width="640" height="480">
+          <div class="rcard__body">
+            <h2 class="rcard__name">ひじきの煮物</h2>
+            <p class="soft t-sm">副菜 25分</p>
+          </div>
+        </a>
+        <div class="rcard__add"><a class="btn btn--sub btn--block" href="login.html">＋ 夕食に追加</a></div>
+      </li>
+      <li class="rcard">
+        <a class="rcard__link" href="detail-anonymous.html">
+          <img class="rcard__img" src="https://kaito-nishihara.github.io/cooks/images/dashimaki/hero.jpg" alt="" loading="lazy" width="640" height="480">
+          <div class="rcard__body">
+            <h2 class="rcard__name">だし巻き卵</h2>
+            <p class="soft t-sm">卵料理 15分</p>
+          </div>
+        </a>
+        <div class="rcard__add"><a class="btn btn--sub btn--block" href="login.html">＋ 夕食に追加</a></div>
+      </li>
+      <li class="rcard">
+        <a class="rcard__link" href="detail-anonymous.html">
+          <img class="rcard__img" src="https://kaito-nishihara.github.io/cooks/images/gyudon/hero.jpg" alt="" loading="lazy" width="640" height="480">
+          <div class="rcard__body">
+            <h2 class="rcard__name">牛丼</h2>
+            <p class="soft t-sm">丼もの 20分</p>
+          </div>
+        </a>
+        <div class="rcard__add"><a class="btn btn--sub btn--block" href="login.html">＋ 夕食に追加</a></div>
+      </li>
+    </ul>
+    <p class="soft t-sm">試作では 6 品だけを並べています。</p>
+  </div>
+</main>
+<script src="mock.js"></script>
+</body>
+</html>

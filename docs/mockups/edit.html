@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>親子丼を編集 | おうちレシピ帖(見た目の試作)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body data-auth="in" data-current="recipes">
+<main>
+  <div class="wrap stack">
+    <div>
+      <h1 class="page-title">親子丼を編集</h1>
+      <p class="soft">レシピ帳: みさきのレシピ帳(持ち主)</p>
+      <p class="save-status" role="status">保存しました 12:34</p>
+    </div>
+    <div class="notice notice--info" role="status">
+      <span class="notice__mark">お知らせ</span>
+      <div class="grow">元のレシピが更新されています。直していない行は、新しい内容に変わっています。</div>
+      <button class="btn btn--quiet btn--sm" type="button">確かめた</button>
+    </div>
+    <div class="two-col two-col--wide-left">
+      <div class="stack-lg">
+        <label class="field" style="max-width:160px">
+          <span class="field__label">基本の人数</span>
+          <span class="field__help">1 から 6</span>
+          <input class="input" inputmode="numeric" value="2">
+        </label>
+        <section class="stack-sm" aria-labelledby="e-ing">
+          <h2 class="sec-title" id="e-ing">材料</h2>
+          <p class="ing-group">具</p>
+          <ul class="stack-sm">
+          <li class="edit-row">
+            <div class="edit-row__fields edit-row__fields--ing">
+              <input class="input" aria-label="食材" value="鶏もも肉">
+              <input class="input" aria-label="分量" inputmode="decimal" value="300">
+              <select class="select" aria-label="単位"><option selected>g</option><option>ml</option><option>個</option><option>大さじ</option><option>小さじ</option><option>カップ</option><option>本</option><option>枚</option><option>片</option></select>
+              
+            </div>
+            <div class="edit-row__ops">
+              <button class="btn btn--quiet btn--sm" type="button">上へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">下へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">削除</button>
+            </div>
+          </li>
+          <li class="edit-row">
+            <div class="edit-row__fields edit-row__fields--ing">
+              <input class="input" aria-label="食材" value="玉ねぎ">
+              <input class="input" aria-label="分量" inputmode="decimal" value="0.5">
+              <select class="select" aria-label="単位"><option>g</option><option>ml</option><option selected>個</option><option>大さじ</option><option>小さじ</option><option>カップ</option><option>本</option><option>枚</option><option>片</option></select>
+              
+            </div>
+            <div class="edit-row__ops">
+              <button class="btn btn--quiet btn--sm" type="button">上へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">下へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">削除</button>
+            </div>
+          </li>
+          <li class="edit-row">
+            <div class="edit-row__fields edit-row__fields--ing">
+              <input class="input" aria-label="食材" value="卵">
+              <input class="input is-error" aria-label="分量" inputmode="decimal" value="">
+              <select class="select" aria-label="単位"><option>g</option><option>ml</option><option selected>個</option><option>大さじ</option><option>小さじ</option><option>カップ</option><option>本</option><option>枚</option><option>片</option></select>
+              <span class="field__error span-all">分量を入れてください</span>
+            </div>
+            <div class="edit-row__ops">
+              <button class="btn btn--quiet btn--sm" type="button">上へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">下へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">削除</button>
+            </div>
+          </li>
+          </ul>
+          <button class="btn btn--sub" type="button">材料を足す</button>
+          <details class="excluded">
+            <summary>元のレシピから消した材料(1)</summary>
+            <div class="row row--between"><span>三つ葉 適量</span><button class="btn btn--quiet btn--sm" type="button">戻す</button></div>
+          </details>
+        </section>
+        <section class="card stack-sm only-narrow" aria-labelledby="e-nut-n">
+        <h2 class="t-lg" id="e-nut-n"><strong>栄養(1 人分)</strong> <span class="badge badge--quiet">概算値</span></h2>
+        <dl class="statline">
+          <div><dt>エネルギー</dt><dd>832<small>kcal</small></dd></div>
+          <div><dt>たんぱく質</dt><dd>44.3<small>g</small></dd></div>
+          <div><dt>脂質</dt><dd>32.1<small>g</small></dd></div>
+          <div><dt>炭水化物</dt><dd>93.2<small>g</small></dd></div>
+          <div><dt>食塩相当量</dt><dd>3.6<small>g</small></dd></div>
+        </dl>
+        <details class="excluded">
+          <summary>計算から除いた材料(1)</summary>
+          <p class="t-sm">卵: 分量が入っていないため</p>
+        </details>
+        </section>
+        <section class="stack-sm" aria-labelledby="e-how">
+          <h2 class="sec-title" id="e-how">作り方</h2>
+          <ol class="stack-sm">
+          <li class="edit-row">
+            <div class="edit-row__fields edit-row__fields--step">
+              <input class="input" aria-label="見出し" value="下ごしらえ">
+              <input class="input" aria-label="目安の時間" value="5分">
+              <textarea class="textarea span-all" aria-label="本文">鶏もも肉は一口大に、玉ねぎは 5mm 幅の薄切りにする。</textarea>
+            </div>
+            <div class="edit-row__ops">
+              <button class="btn btn--quiet btn--sm" type="button">上へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">下へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">削除</button>
+            </div>
+          </li>
+          <li class="edit-row">
+            <div class="edit-row__fields edit-row__fields--step">
+              <input class="input" aria-label="見出し" value="割下で玉ねぎを煮る">
+              <input class="input" aria-label="目安の時間" value="3分">
+              <textarea class="textarea span-all" aria-label="本文">フライパンに割下の材料と玉ねぎを入れ、中火にかける。</textarea>
+            </div>
+            <div class="edit-row__ops">
+              <button class="btn btn--quiet btn--sm" type="button">上へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">下へ</button>
+              <button class="btn btn--quiet btn--sm" type="button">削除</button>
+            </div>
+          </li>
+          </ol>
+          <button class="btn btn--sub" type="button">手順を足す</button>
+        </section>
+        <section class="stack-sm" aria-labelledby="e-tips">
+          <h2 class="sec-title" id="e-tips">コツ</h2>
+          <ul class="stack-sm">
+            <li class="row"><input class="input grow" aria-label="コツ" value="卵は 2 回に分けて入れる。"><button class="btn btn--quiet btn--sm" type="button">削除</button></li>
+          </ul>
+          <button class="btn btn--sub" type="button">コツを足す</button>
+        </section>
+        <label class="field">
+          <span class="field__label">メモ</span>
+          <span class="field__help">1,000 文字まで</span>
+          <textarea class="textarea">うちは鶏肉を多めに。子どもの分は、三つ葉を抜く。</textarea>
+        </label>
+        <div class="row row--between">
+          <button class="btn btn--danger" type="button" data-open="dlg-revert">元に戻す</button>
+          <a class="btn btn--primary" href="detail.html">編集を終える</a>
+        </div>
+      </div>
+      <aside class="card sticky stack-sm only-wide" aria-labelledby="e-nut">
+        <h2 class="t-lg" id="e-nut"><strong>栄養(1 人分)</strong> <span class="badge badge--quiet">概算値</span></h2>
+        <dl class="statline">
+          <div><dt>エネルギー</dt><dd>832<small>kcal</small></dd></div>
+          <div><dt>たんぱく質</dt><dd>44.3<small>g</small></dd></div>
+          <div><dt>脂質</dt><dd>32.1<small>g</small></dd></div>
+          <div><dt>炭水化物</dt><dd>93.2<small>g</small></dd></div>
+          <div><dt>食塩相当量</dt><dd>3.6<small>g</small></dd></div>
+        </dl>
+        <details class="excluded">
+          <summary>計算から除いた材料(1)</summary>
+          <p class="t-sm">卵: 分量が入っていないため</p>
+        </details>
+      </aside>
+    </div>
+  </div>
+</main>
+<dialog class="dialog" id="dlg-revert" aria-labelledby="dlg-revert-t">
+  <h2 id="dlg-revert-t">編集内容を捨てますか</h2>
+  <p>親子丼の編集内容を捨てて、元のレシピに戻します。この操作は取り消せません。</p>
+  <div class="dialog__actions">
+    <button class="btn btn--quiet" type="button" data-close autofocus>やめる</button>
+    <button class="btn btn--danger" type="button" data-close>元に戻す</button>
+  </div>
+</dialog>
+<script src="mock.js"></script>
+</body>
+</html>

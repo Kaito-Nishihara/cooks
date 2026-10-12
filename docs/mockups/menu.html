@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>今日の献立 | おうちレシピ帖(見た目の試作)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body data-auth="in" data-current="menu">
+<main>
+  <div class="wrap wrap--narrow stack">
+    <div>
+      <h1 class="page-title">今日の献立</h1>
+      <p class="soft">レシピ帳: みさきのレシピ帳(持ち主)</p>
+      <p class="save-status" role="status">保存しました 12:34</p>
+    </div>
+    <div class="daynav">
+      <button class="btn btn--quiet btn--sm" type="button">前の日</button>
+      <span class="daynav__day">2026年10月11日(日)</span>
+      <button class="btn btn--quiet btn--sm" type="button">次の日</button>
+    </div>
+    <div class="two-col two-col--wide-left">
+      <div class="card stack">
+        <section>
+          <div class="meal__head"><h2 class="meal__title">朝食</h2><span class="meal__kcal">小計 <span class="num">414kcal</span></span></div>
+          <ul>
+          <li class="dish">
+            <img class="dish__thumb" src="https://kaito-nishihara.github.io/cooks/images/dashimaki/hero.jpg" alt="" loading="lazy" width="56" height="56">
+            <a class="dish__name" href="detail.html">だし巻き卵</a>
+            <select class="select select--auto" aria-label="食事"><option selected>朝食</option><option>昼食</option><option>夕食</option></select>
+            <button class="btn btn--quiet btn--sm" type="button">外す</button>
+          </li>
+          </ul>
+        <div class="rice">
+          <span class="grow">ご飯(茶碗 1 杯 150g)</span>
+          <button class="icon-btn" type="button" aria-label="ご飯を 1 杯減らす">−</button>
+          <strong>1杯</strong>
+          <button class="icon-btn" type="button" aria-label="ご飯を 1 杯増やす">＋</button>
+        </div>
+        </section>
+        <section>
+          <div class="meal__head"><h2 class="meal__title">昼食</h2><span class="meal__kcal">小計 <span class="num">0kcal</span></span></div>
+          <p class="soft t-sm" style="padding:8px 0">まだありません</p>
+        <div class="rice">
+          <span class="grow">ご飯(茶碗 1 杯 150g)</span>
+          <button class="icon-btn" type="button" aria-label="ご飯を 1 杯減らす" disabled>−</button>
+          <strong>0杯</strong>
+          <button class="icon-btn" type="button" aria-label="ご飯を 1 杯増やす">＋</button>
+        </div>
+        </section>
+        <section>
+          <div class="meal__head"><h2 class="meal__title">夕食</h2><span class="meal__kcal">小計 <span class="num">881kcal</span></span></div>
+          <ul>
+          <li class="dish">
+            <img class="dish__thumb" src="https://kaito-nishihara.github.io/cooks/images/oyakodon/hero.jpg" alt="" loading="lazy" width="56" height="56">
+            <a class="dish__name" href="detail.html">親子丼</a>
+            <select class="select select--auto" aria-label="食事"><option>朝食</option><option>昼食</option><option selected>夕食</option></select>
+            <button class="btn btn--quiet btn--sm" type="button">外す</button>
+          </li>
+          <li class="dish">
+            <img class="dish__thumb" src="https://kaito-nishihara.github.io/cooks/images/hijiki/hero.jpg" alt="" loading="lazy" width="56" height="56">
+            <a class="dish__name" href="detail.html">ひじきの煮物</a>
+            <select class="select select--auto" aria-label="食事"><option>朝食</option><option>昼食</option><option selected>夕食</option></select>
+            <button class="btn btn--quiet btn--sm" type="button">外す</button>
+          </li>
+          </ul>
+        <div class="rice">
+          <span class="grow">ご飯(茶碗 1 杯 150g)</span>
+          <button class="icon-btn" type="button" aria-label="ご飯を 1 杯減らす" disabled>−</button>
+          <strong>0杯</strong>
+          <button class="icon-btn" type="button" aria-label="ご飯を 1 杯増やす">＋</button>
+        </div>
+        </section>
+      </div>
+      <aside class="card sticky stack-sm" aria-labelledby="m-total">
+        <h2 class="t-lg" id="m-total"><strong>1 日の合計</strong> <span class="badge badge--quiet">概算値</span></h2>
+        <dl class="statline">
+          <div><dt>エネルギー</dt><dd>1,295<small>kcal</small></dd></div>
+          <div><dt>たんぱく質</dt><dd>62.4<small>g</small></dd></div>
+          <div><dt>脂質</dt><dd>44.0<small>g</small></dd></div>
+          <div><dt>炭水化物</dt><dd>152.3<small>g</small></dd></div>
+          <div><dt>食塩相当量</dt><dd>6.8<small>g</small></dd></div>
+        </dl>
+        <details class="excluded">
+          <summary>計算から除いたもの(1)</summary>
+          <p class="t-sm">親子丼: 三つ葉</p>
+        </details>
+        <p class="t-xs soft">品ごとの値を足した数と、合計の最後の桁が、合わないことがあります。</p>
+      </aside>
+    </div>
+    <section class="card card--soft stack-sm" aria-labelledby="m-pfc">
+      <h2 class="t-lg" id="m-pfc"><strong>エネルギーに占める割合と、目標の範囲</strong></h2>
+      <div class="pfc">
+        <span>たんぱく質</span><div class="bar" aria-hidden="true"><span style="width:19.9%"></span></div><span><strong>19.9%</strong> <span class="t-sm soft">目標 13〜20%。範囲の中</span></span>
+        <span>脂質</span><div class="bar" aria-hidden="true"><span class="is-over" style="width:31.6%"></span></div><span><strong>31.6%</strong> <span class="t-sm" style="color:var(--shu-deep);font-weight:700">目標 20〜30%。多め</span></span>
+        <span>炭水化物</span><div class="bar" aria-hidden="true"><span class="is-over" style="width:48.5%"></span></div><span><strong>48.5%</strong> <span class="t-sm" style="color:var(--shu-deep);font-weight:700">目標 50〜65%。少なめ</span></span>
+      </div>
+    </section>
+    <section class="card card--soft stack-sm" aria-labelledby="m-ref">
+      <h2 class="t-lg" id="m-ref"><strong>1 日の目安との比べ</strong></h2>
+      <ul class="rows">
+        <li><span>エネルギー</span><span>男性 2,700kcal の <strong>48%</strong></span><span>女性 2,050kcal の <strong>63%</strong></span></li>
+        <li><span>食塩相当量</span><span>男性 7.5g 未満に対して <strong>6.8g</strong>。目安の中</span><span>女性 6.5g 未満に対して <strong>6.8g</strong>。超えている</span></li>
+      </ul>
+      <p class="t-xs soft">目安は、30 から 49 歳で、ふつうの活動量の人の値です。</p>
+      <p class="t-xs soft">出典: 文部科学省「日本食品標準成分表(八訂)増補2023年」。栄養の値は、この成分表の値をもとに、このアプリが計算したものです。</p>
+    </section>
+    <div class="row row--between">
+      <button class="btn btn--danger" type="button" data-open="dlg-clear">すべて外す</button>
+      <button class="btn btn--primary" type="button" data-open="dlg-add">料理を足す</button>
+    </div>
+  </div>
+</main>
+<dialog class="dialog" id="dlg-clear" aria-labelledby="dlg-clear-t">
+  <h2 id="dlg-clear-t">献立をすべて外しますか</h2>
+  <p>10月11日(日)の献立から、料理とご飯をすべて外します。この操作は取り消せません。</p>
+  <div class="dialog__actions">
+    <button class="btn btn--quiet" type="button" data-close autofocus>やめる</button>
+    <button class="btn btn--danger" type="button" data-close>すべて外す</button>
+  </div>
+</dialog>
+<dialog class="dialog" id="dlg-add" aria-labelledby="dlg-add-t">
+  <h2 id="dlg-add-t">料理を足す</h2>
+  <div class="stack-sm" style="margin-top:12px">
+    <label class="field"><span class="field__label">食事</span>
+      <select class="select"><option>朝食</option><option>昼食</option><option selected>夕食</option></select></label>
+    <label class="field"><span class="field__label">料理を探す</span>
+      <input class="input input--pill" type="search" value="に"></label>
+    <ul>
+      <li class="check"><input type="radio" name="d" id="d1" checked><label for="d1">肉じゃが <span class="soft t-sm">煮物 40分</span></label></li>
+      <li class="check"><input type="radio" name="d" id="d2"><label for="d2">にんじんのラペ <span class="soft t-sm">副菜 10分</span></label></li>
+    </ul>
+  </div>
+  <div class="dialog__actions">
+    <button class="btn btn--quiet" type="button" data-close>やめる</button>
+    <button class="btn btn--primary" type="button" data-close>足す</button>
+  </div>
+</dialog>
+<script src="mock.js"></script>
+</body>
+</html>

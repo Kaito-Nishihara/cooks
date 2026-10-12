@@ -36,6 +36,10 @@ theme:
 extra_css:
   - assets/docs.css
 
+# 画面一覧のページで、試作の枠を、ページの幅に合わせて縮める
+extra_javascript:
+  - assets/screen-frame.js
+
 # 一文ごとに改行して書いた日本語を、表示のときだけ 1 つの段落に詰める
 hooks:
   - hooks/join_japanese_lines.py
@@ -82,14 +86,24 @@ nav:
       - データベースの共通仕様: design/common-database.md
       - サービスの共通構成: design/common-service.md
       - 画面の共通仕様: design/common-frontend.md
-  - 画面の設計:
       - 実行環境(kind、入口、Compose): design/common-runtime.md
+  - 画面の設計:
       - 画面の一覧と遷移: design/screens.md
+  - 画面一覧:
+      - 一覧: screens/index.md
+      - レシピ一覧: screens/recipe-list.md
+      - レシピ詳細: screens/recipe-detail.md
+      - レシピの編集: screens/recipe-edit.md
+      - 今日の献立: screens/menu.md
+      - レシピ帳の設定: screens/book.md
+      - アカウント: screens/account.md
+      - ログイン: screens/login.md
+      - 登録: screens/register.md
+      - 招待の確認と参加: screens/invite.md
+      - 共通の部品と状態: screens/common.md
   - データの設計:
-      - 画面の共通仕様: design/common-frontend.md
       - 元のレシピ、食材マスタ、成分表: design/data-recipe.md
   - 機能の設計:
-      - 元のレシピ、食材マスタ、成分表: design/data-recipe.md
       - レシピ一覧と詳細: design/recipe-browse.md
       - 栄養計算: design/nutrition.md
       - 登録とログイン: design/auth.md
