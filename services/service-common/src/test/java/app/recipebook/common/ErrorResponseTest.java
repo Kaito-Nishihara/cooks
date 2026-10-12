@@ -13,6 +13,8 @@ import static org.hamcrest.Matchers.nullValue;
 import app.recipebook.common.probe.ProbeResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -160,6 +162,16 @@ class ErrorResponseTest {
         given().contentType(ContentType.JSON).body(body)
                 .when().post("/api/probes")
                 .then().statusCode(400).body("code", equalTo("VALIDATION_FAILED"));
+    }
+
+    @Test
+    @DisplayName("Content-Length のない本文は、1MB を超えると 413 で打ち切られる")
+    void bodyWithoutLengthIsCutOff() {
+        byte[] body = ("{\"name\":\"" + "a".repeat(2 * 1024 * 1024) + "\"}").getBytes(StandardCharsets.UTF_8);
+        // InputStream で渡すと、Content-Length を付けずに、分けて送る
+        given().contentType(ContentType.JSON).body(new ByteArrayInputStream(body))
+                .when().post("/api/probes")
+                .then().statusCode(413);
     }
 
     @Test

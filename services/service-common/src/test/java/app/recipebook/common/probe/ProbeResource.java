@@ -40,7 +40,7 @@ public class ProbeResource {
             @NotBlank @Size(max = 20) String name,
             @NotBlank String email,
             String password,
-            @Valid @Size(max = 3) List<Row> rows) {
+            @Size(max = 3) List<@Valid Row> rows) {
     }
 
     /** 入力の中の、配列の 1 件 */

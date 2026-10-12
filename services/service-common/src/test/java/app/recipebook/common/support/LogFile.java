@@ -32,9 +32,12 @@ public final class LogFile {
         }
     }
 
-    /** すべての行を返す。1 行が 1 件の JSON であることも、ここで確かめる。 */
+    /**
+     * JSON の行をすべて返す。1 行が 1 件の JSON であることも、ここで確かめる。
+     * テストでは、アプリを組み立てる間の行が、ログの設定を読む前の形でファイルに入る。その行は除く。
+     */
     public static List<JsonNode> lines() {
-        return rawText().lines().filter(line -> !line.isBlank()).map(LogFile::parse).toList();
+        return rawText().lines().filter(line -> line.startsWith("{")).map(LogFile::parse).toList();
     }
 
     /** 要求の識別子が同じ行を返す。 */
