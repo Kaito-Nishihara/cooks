@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+# 手元のクラスタを扱うコマンドの入口。道具のコンテナの中で動く。
+# 使い方は deploy/tools/compose.yaml の先頭に書く。
+set -euo pipefail
+
+readonly CLUSTER_NAME="recipe-book"
+readonly NAMESPACE="recipe-book"
+readonly CLUSTER_CONFIG="/work/deploy/kind/cluster.yaml"
+readonly KIND_NETWORK="kind"
+readonly TOOLS_DIR="/work/deploy/tools"
+
+log() { printf '[tools] %s\n' "$*" >&2; }
+fail() { printf '[tools] エラー: %s\n' "$*" >&2; exit 1; }
+
+# クラスタがあるかどうかを返す
+cluster_exists() {
+  kind get clusters 2>/dev/null | grep -qx "${CLUSTER_NAME}"
+}
+
+# このコンテナを kind のネットワークにつなぎ、kubectl がクラスタに届くようにする。
+# ノードはホスト側の Docker の上のコンテナなので、クラスタの中の住所で届く必要がある。
+connect_cluster() {
+  local self
+  self="$(hostname)"
+  if ! docker network inspect "${KIND_NETWORK}" >/dev/null 2>&1; then
+    fail "kind のネットワークがありません。先に up を動かしてください。"
+  fi
+  # すでにつながっているときは、つなぎ直さない
+  if ! docker inspect "${self}" --format '{{json .NetworkSettings.Networks}}' | jq -e --arg n "${KIND_NETWORK}" 'has($n)' >/dev/null; then
+    docker network connect "${KIND_NETWORK}" "${self}"
+  fi
+  mkdir -p "${HOME}/.kube"
+  kind get kubeconfig --internal --name "${CLUSTER_NAME}" > "${HOME}/.kube/config"
+  chmod 600 "${HOME}/.kube/config"
+}
+
+# クラスタがなければ止める
+require_cluster() {
+  cluster_exists || fail "クラスタ ${CLUSTER_NAME} がありません。先に up を動かしてください。"
+  connect_cluster
+}
+
+# クラスタを作る。すでにあれば、作り直さない
+cmd_up() {
+  if cluster_exists; then
+    log "クラスタ ${CLUSTER_NAME} は、すでにあります。"
+  else
+    log "クラスタ ${CLUSTER_NAME} を作ります。"
+    kind create cluster --config "${CLUSTER_CONFIG}" --wait 180s
+  fi
+  connect_cluster
+  kubectl wait --for=condition=Ready node --all --timeout=180s >&2
+  # アプリのものを入れる名前空間。すでにあっても失敗しない形で作る
+  kubectl create namespace "${NAMESPACE}" --dry-run=client -o yaml | kubectl apply -f - >&2
+  log "クラスタの用意ができました。アプリを載せる処理は、まだありません(段階 0-8 で作ります)。"
+}
+
+# クラスタの状態を見る
+cmd_status() {
+  if ! cluster_exists; then
+    log "クラスタ ${CLUSTER_NAME} は、ありません。"
+    return 0
+  fi
+  connect_cluster
+  kubectl get nodes -o wide
+  echo
+  kubectl get pods --all-namespaces
+}
+
+# クラスタを消す。中のデータも消える
+cmd_down() {
+  if cluster_exists; then
+    log "クラスタ ${CLUSTER_NAME} を消します。"
+    kind delete cluster --name "${CLUSTER_NAME}"
+  else
+    log "クラスタ ${CLUSTER_NAME} は、ありません。"
+  fi
+}
+
+# kubectl を、そのまま動かす。調べものに使う
+cmd_kubectl() {
+  require_cluster
+  kubectl "$@"
+}
+
+cmd_help() {
+  cat <<'USAGE'
+使い方: docker compose -f deploy/tools/compose.yaml run --rm tools <コマンド>
+
+  up        クラスタを作る。すでにあれば、そのまま使う
+  status    クラスタの状態を見る
+  down      クラスタを消す。中のデータも消える
+  kubectl   kubectl をそのまま動かす。例: tools kubectl get pods -n recipe-book
+  test      クラスタの作成と削除を確かめる。今あるクラスタは消える
+  help      この説明を出す
+
+deploy と logs は、まだありません(段階 0-8 で作ります)。
+USAGE
+}
+
+main() {
+  local cmd="${1:-help}"
+  shift || true
+  case "${cmd}" in
+    up) cmd_up "$@" ;;
+    status) cmd_status "$@" ;;
+    down) cmd_down "$@" ;;
+    kubectl) cmd_kubectl "$@" ;;
+    test) exec bash "${TOOLS_DIR}/test/cluster.test.sh" "$@" ;;
+    help | -h | --help) cmd_help ;;
+    deploy | logs) fail "${cmd} は、まだありません(段階 0-8 で作ります)。" ;;
+    *) cmd_help >&2; fail "知らないコマンドです: ${cmd}" ;;
+  esac
+}
+
+main "$@"
