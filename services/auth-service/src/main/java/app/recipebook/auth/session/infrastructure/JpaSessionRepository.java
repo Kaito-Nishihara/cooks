@@ -9,6 +9,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 /** セッションのリポジトリの実装。 */
 @ApplicationScoped
@@ -20,6 +21,27 @@ public class JpaSessionRepository implements SessionRepository {
     @Override
     public void add(Session session) {
         entityManager.persist(SessionJpaEntity.from(session));
+    }
+
+    @Override
+    public Optional<Session> findByTokenHash(TokenHash tokenHash) {
+        return entityManager
+                .createQuery("SELECT s FROM SessionJpaEntity s WHERE s.tokenHash = :tokenHash", SessionJpaEntity.class)
+                .setParameter("tokenHash", tokenHash.value())
+                .getResultStream()
+                .findFirst()
+                .map(SessionJpaEntity::toDomain);
+    }
+
+    @Override
+    public void updateUsage(Session session) {
+        entityManager.createQuery("UPDATE SessionJpaEntity s SET s.lastUsedAt = :lastUsedAt,"
+                        + " s.expiresAt = :expiresAt, s.updatedAt = :updatedAt WHERE s.id = :id")
+                .setParameter("lastUsedAt", session.lastUsedAt())
+                .setParameter("expiresAt", session.expiresAt())
+                .setParameter("updatedAt", session.updatedAt())
+                .setParameter("id", session.id().value())
+                .executeUpdate();
     }
 
     @Override
