@@ -3,7 +3,8 @@
 # 使い方(リポジトリの直下で):
 #   全部をテストする      docker compose -f services/compose.yaml run --rm maven verify
 #   1 つだけテストする    docker compose -f services/compose.yaml run --rm maven -pl auth-service -am verify
-#   後片付け              docker compose -f services/compose.yaml down
+#   Postman で試す        docker compose -f services/compose.yaml --profile try up auth-service
+#   後片付け              docker compose -f services/compose.yaml --profile try down
 name: recipe-book-services
 
 services:
@@ -18,6 +19,25 @@ services:
       - .:/work/services
       # 取ってきたライブラリを残す。コンテナを作り直すたびに取り直さないためである
       - maven-repository:/root/.m2
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+
+  # Postman で試すための auth-service。try を付けたときだけ動く(services/postman/README.md)。
+  #   docker compose -f services/compose.yaml --profile try up auth-service
+  auth-service:
+    profiles: ["try"]
+    image: maven:3.9.11-eclipse-temurin-21
+    entrypoint: ["bash", "/work/services/postman/start-auth-service.sh"]
+    environment:
+      TZ: UTC
+    volumes:
+      - .:/work/services
+      - maven-repository:/root/.m2
+    ports:
+      # kind の入口(8080)とぶつからない番号にし、ほかの機械から届かないようにする
+      - "127.0.0.1:8081:8080"
+      - "127.0.0.1:9001:9000"
     depends_on:
       postgres-test:
         condition: service_healthy

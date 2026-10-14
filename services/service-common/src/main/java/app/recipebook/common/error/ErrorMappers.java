@@ -4,6 +4,8 @@ import app.recipebook.common.core.AppException;
 import app.recipebook.common.core.ErrorCode;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import io.quarkus.security.AuthenticationFailedException;
+import io.quarkus.security.UnauthorizedException;
 import io.vertx.ext.web.RoutingContext;
 import jakarta.inject.Inject;
 import jakarta.validation.ConstraintViolationException;
@@ -58,6 +60,12 @@ public class ErrorMappers {
             return unexpected(exception, context);
         }
         return errorWriter.toResponse(context, code, Map.of());
+    }
+
+    /** トークンがない、署名や期限が合わない。理由は応答に出さない。 */
+    @ServerExceptionMapper({AuthenticationFailedException.class, UnauthorizedException.class})
+    public Response unauthenticated(RuntimeException exception, RoutingContext context) {
+        return errorWriter.toResponse(context, ErrorCode.UNAUTHENTICATED, Map.of());
     }
 
     /** 上のどれでもない例外。原因はログにだけ出し、応答には出さない。 */

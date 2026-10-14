@@ -1,5 +1,10 @@
 package app.recipebook.auth.account.infrastructure;
 
+import app.recipebook.auth.account.domain.DisplayName;
+import app.recipebook.auth.account.domain.EmailAddress;
+import app.recipebook.auth.account.domain.PasswordHash;
+import app.recipebook.auth.account.domain.User;
+import app.recipebook.auth.shared.domain.UserId;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -40,5 +45,21 @@ public class UserJpaEntity {
 
     protected UserJpaEntity() {
         // JPA が使う
+    }
+
+    static UserJpaEntity from(User user) {
+        UserJpaEntity entity = new UserJpaEntity();
+        entity.id = user.id().value();
+        entity.email = user.email().value();
+        entity.displayName = user.displayName().value();
+        entity.passwordHash = user.passwordHash().value();
+        entity.createdAt = user.createdAt();
+        entity.updatedAt = user.updatedAt();
+        return entity;
+    }
+
+    User toDomain() {
+        return User.restore(new UserId(id), new EmailAddress(email), new DisplayName(displayName),
+                new PasswordHash(passwordHash), createdAt, updatedAt);
     }
 }
