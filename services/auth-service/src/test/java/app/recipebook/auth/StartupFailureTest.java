@@ -15,12 +15,12 @@ import org.junit.jupiter.api.Test;
 /** 起動に失敗するべき場合に、失敗することを確かめる。 */
 class StartupFailureTest {
 
-    /** display_name の列がないテーブルを、専用のスキーマに作る。 */
+    /** 本物のマイグレーションの後に display_name の列を消したテーブルを、専用のスキーマに作る。 */
     public static class MissingColumn implements QuarkusTestProfile {
         @Override
         public Map<String, String> getConfigOverrides() {
             return Map.of(
-                    "quarkus.flyway.locations", "db/migration-missing-column",
+                    "quarkus.flyway.locations", "db/migration,db/migration-missing-column",
                     "quarkus.flyway.default-schema", "ac_db_03",
                     "quarkus.flyway.clean-at-start", "true",
                     "quarkus.flyway.clean-disabled", "false",
