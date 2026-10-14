@@ -15,6 +15,11 @@ public final class Session {
     public static final Duration IDLE_LIFETIME = Duration.ofDays(30);
     /** 作ってから切れるまで。使い続けていても、ここで切れる */
     public static final Duration ABSOLUTE_LIFETIME = Duration.ofDays(90);
+    /**
+     * 使ったことを記録する間隔。最後に使った瞬間の記録がこれより古いときだけ書き換える。
+     * 要求のたびにデータベースへ書き込むのを避けるためである。
+     */
+    public static final Duration TOUCH_INTERVAL = Duration.ofDays(1);
 
     private final SessionId id;
     private final UserId userId;
@@ -44,6 +49,19 @@ public final class Session {
     public static Session restore(SessionId id, UserId userId, TokenHash tokenHash, Instant createdAt,
             Instant lastUsedAt, Instant expiresAt, Instant updatedAt) {
         return new Session(id, userId, tokenHash, createdAt, lastUsedAt, expiresAt, updatedAt);
+    }
+
+    /** 使ったことを記録する必要があるかどうかを返す。 */
+    public boolean needsTouchAt(Instant now) {
+        return !lastUsedAt.plus(TOUCH_INTERVAL).isAfter(now);
+    }
+
+    /**
+     * 使ったことを記録し、期限を延ばしたセッションを返す。
+     * 延ばしても、作った瞬間の 90 日後を超えない。
+     */
+    public Session touchedAt(Instant now) {
+        return new Session(id, userId, tokenHash, createdAt, now, expiryOf(createdAt, now), now);
     }
 
     /** 今の時刻で有効かどうかを返す。 */
