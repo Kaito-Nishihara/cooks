@@ -142,6 +142,20 @@ class ErrorResponseTest {
     }
 
     @Test
+    @DisplayName("文字列の項目に数や真偽の値を送ると、文字列に読み替えずに INVALID_FORMAT で拒む")
+    void scalarIsNotCoercedToString() {
+        given().contentType(ContentType.JSON).body("{\"name\":123,\"email\":\"probe@example.com\"}")
+                .when().post("/api/probes")
+                .then().statusCode(400)
+                .body("details.fields[0].path", equalTo("name"))
+                .body("details.fields[0].code", equalTo("INVALID_FORMAT"));
+        given().contentType(ContentType.JSON).body("{\"name\":true,\"email\":\"probe@example.com\"}")
+                .when().post("/api/probes")
+                .then().statusCode(400)
+                .body("details.fields[0].code", equalTo("INVALID_FORMAT"));
+    }
+
+    @Test
     @DisplayName("AC-API-05 65KB の本文を送ると 413 と PAYLOAD_TOO_LARGE が返る")
     void largeBodyIsRejected() {
         String body = "{\"name\":\"" + "a".repeat(65 * 1024) + "\",\"email\":\"probe@example.com\"}";
