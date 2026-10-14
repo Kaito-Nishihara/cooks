@@ -1,5 +1,6 @@
 package app.recipebook.common.probe;
 
+import app.recipebook.common.security.PublicEndpoint;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.HeaderParam;
 import jakarta.ws.rs.Path;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 /** ほかのサービスの代役。届いた要求のヘッダーを覚えておく。 */
+@PublicEndpoint
 @Path("/internal/relay-target")
 @Produces(MediaType.APPLICATION_JSON)
 public class RelayTargetResource {

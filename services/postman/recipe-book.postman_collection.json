@@ -1,0 +1,554 @@
+{
+  "info": {
+    "name": "おうちレシピ帖: サービスの API",
+    "_postman_id": "6f0f5c1e-6b2a-4c35-9a59-3d0d2a8f7e10",
+    "description": "サービスの API を、手で試すためのコレクション。\n上から順に動かすと、登録したアカウントのクッキーとトークンを変数に入れながら進む。\n使い方は services/postman/README.md にある。",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "email",
+      "value": ""
+    },
+    {
+      "key": "sessionToken",
+      "value": ""
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "稼働の確認",
+      "description": "管理用のポート(既定は 9000)で答える。利用者の要求を受けるポートでは 404 になる。",
+      "item": [
+        {
+          "name": "起動を終えたか",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{managementUrl}}/q/health/started",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 が返る', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "動き続けているか",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{managementUrl}}/q/health/live",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 が返る', () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "要求を受けられるか",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{managementUrl}}/q/health/ready",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 が返る', () => pm.response.to.have.status(200));",
+                  "pm.test('status が UP', () => pm.expect(pm.response.json().status).to.eql('UP'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "利用者のポートでは届かない",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{authUrl}}/q/health/ready",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('404 が返る', () => pm.response.to.have.status(404));",
+                  "pm.test('本文が code、message、details の形である', () => {",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body).to.have.all.keys('code', 'message', 'details');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "登録とログイン",
+      "item": [
+        {
+          "name": "登録する",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Origin",
+                "value": "{{webOrigin}}"
+              }
+            ],
+            "url": "{{authUrl}}/api/auth/register",
+            "description": "登録して、ログインした状態にする(「機能設計: 登録とログイン」の 4.3)。",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"{{displayName}}\",\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('201 が返る', () => pm.response.to.have.status(201));",
+                  "pm.test('本文が id、email、displayName の 3 つだけ', () => {",
+                  "  pm.expect(pm.response.json()).to.have.all.keys('id', 'email', 'displayName');",
+                  "});",
+                  "const setCookie = pm.response.headers.get('Set-Cookie') || '';",
+                  "const match = setCookie.match(/rb_session=([^;]+)/);",
+                  "pm.test('Set-Cookie に rb_session がある', () => pm.expect(match).to.not.be.null);",
+                  "if (match) { pm.collectionVariables.set('sessionToken', match[1]); }"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// 送るたびに、まだ登録されていないメールアドレスを作る。後の要求は、この値を使う",
+                  "pm.collectionVariables.set('email', `misaki+${Date.now()}@example.com`);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "同じメールアドレスでは登録できない",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Origin",
+                "value": "{{webOrigin}}"
+              }
+            ],
+            "url": "{{authUrl}}/api/auth/register",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"{{displayName}}\",\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('409 と EMAIL_TAKEN が返る', () => {",
+                  "  pm.response.to.have.status(409);",
+                  "  pm.expect(pm.response.json().code).to.eql('EMAIL_TAKEN');",
+                  "});",
+                  "pm.test('本文が code、message、details の形である', () => {",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body).to.have.all.keys('code', 'message', 'details');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "入力の誤りは、項目ごとに返る",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Origin",
+                "value": "{{webOrigin}}"
+              }
+            ],
+            "url": "{{authUrl}}/api/auth/register",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('400 と VALIDATION_FAILED が返る', () => pm.response.to.have.status(400));",
+                  "pm.test('fields に 3 件が入る', () => {",
+                  "  pm.expect(pm.response.json().details.fields).to.have.lengthOf(3);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ログインする",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Origin",
+                "value": "{{webOrigin}}"
+              }
+            ],
+            "url": "{{authUrl}}/api/auth/login",
+            "description": "ログインのたびに、新しいクッキーが返る(「機能設計: 登録とログイン」の 4.4)。",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 が返る', () => pm.response.to.have.status(200));",
+                  "const setCookie = pm.response.headers.get('Set-Cookie') || '';",
+                  "const match = setCookie.match(/rb_session=([^;]+)/);",
+                  "pm.test('Set-Cookie に rb_session がある', () => pm.expect(match).to.not.be.null);",
+                  "if (match) { pm.collectionVariables.set('sessionToken', match[1]); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "パスワードが違うとログインできない",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Origin",
+                "value": "{{webOrigin}}"
+              }
+            ],
+            "url": "{{authUrl}}/api/auth/login",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"まちがったあいことば9999\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('401 と LOGIN_FAILED が返る', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().code).to.eql('LOGIN_FAILED');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ほかのサイトからはログインできない",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Origin",
+                "value": "https://evil.example"
+              }
+            ],
+            "url": "{{authUrl}}/api/auth/login",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('403 と CROSS_SITE_REQUEST が返る', () => {",
+                  "  pm.response.to.have.status(403);",
+                  "  pm.expect(pm.response.json().code).to.eql('CROSS_SITE_REQUEST');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "入口から呼ばれる確認(verify)",
+      "description": "本来は入口(Envoy Gateway)だけが呼ぶ。ここでは入口の代わりに直接呼ぶ。\n入口は、元の要求と同じメソッドで、/internal/auth/verify の後ろに元のパスを付けて呼ぶ。",
+      "item": [
+        {
+          "name": "クッキーで確かめて、トークンを受け取る",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "rb_session={{sessionToken}}"
+              }
+            ],
+            "url": "{{authUrl}}/internal/auth/verify/api/me",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 が返る', () => pm.response.to.have.status(200));",
+                  "const authorization = pm.response.headers.get('Authorization') || '';",
+                  "pm.test('Authorization: Bearer のトークンが返る', () => {",
+                  "  pm.expect(authorization).to.match(/^Bearer ey/);",
+                  "});",
+                  "pm.collectionVariables.set('accessToken', authorization.replace('Bearer ', ''));",
+                  "// トークンの中身(2 つ目の部分)を読む。URL に使える Base64 を、ふつうの Base64 に直してから読む",
+                  "const part = pm.collectionVariables.get('accessToken').split('.')[1].replace(/-/g, '+').replace(/_/g, '/');",
+                  "const cryptoJs = require('crypto-js');",
+                  "const payload = JSON.parse(cryptoJs.enc.Base64.parse(part).toString(cryptoJs.enc.Utf8));",
+                  "pm.test('トークンの期限が 60 秒で、個人の情報を含まない', () => {",
+                  "  pm.expect(payload.exp - payload.iat).to.eql(60);",
+                  "  pm.expect(JSON.stringify(payload)).to.not.include(pm.collectionVariables.get('email'));",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "クッキーがなければ 401",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{authUrl}}/internal/auth/verify/api/me",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('401 と UNAUTHENTICATED が返る', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().code).to.eql('UNAUTHENTICATED');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ほかのサイトからの POST は 403",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "rb_session={{sessionToken}}"
+              },
+              {
+                "key": "Origin",
+                "value": "https://evil.example"
+              }
+            ],
+            "url": "{{authUrl}}/internal/auth/verify/api/books",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('403 と CROSS_SITE_REQUEST が返る', () => {",
+                  "  pm.response.to.have.status(403);",
+                  "  pm.expect(pm.response.json().code).to.eql('CROSS_SITE_REQUEST');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "公開の鍵",
+      "item": [
+        {
+          "name": "公開の鍵の一覧を取る",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{authUrl}}/internal/auth/keys",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 が返る', () => pm.response.to.have.status(200));",
+                  "pm.test('RS256 の RSA の鍵だけを、公開の部分だけで返す', () => {",
+                  "  const keys = pm.response.json().keys;",
+                  "  pm.expect(keys.length).to.be.at.least(1);",
+                  "  keys.forEach(key => pm.expect(key).to.have.all.keys('kty', 'use', 'alg', 'kid', 'n', 'e'));",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "共通の決まり",
+      "item": [
+        {
+          "name": "ないパスは、決まった形の 404",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Request-Id",
+                "value": "postman-404"
+              }
+            ],
+            "url": "{{authUrl}}/api/no-such-path",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('404 と NOT_FOUND が返る', () => {",
+                  "  pm.response.to.have.status(404);",
+                  "  pm.expect(pm.response.json().code).to.eql('NOT_FOUND');",
+                  "});",
+                  "pm.test('X-Request-Id が、送った値で返る', () => {",
+                  "  pm.expect(pm.response.headers.get('X-Request-Id')).to.eql('postman-404');",
+                  "});",
+                  "pm.test('本文が code、message、details の形である', () => {",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body).to.have.all.keys('code', 'message', 'details');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

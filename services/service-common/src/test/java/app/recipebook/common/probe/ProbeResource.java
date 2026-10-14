@@ -2,6 +2,7 @@ package app.recipebook.common.probe;
 
 import app.recipebook.common.core.AppException;
 import app.recipebook.common.core.ErrorCode;
+import app.recipebook.common.security.PublicEndpoint;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -24,6 +25,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
  * 共通のライブラリの動きを確かめるための、テストだけの入口。
  * 本物のサービスの入口の代わりに、決まった応答と例外を返す。
  */
+@PublicEndpoint
 @Path("/api/probes")
 @Produces(MediaType.APPLICATION_JSON)
 public class ProbeResource {

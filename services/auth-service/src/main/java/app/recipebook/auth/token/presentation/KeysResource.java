@@ -1,6 +1,7 @@
 package app.recipebook.auth.token.presentation;
 
 import app.recipebook.auth.token.application.PublicKeySet;
+import app.recipebook.common.security.PublicEndpoint;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -12,6 +13,7 @@ import jakarta.ws.rs.core.MediaType;
  * ほかのサービスだけが呼ぶ。入口からは届かない。
  * 形は、鍵の一覧を表す決まった形(JWKS)にする。トークンを確かめる部品が、この形を読むためである。
  */
+@PublicEndpoint
 @Path("/internal/auth/keys")
 public class KeysResource {
 

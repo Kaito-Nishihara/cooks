@@ -5,6 +5,7 @@ import app.recipebook.auth.account.application.RegisterUseCase;
 import app.recipebook.auth.session.application.SignedIn;
 import app.recipebook.auth.shared.presentation.RequireSameOrigin;
 import app.recipebook.auth.shared.presentation.SessionCookie;
+import app.recipebook.common.security.PublicEndpoint;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -17,6 +18,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 /** 登録の入口(「機能設計: 登録とログイン」の 4.3)。 */
+@PublicEndpoint
 @Path("/api/auth/register")
 @Produces(MediaType.APPLICATION_JSON)
 public class RegisterResource {

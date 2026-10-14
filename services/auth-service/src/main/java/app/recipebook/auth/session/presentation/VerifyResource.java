@@ -3,6 +3,7 @@ package app.recipebook.auth.session.presentation;
 import app.recipebook.auth.session.application.VerifySessionUseCase;
 import app.recipebook.auth.shared.presentation.OriginPolicy;
 import app.recipebook.auth.shared.presentation.SessionCookie;
+import app.recipebook.common.security.PublicEndpoint;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.CookieParam;
 import jakarta.ws.rs.DELETE;
@@ -23,6 +24,7 @@ import jakarta.ws.rs.core.Response;
  * 届いた要求のメソッドを、元のメソッドとして扱う。後ろに付いたパスは使わない。
  * 入口から届かない場所(/internal)に置く。
  */
+@PublicEndpoint
 @Path("/internal/auth/verify")
 public class VerifyResource {
 
