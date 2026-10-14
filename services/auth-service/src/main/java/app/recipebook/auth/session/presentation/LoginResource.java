@@ -6,6 +6,7 @@ import app.recipebook.auth.session.application.LoginUseCase;
 import app.recipebook.auth.session.application.SignedIn;
 import app.recipebook.auth.shared.presentation.RequireSameOrigin;
 import app.recipebook.auth.shared.presentation.SessionCookie;
+import app.recipebook.common.security.PublicEndpoint;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 /** ログインの入口(「機能設計: 登録とログイン」の 4.4)。 */
+@PublicEndpoint
 @Path("/api/auth/login")
 @Produces(MediaType.APPLICATION_JSON)
 public class LoginResource {
