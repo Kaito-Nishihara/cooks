@@ -39,6 +39,14 @@ public final class User {
         return new User(id, email, displayName, passwordHash, createdAt, updatedAt);
     }
 
+    /**
+     * パスワードを変えた利用者を返す。
+     * 今のパスワードを知っている本人かどうかは、呼ぶ前に passwordMatches で確かめる。
+     */
+    public User withPassword(PasswordHash newHash, Instant now) {
+        return new User(id, email, displayName, newHash, createdAt, now);
+    }
+
     /** パスワードが合うかを確かめる。 */
     public boolean passwordMatches(RawPassword password, PasswordHasher hasher) {
         return hasher.matches(password, passwordHash);

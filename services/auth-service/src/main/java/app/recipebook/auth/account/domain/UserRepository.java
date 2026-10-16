@@ -17,6 +17,9 @@ public interface UserRepository {
 
     Optional<User> findById(UserId id);
 
+    /** パスワードのハッシュと、更新日時を書き換える。 */
+    void updatePassword(User user);
+
     /**
      * この利用者に関わる書き込みを、順番に行わせるために、鍵をかける。
      * トランザクションが終わるまで、同じ利用者への別の書き込みが待つ。

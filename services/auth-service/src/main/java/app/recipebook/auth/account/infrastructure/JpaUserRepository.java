@@ -53,6 +53,16 @@ public class JpaUserRepository implements UserRepository {
     }
 
     @Override
+    public void updatePassword(User user) {
+        entityManager.createQuery("UPDATE UserJpaEntity u SET u.passwordHash = :passwordHash,"
+                        + " u.updatedAt = :updatedAt WHERE u.id = :id")
+                .setParameter("passwordHash", user.passwordHash().value())
+                .setParameter("updatedAt", user.updatedAt())
+                .setParameter("id", user.id().value())
+                .executeUpdate();
+    }
+
+    @Override
     public void lock(UserId id) {
         entityManager.find(UserJpaEntity.class, id.value(), LockModeType.PESSIMISTIC_WRITE);
     }

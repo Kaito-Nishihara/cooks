@@ -20,6 +20,9 @@ public interface SessionRepository {
 
     void delete(SessionId id);
 
+    /** その人のセッションを、指定したものを除いて、すべて消す。パスワードを変えたときに使う。 */
+    void deleteAllOfUserExcept(UserId userId, SessionId keep);
+
     /** トークンのハッシュが指すセッションを消す。なければ、何もしない。 */
     void deleteByTokenHash(TokenHash tokenHash);
 }

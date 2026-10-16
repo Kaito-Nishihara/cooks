@@ -536,6 +536,96 @@
           ]
         },
         {
+          "name": "パスワードを変える",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Cookie",
+                "value": "rb_session={{sessionToken}}"
+              }
+            ],
+            "url": "{{authUrl}}/api/me/password",
+            "description": "今のパスワードと同じ値に変える。今のセッションを除く、同じ人のセッションが消える。",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"{{password}}\",\n  \"newPassword\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 が返る', () => pm.response.to.have.status(200));",
+                  "pm.test('自分の情報が返る', () => {",
+                  "  pm.expect(pm.response.json()).to.have.all.keys('id', 'email', 'displayName');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "今のパスワードが違うと変えられない",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Cookie",
+                "value": "rb_session={{sessionToken}}"
+              }
+            ],
+            "url": "{{authUrl}}/api/me/password",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"まちがったあいことば9999\",\n  \"newPassword\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('401 と LOGIN_FAILED が返る', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().code).to.eql('LOGIN_FAILED');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
           "name": "ログアウトする",
           "request": {
             "method": "POST",

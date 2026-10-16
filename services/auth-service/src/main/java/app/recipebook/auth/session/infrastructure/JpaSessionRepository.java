@@ -62,6 +62,14 @@ public class JpaSessionRepository implements SessionRepository {
     }
 
     @Override
+    public void deleteAllOfUserExcept(UserId userId, SessionId keep) {
+        entityManager.createQuery("DELETE FROM SessionJpaEntity s WHERE s.userId = :userId AND s.id <> :keep")
+                .setParameter("userId", userId.value())
+                .setParameter("keep", keep.value())
+                .executeUpdate();
+    }
+
+    @Override
     public void deleteByTokenHash(TokenHash tokenHash) {
         entityManager.createQuery("DELETE FROM SessionJpaEntity s WHERE s.tokenHash = :tokenHash")
                 .setParameter("tokenHash", tokenHash.value())

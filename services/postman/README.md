@@ -52,14 +52,14 @@
 
 Postman の代わりに、Newman をコンテナで動かして流せる。
 `auth-service` を起動した後に、リポジトリの直下で動かす。
+Newman を Compose のネットワークにつなぎ、サービスへ直接送る。
 
 ```
-docker run --rm --add-host host.docker.internal:host-gateway \
-  -v "$(pwd)/services/postman:/etc/newman" postman/newman:6.1.3-alpine \
-  run recipe-book.postman_collection.json -e local.postman_environment.json \
-  --env-var authUrl=http://host.docker.internal:8081 \
-  --env-var managementUrl=http://host.docker.internal:9001
+docker run --rm --network recipe-book-services_default   -v "$(pwd)/services/postman:/etc/newman" postman/newman:6.1.3-alpine   run recipe-book.postman_collection.json -e local.postman_environment.json   --env-var authUrl=http://auth-service:8080   --env-var managementUrl=http://auth-service:9000
 ```
+
+コンテナからホストへ戻る経路(`host.docker.internal`)は、Docker Desktop を起動し直した後に、1 つの要求に数分かかることがあった。
+Compose のネットワークにつなぐ方法なら、この経路を通らない。
 
 テストの書き間違いで処理が止まると、集計の `failed` が 0 のままでも、その要求の行に `SyntaxError` などが出る。
 集計だけで判断しない。
