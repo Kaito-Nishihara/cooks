@@ -10,6 +10,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.LockModeType;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import org.hibernate.exception.ConstraintViolationException;
@@ -50,6 +52,20 @@ public class JpaUserRepository implements UserRepository {
     @Override
     public Optional<User> findById(UserId id) {
         return Optional.ofNullable(entityManager.find(UserJpaEntity.class, id.value())).map(UserJpaEntity::toDomain);
+    }
+
+    @Override
+    public List<User> findAllById(Collection<UserId> ids) {
+        if (ids.isEmpty()) {
+            return List.of();
+        }
+        // PostgreSQL の uuid の並びは、16 進の文字列の並びと同じである
+        return entityManager
+                .createQuery("SELECT u FROM UserJpaEntity u WHERE u.id IN :ids ORDER BY u.id", UserJpaEntity.class)
+                .setParameter("ids", ids.stream().map(UserId::value).toList())
+                .getResultStream()
+                .map(UserJpaEntity::toDomain)
+                .toList();
     }
 
     @Override
