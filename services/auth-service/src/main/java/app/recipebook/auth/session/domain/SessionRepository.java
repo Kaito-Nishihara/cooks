@@ -1,6 +1,7 @@
 package app.recipebook.auth.session.domain;
 
 import app.recipebook.auth.shared.domain.UserId;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,4 +26,10 @@ public interface SessionRepository {
 
     /** トークンのハッシュが指すセッションを消す。なければ、何もしない。 */
     void deleteByTokenHash(TokenHash tokenHash);
+
+    /**
+     * 期限が now 以前のセッションを、limit 行まで消し、消した行の数を返す。
+     * ほかの処理が鍵をかけている行は、待たずに飛ばす。
+     */
+    int deleteExpired(Instant now, int limit);
 }

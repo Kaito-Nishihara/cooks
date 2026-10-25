@@ -27,4 +27,11 @@ public interface AuthSettings {
      * 古い鍵で署名したトークンが、すべて期限切れになったら外す(「共通設計: 認証」の 4.8)。
      */
     Optional<List<String>> retiredPublicKeyFiles();
+
+    /**
+     * 期限が切れた行を消す時刻(Quartz の cron の形、UTC)。既定は毎日 18 時(日本の 3 時)である。
+     * off にすると動かさない。CleanupSchedule が、この名前で読む
+     */
+    @WithDefault("0 0 18 * * ?")
+    String cleanupCron();
 }

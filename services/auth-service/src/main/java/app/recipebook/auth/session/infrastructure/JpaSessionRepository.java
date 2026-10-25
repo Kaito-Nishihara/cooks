@@ -8,6 +8,7 @@ import app.recipebook.auth.shared.domain.UserId;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,6 +74,16 @@ public class JpaSessionRepository implements SessionRepository {
     public void deleteByTokenHash(TokenHash tokenHash) {
         entityManager.createQuery("DELETE FROM SessionJpaEntity s WHERE s.tokenHash = :tokenHash")
                 .setParameter("tokenHash", tokenHash.value())
+                .executeUpdate();
+    }
+
+    @Override
+    public int deleteExpired(Instant now, int limit) {
+        // 鍵がかかった行を飛ばすので、複数のコンテナで同時に動いても、互いに待たない
+        return entityManager.createNativeQuery("DELETE FROM sessions WHERE id IN ("
+                        + "SELECT id FROM sessions WHERE expires_at <= :now LIMIT :limit FOR UPDATE SKIP LOCKED)")
+                .setParameter("now", now)
+                .setParameter("limit", limit)
                 .executeUpdate();
     }
 }

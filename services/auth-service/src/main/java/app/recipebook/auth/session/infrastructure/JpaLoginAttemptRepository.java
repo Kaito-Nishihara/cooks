@@ -62,4 +62,15 @@ public class JpaLoginAttemptRepository implements LoginAttemptRepository {
                 .setParameter("emailHash", emailHash)
                 .executeUpdate();
     }
+
+    @Override
+    public int deleteUpdatedBefore(Instant cutoff, int limit) {
+        // 鍵がかかった行を飛ばすので、ログインの失敗を数えている行を待たない
+        return entityManager.createNativeQuery("DELETE FROM login_attempts WHERE email_hash IN ("
+                        + "SELECT email_hash FROM login_attempts WHERE updated_at <= :cutoff"
+                        + " LIMIT :limit FOR UPDATE SKIP LOCKED)")
+                .setParameter("cutoff", cutoff)
+                .setParameter("limit", limit)
+                .executeUpdate();
+    }
 }

@@ -18,4 +18,10 @@ public interface LoginAttemptRepository {
 
     /** 記録を消す。ログインに成功したときに呼ぶ。なければ、何もしない。 */
     void clear(String emailHash);
+
+    /**
+     * 最後の更新が cutoff 以前の記録を、limit 行まで消し、消した行の数を返す。
+     * ほかの処理が鍵をかけている行は、待たずに飛ばす。
+     */
+    int deleteUpdatedBefore(Instant cutoff, int limit);
 }
