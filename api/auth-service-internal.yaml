@@ -1,0 +1,302 @@
+---
+openapi: 3.1.0
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+    Key:
+      type: object
+      properties:
+        kty:
+          type: string
+        use:
+          type: string
+        alg:
+          type: string
+        kid:
+          type: string
+        "n":
+          type: string
+        e:
+          type: string
+    KeySetResponse:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: "#/components/schemas/Key"
+    UserListResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+        nextCursor:
+          type: string
+    ErrorResponse:
+      type: object
+      description: エラーの応答の本文
+      properties:
+        code:
+          type: string
+          description: エラーの種類
+        message:
+          type: string
+          description: 利用者に見せてよい文
+        details:
+          type:
+          - object
+          - "null"
+          additionalProperties: {}
+          description: 種類ごとの追加の情報。ないときは null
+      required:
+      - code
+      - message
+  securitySchemes:
+    SecurityScheme:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Authentication
+paths:
+  /internal/auth/keys:
+    get:
+      operationId: getSigningKeys
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KeySetResponse"
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Keys
+      tags:
+      - Keys Resource
+  /internal/auth/verify/{originalPath}:
+    put:
+      operationId: verifyPutRequest
+      parameters:
+      - name: Origin
+        in: header
+        schema:
+          type: string
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Put
+      tags:
+      - Verify Resource
+    post:
+      operationId: verifyPostRequest
+      parameters:
+      - name: Origin
+        in: header
+        schema:
+          type: string
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Post
+      tags:
+      - Verify Resource
+    patch:
+      operationId: verifyPatchRequest
+      parameters:
+      - name: Origin
+        in: header
+        schema:
+          type: string
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Patch
+      tags:
+      - Verify Resource
+    options:
+      operationId: verifyOptionsRequest
+      parameters:
+      - name: Origin
+        in: header
+        schema:
+          type: string
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Options
+      tags:
+      - Verify Resource
+    head:
+      operationId: verifyHeadRequest
+      parameters:
+      - name: Origin
+        in: header
+        schema:
+          type: string
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Head
+      tags:
+      - Verify Resource
+    get:
+      operationId: verifyGetRequest
+      parameters:
+      - name: Origin
+        in: header
+        schema:
+          type: string
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Get
+      tags:
+      - Verify Resource
+    delete:
+      operationId: verifyDeleteRequest
+      parameters:
+      - name: Origin
+        in: header
+        schema:
+          type: string
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Delete
+      tags:
+      - Verify Resource
+  /internal/users:
+    get:
+      operationId: listUsers
+      parameters:
+      - name: ids
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserListResponse"
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: List Users
+      tags:
+      - Internal Users Resource
+info:
+  title: auth-service(サービスの間)
+  version: 1.0.0-SNAPSHOT
+servers:
+- url: http://localhost:8080
+  description: Auto generated value
+- url: http://0.0.0.0:8080
+  description: Auto generated value

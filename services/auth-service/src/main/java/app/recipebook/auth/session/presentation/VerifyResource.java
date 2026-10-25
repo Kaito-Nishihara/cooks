@@ -17,6 +17,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 
 /**
  * 入口(Envoy Gateway)が、ログインが要る要求を後ろへ渡す前に呼ぶ(「共通設計: 認証」の 4.6)。
@@ -34,42 +35,49 @@ public class VerifyResource {
     @Inject
     OriginPolicy originPolicy;
 
+    @Operation(operationId = "verifyGetRequest")
     @GET
     @Path("{originalPath: .*}")
     public Response get(@CookieParam(SessionCookie.NAME) String cookie, @HeaderParam("Origin") String origin) {
         return verify("GET", cookie, origin);
     }
 
+    @Operation(operationId = "verifyHeadRequest")
     @HEAD
     @Path("{originalPath: .*}")
     public Response head(@CookieParam(SessionCookie.NAME) String cookie, @HeaderParam("Origin") String origin) {
         return verify("HEAD", cookie, origin);
     }
 
+    @Operation(operationId = "verifyOptionsRequest")
     @OPTIONS
     @Path("{originalPath: .*}")
     public Response options(@CookieParam(SessionCookie.NAME) String cookie, @HeaderParam("Origin") String origin) {
         return verify("OPTIONS", cookie, origin);
     }
 
+    @Operation(operationId = "verifyPostRequest")
     @POST
     @Path("{originalPath: .*}")
     public Response post(@CookieParam(SessionCookie.NAME) String cookie, @HeaderParam("Origin") String origin) {
         return verify("POST", cookie, origin);
     }
 
+    @Operation(operationId = "verifyPutRequest")
     @PUT
     @Path("{originalPath: .*}")
     public Response put(@CookieParam(SessionCookie.NAME) String cookie, @HeaderParam("Origin") String origin) {
         return verify("PUT", cookie, origin);
     }
 
+    @Operation(operationId = "verifyPatchRequest")
     @PATCH
     @Path("{originalPath: .*}")
     public Response patch(@CookieParam(SessionCookie.NAME) String cookie, @HeaderParam("Origin") String origin) {
         return verify("PATCH", cookie, origin);
     }
 
+    @Operation(operationId = "verifyDeleteRequest")
     @DELETE
     @Path("{originalPath: .*}")
     public Response delete(@CookieParam(SessionCookie.NAME) String cookie, @HeaderParam("Origin") String origin) {

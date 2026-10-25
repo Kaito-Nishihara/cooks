@@ -17,6 +17,8 @@ services:
       TZ: UTC
     volumes:
       - .:/work/services
+      # ビルドのときに書き出す API の仕様(api/)の置き場
+      - ../api:/work/api
       # 取ってきたライブラリを残す。コンテナを作り直すたびに取り直さないためである
       - maven-repository:/root/.m2
     depends_on:
@@ -33,6 +35,8 @@ services:
       TZ: UTC
     volumes:
       - .:/work/services
+      # ビルドのときに書き出す API の仕様(api/)の置き場
+      - ../api:/work/api
       - maven-repository:/root/.m2
     ports:
       # kind の入口(8080)とぶつからない番号にし、ほかの機械から届かないようにする

@@ -1,0 +1,223 @@
+---
+openapi: 3.1.0
+components:
+  schemas:
+    ChangePasswordRequest:
+      type: object
+      required:
+      - currentPassword
+      - newPassword
+      properties:
+        currentPassword:
+          type: string
+        newPassword:
+          type: string
+          minLength: 12
+          description: UTF-8 で 72 バイトまで
+    LoginRequest:
+      type: object
+      required:
+      - email
+      - password
+      properties:
+        email:
+          type: string
+          maxLength: 254
+        password:
+          type: string
+    RegisterRequest:
+      type: object
+      required:
+      - displayName
+      - email
+      - password
+      properties:
+        displayName:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          maxLength: 254
+        password:
+          type: string
+          minLength: 12
+          description: UTF-8 で 72 バイトまで
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        displayName:
+          type: string
+    ErrorResponse:
+      type: object
+      description: エラーの応答の本文
+      properties:
+        code:
+          type: string
+          description: エラーの種類
+        message:
+          type: string
+          description: 利用者に見せてよい文
+        details:
+          type:
+          - object
+          - "null"
+          additionalProperties: {}
+          description: 種類ごとの追加の情報。ないときは null
+      required:
+      - code
+      - message
+  securitySchemes:
+    SecurityScheme:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Authentication
+paths:
+  /api/auth/login:
+    post:
+      operationId: loginUser
+      parameters:
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "400":
+          description: Bad Request
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Login
+      tags:
+      - Login Resource
+  /api/auth/logout:
+    post:
+      operationId: logoutUser
+      parameters:
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Logout
+      tags:
+      - Logout Resource
+  /api/auth/register:
+    post:
+      operationId: registerUser
+      parameters:
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "400":
+          description: Bad Request
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Register
+      tags:
+      - Register Resource
+  /api/me:
+    get:
+      operationId: getCurrentUser
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Get Me
+      tags:
+      - Me Resource
+  /api/me/password:
+    put:
+      operationId: changePassword
+      parameters:
+      - name: rb_session
+        in: cookie
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChangePasswordRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        "400":
+          description: Bad Request
+        default:
+          description: エラー。形は 3 つのサービスで同じである
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      summary: Change
+      tags:
+      - Password Resource
+info:
+  title: auth-service
+  version: 1.0.0-SNAPSHOT
+servers:
+- url: http://localhost:8080
+  description: Auto generated value
+- url: http://0.0.0.0:8080
+  description: Auto generated value

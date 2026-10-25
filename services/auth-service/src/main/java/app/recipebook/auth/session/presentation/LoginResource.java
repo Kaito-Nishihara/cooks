@@ -17,6 +17,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 
 /** ログインの入口(「機能設計: 登録とログイン」の 4.4)。 */
 @PublicEndpoint
@@ -27,6 +28,7 @@ public class LoginResource {
     @Inject
     LoginUseCase loginUseCase;
 
+    @Operation(operationId = "loginUser")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @RequireSameOrigin

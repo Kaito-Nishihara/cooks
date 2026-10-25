@@ -8,6 +8,7 @@ import jakarta.ws.rs.CookieParam;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 
 /**
  * ログアウトの入口(「機能設計: 登録とログイン」の 4.5)。
@@ -22,6 +23,7 @@ public class LogoutResource {
     @Inject
     CurrentUserId currentUserId;
 
+    @Operation(operationId = "logoutUser")
     @POST
     public Response logout(@CookieParam(SessionCookie.NAME) String sessionCookie) {
         logoutUseCase.execute(currentUserId.get(), SessionCookie.read(sessionCookie));
