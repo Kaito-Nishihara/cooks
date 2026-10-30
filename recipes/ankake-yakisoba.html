@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>あんかけ焼きそば | おうちレシピ帖</title>
+  <meta name="description" content="両面をこんがり焼いた蒸し麺に、豚肉と白菜のとろみあんをかけるあんかけ焼きそば。調理時間25分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/ankake-yakisoba/hero.jpg" alt="青い縞の皿に盛ったあんかけ焼きそば。うずらの卵、えび、野菜のあんがかかっている">
+    <div class="hero__body">
+      <span class="hero__kicker">麺</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">ANKAKE YAKISOBA</span>
+        あんかけ焼きそば
+      </h1>
+      <p class="hero__lead">蒸し麺をごま油で両面こんがり焼き、豚肉と野菜のあんをたっぷりかける。<br>外はかりっと、あんがしみたところはやわらかい、2 つの食感を楽しめます。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">25<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約570<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">フライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">麺</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">焼きそば用の蒸し麺</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="玉">2玉</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ごま油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豚こま切れ肉</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">白菜</span><span class="ing__qty" data-amount="2" data-style="frac" data-unit="枚">2枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">にんじん</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-unit="本">1/4本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">しいたけ</span><span class="ing__qty" data-amount="2" data-style="frac" data-unit="枚">2枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">うずらの卵(水煮)</span><span class="ing__qty" data-amount="4" data-style="int" data-unit="個">4個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">合わせ調味料</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="300" data-style="round5" data-unit="ml">300ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">鶏がらスープの素</span><span class="ing__qty" data-amount="1.5" data-style="frac" data-prefix="小さじ">小さじ1と1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">オイスターソース</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">酒</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">水溶き片栗粉</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">片栗粉</span><span class="ing__qty" data-amount="1.5" data-style="frac" data-prefix="大さじ">大さじ1と1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="3" data-style="frac" data-prefix="大さじ">大さじ3</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">仕上げ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">練りからし</span><span class="ing__qty">適量</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">豚肉はひと口大に切る。白菜は軸と葉に分け、軸はそぎ切り、葉はざく切りにする。にんじんは短冊切り、しいたけは薄切りにする。合わせ調味料を混ぜておく。麺は袋の口を少し開けて電子レンジ(600W)で1分温め、ほぐす。</p>
+          <span class="step__time">10分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">麺を両面焼く</h3>
+          <p class="step__text">フライパンにごま油の半量を中火で熱し、麺を丸く広げてへらで押さえる。触らずに焼き、焼き色が付いたら返す。残りのごま油を縁から入れ、裏もこんがり焼いて皿に盛る。</p>
+          <span class="step__time">7〜8分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">具を炒める</h3>
+          <p class="step__text">同じフライパンにサラダ油を足し、豚肉を炒める。色が変わったら白菜の軸、にんじん、しいたけを加えて炒め、しんなりしたら白菜の葉を加える。</p>
+          <span class="step__time">4分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">煮る</h3>
+          <p class="step__text">合わせ調味料とうずらの卵を加え、煮立ったら1分煮る。</p>
+          <span class="step__time">2分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">とろみを付ける</h3>
+          <p class="step__text">いったん火を弱め、水溶き片栗粉をよく混ぜてから回し入れ、すぐに混ぜる。もう一度煮立たせ、30秒ほど煮てとろみを落ち着かせる。</p>
+          <span class="step__time">1分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">麺にかける</h3>
+          <p class="step__text">焼いた麺の上にあんをたっぷりかけ、練りからしを添える。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>麺は焼いている間に触らないでください。動かすと焼き色が付かず、かりっとしません。</li>
+          <li>水溶き片栗粉は、入れる直前にもう一度混ぜます。片栗粉が底に沈んだまま入れると、だまになります。</li>
+          <li>とろみを付けた後に30秒煮ると、時間がたってもあんが水っぽくなりにくくなります。</li>
+          <li>うずらの卵の代わりに、えびやいかを足すと五目あんかけになります。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/ankake-yakisoba/closeup.jpg" alt="白菜と絹さやのあんで麺が見えないほど覆われたあんかけ焼きそば" loading="lazy">
+        <figcaption>あんを多めにすると、小樽風になる</figcaption>
+      </figure>
+      <figure>
+        <img src="images/ankake-yakisoba/moyashi.jpg" alt="もやしときくらげをたっぷりのせたあんかけ焼きそば" loading="lazy">
+        <figcaption>もやしやきくらげを足してもよい</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Ankake_Yakisoba_(Azusa).jpg">Ankake Yakisoba (Azusa)</a>(掬茶 撮影、CC BY-SA 4.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Otaru_ankake_yakisoba_20140113.jpg">Otaru ankake yakisoba 20140113</a>(Tobosha 撮影、パブリックドメイン)、
+      <a href="https://commons.wikimedia.org/wiki/File:Otaru_Ankake_Yakisoba_11138725415.jpg">Otaru Ankake Yakisoba 11138725415</a>(regvn 撮影、CC BY-SA 2.0)
+      (いずれも Wikimedia Commons)</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>
