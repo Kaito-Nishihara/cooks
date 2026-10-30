@@ -28,10 +28,22 @@
   <section class="meta" aria-label="基本情報">
     <ul class="meta__list">
       <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">15<small>分</small></span></li>
-      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★★</span></li>
-      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約130<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value" data-variant="dashi">★★★</span><span class="meta__value" data-variant="amai" hidden>★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value" data-variant="dashi">約130<small>kcal</small></span><span class="meta__value" data-variant="amai" hidden>約160<small>kcal</small></span></li>
       <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">卵焼き器</span></li>
     </ul>
+  </section>
+
+  <section class="variants" aria-label="味の切り替え" data-variants>
+    <div class="variants__box">
+      <p class="variants__label">味を選ぶ</p>
+      <div class="variants__tabs">
+        <button class="variants__btn" type="button" data-variant-choice="dashi" aria-pressed="true">だし巻き</button>
+        <button class="variants__btn" type="button" data-variant-choice="amai" aria-pressed="false">甘め</button>
+      </div>
+      <p class="variants__desc" data-variant="dashi">だしをたっぷり含ませた、ふんわりした関西風の味です。</p>
+      <p class="variants__desc" data-variant="amai" hidden>砂糖で甘くした、お弁当にも向く関東風の卵焼きです。</p>
+    </div>
   </section>
 
   <main class="layout">
@@ -49,8 +61,11 @@
         <p class="ing-group__title">卵液</p>
         <ul class="ing-list">
           <li><label class="ing"><input type="checkbox"><span class="ing__name">卵</span><span class="ing__qty" data-amount="3" data-style="int" data-unit="個">3個</span></label></li>
-          <li><label class="ing"><input type="checkbox"><span class="ing__name">だし</span><span class="ing__qty" data-amount="3" data-style="frac" data-prefix="大さじ">大さじ3</span></label></li>
-          <li><label class="ing"><input type="checkbox"><span class="ing__name">薄口醤油</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li data-variant="dashi"><label class="ing"><input type="checkbox"><span class="ing__name">だし</span><span class="ing__qty" data-amount="3" data-style="frac" data-prefix="大さじ">大さじ3</span></label></li>
+          <li data-variant="amai" hidden><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li data-variant="dashi"><label class="ing"><input type="checkbox"><span class="ing__name">薄口醤油</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li data-variant="amai" hidden><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="1.5" data-style="frac" data-prefix="大さじ">大さじ1と1/2</span></label></li>
+          <li data-variant="amai" hidden><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
           <li><label class="ing"><input type="checkbox"><span class="ing__name">みりん</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
           <li><label class="ing"><input type="checkbox"><span class="ing__name">塩</span><span class="ing__qty">ひとつまみ</span></label></li>
         </ul>
@@ -60,8 +75,8 @@
         <p class="ing-group__title">焼く油と添え物</p>
         <ul class="ing-list">
           <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty">適量</span></label></li>
-          <li><label class="ing"><input type="checkbox"><span class="ing__name">大根おろし</span><span class="ing__qty">適量</span></label></li>
-          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty">少々</span></label></li>
+          <li data-variant="dashi"><label class="ing"><input type="checkbox"><span class="ing__name">大根おろし</span><span class="ing__qty">適量</span></label></li>
+          <li data-variant="dashi"><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty">少々</span></label></li>
         </ul>
       </div>
     </aside>
@@ -70,14 +85,23 @@
       <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
 
       <ol class="steps">
-        <li class="step">
+        <li data-variant="dashi" class="step">
           <h3 class="step__title">卵液を作る</h3>
           <p class="step__text">ボウルに卵を割り、菜箸をボウルの底につけたまま左右に動かして白身を切る。泡立てないようにする。だし、薄口醤油、みりん、塩を加えて混ぜる。ざるでこすと口当たりがなめらかになる。</p>
           <span class="step__time">3分</span>
         </li>
-        <li class="step">
+        <li data-variant="amai" hidden class="step">
+          <h3 class="step__title">卵液を作る</h3>
+          <p class="step__text">ボウルに卵を割り、菜箸をボウルの底につけたまま左右に動かして白身を切る。泡立てないようにする。水、砂糖、醤油、みりん、塩を加え、砂糖が溶けるまで混ぜる。ざるでこすと口当たりがなめらかになる。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li data-variant="dashi" class="step">
           <h3 class="step__title">卵焼き器を温める</h3>
           <p class="step__text">卵焼き器を中火で熱し、油を含ませたキッチンペーパーで全体に油をなじませる。卵液を少し落とし、すぐにジュッと音がして固まれば温まっている。</p>
+        </li>
+        <li data-variant="amai" hidden class="step">
+          <h3 class="step__title">卵焼き器を温める</h3>
+          <p class="step__text">卵焼き器を弱めの中火で熱し、油を含ませたキッチンペーパーで全体に油をなじませる。卵液を少し落とし、すぐにジュッと音がして固まれば温まっている。</p>
         </li>
         <li class="step">
           <h3 class="step__title">1回目を焼いて巻く</h3>
@@ -94,19 +118,24 @@
           <p class="step__text">焼き上がったら熱いうちに巻きすで包み、両端を押さえて形を整える。そのまま3分ほど置く。巻きすがなければキッチンペーパーやラップで包む。</p>
           <span class="step__time">3分</span>
         </li>
-        <li class="step">
+        <li data-variant="dashi" class="step">
           <h3 class="step__title">切って盛る</h3>
           <p class="step__text">食べやすい厚さに切って器に盛る。大根おろしを添え、醤油を少し落とす。</p>
+        </li>
+        <li data-variant="amai" hidden class="step">
+          <h3 class="step__title">切って盛る</h3>
+          <p class="step__text">食べやすい厚さに切って器に盛る。</p>
         </li>
       </ol>
 
       <div class="tips">
         <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
         <ul>
-          <li>だしを多くするほどふんわりしますが、巻きにくくなります。慣れるまではだしを大さじ2に減らしてください。</li>
+          <li data-variant="dashi">だしを多くするほどふんわりしますが、巻きにくくなります。慣れるまではだしを大さじ2に減らしてください。</li>
           <li>表面が乾く前に巻くと、層どうしがくっついて崩れにくくなります。</li>
           <li>途中で破れても、次に流す卵液で隠れます。慌てずに巻き続けてください。</li>
-          <li>だしがないときは、白だし小さじ2と水大さじ2で代用できます。その場合は薄口醤油と塩を入れません。</li>
+          <li data-variant="amai" hidden>砂糖が入ると焦げやすくなります。火は弱めにし、焼き色が濃くなる前に巻いてください。</li>
+          <li data-variant="dashi">だしがないときは、白だし小さじ2と水大さじ2で代用できます。その場合は薄口醤油と塩を入れません。</li>
           <li>卵焼き器がなければ、小さめのフライパンで半月形に折りたたんで焼けます。</li>
         </ul>
       </div>

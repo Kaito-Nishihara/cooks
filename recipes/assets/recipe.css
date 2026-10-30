@@ -581,6 +581,37 @@ a.plan__name:hover { color: var(--shu); }
 .genre-filter__btn[aria-pressed="true"] { background: var(--shu); border-color: var(--shu); color: #fff; }
 .genre-filter__btn:focus-visible { outline: 2px solid var(--tamago); outline-offset: 2px; }
 
+/* ---------- 味の切り替え ---------- */
+.variants {
+  max-width: 1080px;
+  margin: 32px auto 0;
+  padding: 0 16px;
+}
+.variants__box {
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: 16px 22px;
+  box-shadow: 0 2px 10px rgba(74, 48, 20, 0.06);
+}
+.variants__label { margin: 0 0 10px; font-size: 14px; color: var(--ink-soft); }
+.variants__tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.variants__btn {
+  font: inherit;
+  font-size: 15px;
+  padding: 6px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.variants__btn:hover { border-color: var(--wood); color: var(--ink); }
+.variants__btn[aria-pressed="true"] { background: var(--shu); border-color: var(--shu); color: #fff; }
+.variants__btn:focus-visible { outline: 2px solid var(--tamago); outline-offset: 2px; }
+.variants__desc { margin: 10px 0 0; font-size: 14px; }
+/* 選んでいない味の要素を隠す。display を持つ部品でも隠れるように、hidden 属性を優先する */
+[data-variant][hidden] { display: none !important; }
+
 /* ---------- 狭い画面 ---------- */
 @media (max-width: 820px) {
   .layout { grid-template-columns: 1fr; gap: 32px; }
@@ -609,6 +640,6 @@ a.plan__name:hover { color: var(--shu); }
 @media print {
   body { background: #fff; }
   .hero { min-height: 280px; }
-  .servings__btn, .step__done, .card__add, .menu, .finder, .genre-filter, .plan__select, .plan__remove, .plan__rice, .plan__actions { display: none; }
+  .servings__btn, .step__done, .variants__tabs, .card__add, .menu, .finder, .genre-filter, .plan__select, .plan__remove, .plan__rice, .plan__actions { display: none; }
   .ingredients { position: static; box-shadow: none; }
 }
