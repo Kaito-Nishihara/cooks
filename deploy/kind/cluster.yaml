@@ -1,0 +1,17 @@
+# 手元のクラスタの構成(「共通設計: 実行環境」の 4.2)。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: recipe-book
+nodes:
+  # ノードは 1 台。管理の役と、アプリを動かす役を兼ねる
+  - role: control-plane
+    # Kubernetes は 1.34 に固定する。この機械の Docker(cgroup v1)では、1.37 のノードが起動しないためである。
+    # 版を替えるときは、deploy/tools/Dockerfile の kubectl の版も合わせる。
+    image: kindest/node:v1.34.11@sha256:44e222ee2132dab25ff87301682f89eb82c7880ea3a1bf543bfe9708fd08d67d
+    extraPortMappings:
+      # ホストの 8080 を、入口(ノードの 30080)につなぐ。ブラウザでは http://localhost:8080 を開く。
+      # ほかの機械から届かないように、ホスト側は自分だけが使える住所で待ち受ける
+      - containerPort: 30080
+        hostPort: 8080
+        listenAddress: "127.0.0.1"
+        protocol: TCP

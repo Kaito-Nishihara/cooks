@@ -85,6 +85,18 @@ docker compose -f docs-site/compose.yaml down    # 停止
 | [共通設計: 認証](docs/design/common-auth.md) | パスワード、セッションとクッキー、入口での確認、サービスの間のトークン |
 | [共通設計: データベース](docs/design/common-database.md) | データベースの分け方、名前と型、テーブルを変える手順 |
 | [共通設計: サービスの共通構成](docs/design/common-service.md) | パッケージと層、ログ、設定、ほかのサービスの呼び出し方、テストの方針 |
+| [共通設計: 画面の共通仕様](docs/design/common-frontend.md) | 色と書体、共通の部品、エラーの `code` ごとの動き、ログインが要る画面の守り方、アクセシビリティ |
+| [共通設計: 実行環境](docs/design/common-runtime.md) | kind、入口の実装と振り分け、イメージ、マニフェスト、Compose での再現 |
+| [画面設計: 画面の一覧と遷移](docs/design/screens.md) | 画面の一覧とパス、画面の間の遷移、ヘッダーの出し分け、招待リンクの流れ、各画面の骨組み |
+| [画面一覧](docs/screens/index.md) | 画面ごとのページ。見た目の試作と、対応する機能設計へのリンク。仕様書のサイトで見る |
+| [データ設計: レシピ、食材マスタ、成分表](docs/design/data-recipe.md) | レシピの JSON の形、単位、換算率、成分表の変換、データの検証、38 品の移行 |
+| [機能設計: レシピ一覧と詳細](docs/design/recipe-browse.md) | 検索の正規化、ジャンルと URL、人数の換算と分量の表記、編集後の表示、写真の小さい版 |
+| [機能設計: 栄養計算](docs/design/nutrition.md) | 材料から栄養の値を出す式、丸め方、「概算値」の決まり、献立の合計 |
+| [機能設計: 登録とログイン](docs/design/auth.md) | 登録、ログイン、アカウントの画面、`auth-service` の API、入力の検証、利用者とセッションのテーブル |
+| [機能設計: レシピ帳とレシピの編集](docs/design/recipe-edit.md) | レシピ帳の一覧と名前、編集の画面、自動保存、編集内容の形、元のレシピへ重ねる決まり |
+| [機能設計: 今日の献立](docs/design/menu.md) | 献立の画面、料理を足す入口、日付の移動、合計の見せ方、献立の API とテーブル、同時に編集したときの動き |
+| [機能設計: 招待と共有](docs/design/sharing.md) | メンバーと役割、招待のリンクの作り方と期限、招待の確認と参加、立場ごとの API の状態 |
+| [開発の進め方: ハーネス](docs/design/dev-harness.md) | 自動の検査、許可の設定、Skill、CI、実装の Issue の立て方 |
 | [デザイン: アプリのメインアイコン](docs/design/app-icon.md) | 絵柄の候補、形と色の決まり、書き出す大きさと形式 |
 | [決定の記録](docs/decisions/) | 技術や設計の選択と、その理由 |
 

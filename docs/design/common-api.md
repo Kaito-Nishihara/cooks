@@ -31,7 +31,7 @@
 
 - 外に出す API は `/api`、サービスの間だけで使う API は `/internal` の下に置く。
 - 名詞の複数形を、英小文字とハイフンで書く。例: `/api/books/{bookId}/recipe-edits`
-- 動詞は HTTP のメソッドで表す。メソッドで表せない操作だけ、末尾に動詞を置く。例: `POST /api/invitations/{token}/accept`
+- 動詞は HTTP のメソッドで表す。メソッドで表せない操作だけ、末尾に動詞を置く。例: `POST /api/invitations/accept`
 - パスの変数は、何の識別子かが分かる名前にする。`{id}` ではなく `{bookId}` と書く。
 - 絞り込みと件数の指定は、クエリの変数で渡す。
 
@@ -159,7 +159,7 @@
   "message": "入力に誤りがあります。",
   "details": {
     "fields": [
-      { "path": "ingredientGroups[0].items[2].amount", "code": "MIN", "message": "0 より大きい数を入れてください。" }
+      { "path": "content.ingredients.rows[2].amount", "code": "MIN", "message": "0 より大きい数を入れてください。" }
     ]
   }
 }
@@ -197,10 +197,11 @@
 
 - 入力の検証で見つかった誤りは、最初の 1 件で止めず、すべてを `fields` に入れて返す。
 - `fields` の `path` は、入力の JSON の中の位置を、項目名と添字で書く。
-- `fields` の `code` は、`REQUIRED`、`MIN`、`MAX`、`TOO_LONG`、`TOO_MANY`、`INVALID_FORMAT`、`UNKNOWN_FIELD` のいずれかとする。
+- `fields` の `code` は、`REQUIRED`、`MIN`、`MAX`、`TOO_SHORT`、`TOO_LONG`、`TOO_MANY`、`INVALID_FORMAT`、`UNKNOWN_FIELD` のいずれかとする。
 - `INVITATION_INVALID` は、期限切れ、使用済み、取り消し済みを区別しない。招待の状態を外から調べられないようにするためである。
 - `INTERNAL_ERROR` の `message` は、いつも同じ文にする。原因はログに出し、応答には出さない。
 - この表にない `code` を足すときは、先にこの仕様書に足す。
+- 画面のクライアントは、応答を受け取れなかったときなどに、自分で `code` を付ける(`NETWORK_ERROR`、`TIMEOUT`、`UNEXPECTED_RESPONSE`)。これらは画面の中だけで使う値で、サービスは返さない。「共通設計: 画面の共通仕様」の 4.1 に書く。
 
 ### 4.10 改訂番号
 
@@ -208,7 +209,7 @@
 同時に編集したときに、黙って上書きされるのを防ぐためである。
 
 - 改訂番号は 1 から始まる整数で、保存のたびに 1 増える。
-- 取得の応答に、今の改訂番号を入れる。まだ保存されていないものを取得したときは 404 を返す。
+- 取得の応答に、今の改訂番号を入れる。まだ保存されていないものを取得したときは 404 を返す。献立だけは例外で、200 と、改訂番号が `0` の空の献立を返す(「機能設計: 今日の献立」の 4.2、決定の記録 0054)。
 - 保存の要求の本文に、画面が持っている改訂番号を入れる。新しく作るときは `0` を入れる。
 - バックエンドは、要求の改訂番号が今の番号と同じときだけ保存し、1 増やした番号を応答に入れる。
 - 違うときは保存せず、409 と `REVISION_CONFLICT` を返す。`details.currentRevision` に今の番号を入れる。

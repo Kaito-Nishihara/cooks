@@ -1,0 +1,20 @@
+# 手元のクラスタを扱う道具のコンテナ。アプリのコンテナは、直下の compose.yaml に書く。
+#
+# 使い方(リポジトリの直下で):
+#   docker compose -f deploy/tools/compose.yaml run --rm tools up      クラスタを作る
+#   docker compose -f deploy/tools/compose.yaml run --rm tools status  状態を見る
+#   docker compose -f deploy/tools/compose.yaml run --rm tools down    クラスタを消す
+#   docker compose -f deploy/tools/compose.yaml run --rm tools test    クラスタの作成と削除を確かめる
+name: recipe-book-tools
+
+services:
+  tools:
+    build:
+      context: .
+    image: recipe-book/tools:dev
+    volumes:
+      # ホスト側の Docker を使って、kind のノード(コンテナ)を動かす
+      - /var/run/docker.sock:/var/run/docker.sock
+      # リポジトリ。コマンドの本体と、クラスタの設定を読む
+      - ../..:/work
+    working_dir: /work

@@ -70,11 +70,19 @@ Docker が起動していないときは、確かめられないことを利用�
 - 変更は PR で `main` に入れる。`main` に直接コミットしない。
 - 1 つの Issue ごとにブランチを切る。名前は `<種類>/<内容>` とする。例: `docs/common-api`、`feat/recipe-edit`
 - PR は draft で作り、本文は [.claude/rules/pr-authoring.md](.claude/rules/pr-authoring.md) に従う。対応する Issue を本文の先頭に `Closes #番号` で書く。
+- 1 つの PR の修正量が多くなるときは、複数の PR に分ける。目安と分け方は [.claude/rules/pr-size.md](.claude/rules/pr-size.md) に従う。
 - マージは利用者が行う。Claude はマージしない。
 - 前の PR がマージされる前に、その内容を前提にした次の作業を始めるときは、前のブランチから切り、PR の本文にそのことを書く。
 - 作業を終えたら、今いるブランチと、まだマージされていない PR を報告に書く。
 - 受け入れ条件(要件定義の 4 章)を先にテストにし、それが通るように実装する。
 - うまくいかなかったことと、その直し方は、この文書か該当する Skill に書き足す。
+
+## 並行して作業するとき
+
+- `git add -A` と `git add .` を使わない。ファイルの名前を挙げて足す。並行の作業場所(`.claude/worktrees/`)を、コミットに巻き込んだことがある。
+- 並行する作業には、決定の記録の番号の範囲を先に割り当てる。
+- 仕様書のサイトの `nav`、`docs/index.md`、`README.md` は、どの作業も行を足すので衝突する。マージの順に解く。
+- 詳しくは [開発の進め方: Claude Code のハーネス](docs/design/dev-harness.md) の 13 章にある。
 
 ## Windows のシェルでの注意
 

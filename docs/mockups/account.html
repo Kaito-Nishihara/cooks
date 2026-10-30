@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>アカウント | おうちレシピ帖(見た目の試作)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mock.css">
+</head>
+<body data-auth="in" data-current="">
+<main>
+  <div class="wrap wrap--narrow stack-lg">
+    <h1 class="page-title">アカウント</h1>
+    <dl class="rows" style="display:block">
+      <div class="row" style="padding:12px 0;border-bottom:1px solid var(--line)"><dt class="soft" style="min-width:9em">表示名</dt><dd><strong>みさき</strong></dd></div>
+      <div class="row" style="padding:12px 0;border-bottom:1px solid var(--line)"><dt class="soft" style="min-width:9em">メールアドレス</dt><dd><strong>misaki@example.com</strong></dd></div>
+    </dl>
+    <section class="stack-sm" style="max-width:480px" aria-labelledby="a-pw">
+      <h2 class="sec-title" id="a-pw">パスワードを変える</h2>
+      <p class="soft t-sm">パスワードを変えると、ほかの端末はログアウトされます。この端末は、ログインしたままです。</p>
+      <label class="field"><span class="field__label">今のパスワード <span class="field__req">必須</span></span>
+        <input class="input is-error" type="password" value="xxxxxxxx">
+        <span class="field__error">今のパスワードが違います</span></label>
+      <label class="field"><span class="field__label">新しいパスワード <span class="field__req">必須</span></span>
+        <span class="field__help">12 文字以上</span>
+        <input class="input" type="password" value="xxxxxxxxxxxxxx"></label>
+      <label class="check"><input type="checkbox"> パスワードを表示する</label>
+      <button class="btn btn--primary" type="button">パスワードを変える</button>
+    </section>
+  </div>
+</main>
+<script src="mock.js"></script>
+</body>
+</html>
