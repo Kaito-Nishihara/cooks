@@ -1,0 +1,10 @@
+{
+  "slug": "kiriboshi",
+  "name": "切り干し大根の煮物",
+  "kicker": "副菜",
+  "time": 30,
+  "genres": ["和食", "副菜"],
+  "reading": "きりぼしだいこんのにもの",
+  "ingredients": ["切り干し大根", "にんじん", "油揚げ", "サラダ油", "だし", "砂糖", "みりん", "醤油"],
+  "nutrition": {"kcal": 130, "protein": 4, "fat": 5, "carb": 20, "salt": 1.4}
+}

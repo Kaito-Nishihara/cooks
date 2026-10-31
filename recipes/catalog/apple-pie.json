@@ -1,0 +1,10 @@
+{
+  "slug": "apple-pie",
+  "name": "アップルパイ",
+  "kicker": "パイ",
+  "time": 70,
+  "genres": ["洋食", "パイ"],
+  "reading": "あっぷるぱい りんごのぱい",
+  "ingredients": ["りんご", "砂糖", "バター", "レモン汁", "シナモン", "冷凍パイシート", "卵黄"],
+  "nutrition": {"kcal": 550, "protein": 6, "fat": 30, "carb": 72, "salt": 1}
+}

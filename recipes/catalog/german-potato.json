@@ -1,0 +1,10 @@
+{
+  "slug": "german-potato",
+  "name": "ジャーマンポテト",
+  "kicker": "副菜",
+  "time": 25,
+  "genres": ["洋食", "副菜"],
+  "reading": "じゃーまんぽてと",
+  "ingredients": ["じゃがいも", "ベーコン", "玉ねぎ", "にんにく", "オリーブ油", "塩", "こしょう", "パセリ"],
+  "nutrition": {"kcal": 250, "protein": 6, "fat": 14, "carb": 30, "salt": 1.2}
+}

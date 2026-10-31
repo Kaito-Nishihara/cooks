@@ -1,0 +1,10 @@
+{
+  "slug": "macaroni-salad",
+  "name": "マカロニサラダ",
+  "kicker": "副菜",
+  "time": 20,
+  "genres": ["洋食", "副菜"],
+  "reading": "まかろにさらだ",
+  "ingredients": ["マカロニ", "きゅうり", "にんじん", "玉ねぎ", "ハム", "マヨネーズ", "塩", "こしょう"],
+  "nutrition": {"kcal": 270, "protein": 6, "fat": 16, "carb": 26, "salt": 1}
+}

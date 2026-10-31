@@ -1,0 +1,10 @@
+{
+  "slug": "ohitashi",
+  "name": "ほうれん草のおひたし",
+  "kicker": "副菜",
+  "time": 10,
+  "genres": ["和食", "副菜"],
+  "reading": "ほうれんそうのおひたし",
+  "ingredients": ["ほうれん草", "だし", "醤油", "みりん", "かつお節"],
+  "nutrition": {"kcal": 30, "protein": 3, "fat": 0, "carb": 5, "salt": 0.7}
+}

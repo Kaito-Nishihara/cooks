@@ -1,0 +1,10 @@
+{
+  "slug": "kinpira",
+  "name": "きんぴらごぼう",
+  "kicker": "副菜",
+  "time": 20,
+  "genres": ["和食", "副菜"],
+  "reading": "きんぴらごぼう",
+  "ingredients": ["ごぼう", "にんじん", "ごま油", "赤唐辛子", "酒", "砂糖", "みりん", "醤油", "白いりごま"],
+  "nutrition": {"kcal": 180, "protein": 2, "fat": 8, "carb": 28, "salt": 2}
+}

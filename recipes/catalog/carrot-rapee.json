@@ -1,0 +1,10 @@
+{
+  "slug": "carrot-rapee",
+  "name": "キャロットラペ",
+  "kicker": "副菜",
+  "time": 10,
+  "genres": ["洋食", "副菜"],
+  "reading": "きゃろっとらぺ にんじんさらだ",
+  "ingredients": ["にんじん", "塩", "オリーブ油", "酢", "はちみつ", "粒マスタード", "こしょう", "レーズンかくるみ"],
+  "nutrition": {"kcal": 100, "protein": 1, "fat": 6, "carb": 10, "salt": 0.9}
+}

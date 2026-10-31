@@ -1,5 +1,6 @@
 # 今の静的なレシピ集(recipes/)を GitHub Pages に公開する。
-# ビルドはしない。recipes/ の中身をそのまま配る。
+# 一覧の目録(recipes/assets/catalog.js)だけを recipes/catalog/ から作り、ほかは recipes/ の中身をそのまま配る。
+# PR では、目録を作れることだけを確かめ、公開しない。
 # 新しいアプリ(frontend/、services/)は、ここでは公開しない。
 name: レシピ集を GitHub Pages に公開する
 
@@ -8,6 +9,12 @@ on:
     branches: [main]
     paths:
       - "recipes/**"
+      - "scripts/build-recipe-catalog.mjs"
+      - ".github/workflows/pages.yml"
+  pull_request:
+    paths:
+      - "recipes/**"
+      - "scripts/build-recipe-catalog.mjs"
       - ".github/workflows/pages.yml"
   # 画面から手で走らせるための入口
   workflow_dispatch:
@@ -18,13 +25,29 @@ permissions:
   pages: write
   id-token: write
 
-# 公開が重なったときは、後から来たものを待たせる。途中の公開は止めない
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
+  # 目録の項目の欠け、ページの有無、カロリーの食い違いを、マージの前に見つける
+  check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリを取り出す
+        uses: actions/checkout@v4
+
+      - name: Node を用意する
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 目録をまとめる
+        run: node scripts/build-recipe-catalog.mjs
+
   deploy:
+    if: github.event_name != 'pull_request'
+    # 公開が重なったときは、後から来たものを待たせる。途中の公開は止めない。PR の確かめは待たせない
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -32,6 +55,14 @@ jobs:
     steps:
       - name: リポジトリを取り出す
         uses: actions/checkout@v4
+
+      - name: Node を用意する
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 目録をまとめる
+        run: node scripts/build-recipe-catalog.mjs
 
       - name: Pages の設定を読む
         uses: actions/configure-pages@v5

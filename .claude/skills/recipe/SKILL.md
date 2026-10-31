@@ -6,7 +6,7 @@ argument-hint: <料理名> [アレンジ内容]
 
 # レシピページ追加スキル
 
-`recipes/` に料理 1 品分の HTML ページを追加し、目録 `recipes/assets/catalog.js` に 1 件足して一覧に載せる。
+`recipes/` に料理 1 品分の HTML ページを追加し、目録のファイル `recipes/catalog/<slug>.json` を 1 つ足して一覧に載せる。
 アプリ本体(`src/`、D1、Worker)とは無関係で、Docker もビルドも使わない。
 見本は `recipes/oyakodon.html` である。構造、クラス名、文体はこれに揃える。
 
@@ -123,31 +123,39 @@ curl -sSL -A "$UA" -o hero.jpg "https://upload.wikimedia.org/wikipedia/commons/t
 <title>親子丼(鶏むね肉でさっぱり) | おうちレシピ帖</title>
 ```
 
-```js
-  { slug: "oyakodon-torimune", name: "親子丼", title: "親子丼(鶏むね肉でさっぱり)", arrange: true, /* 以下略 */ },
+```json
+  "slug": "oyakodon-torimune",
+  "name": "親子丼",
+  "title": "親子丼(鶏むね肉でさっぱり)",
+  "arrange": true,
 ```
 
-### 5. 目録に 1 件足す
+### 5. 目録のファイルを 1 つ足す
 
 一覧(`recipes/index.html`)のカードと今日の献立(`recipes/menu.html`)は、`recipes/assets/catalog.js` の目録から `recipe.js` が描く。
-HTML にカードを書かず、目録の配列の末尾に 1 件足す。
+`catalog.js` は、`scripts/build-recipe-catalog.mjs` が `recipes/catalog/` の 1 品 1 ファイルをまとめて作る。
+リポジトリには入れず、公開のときに GitHub Actions が作る。
+1 つのファイルに並行の PR が足すと、1 本マージするたびにほかの PR が衝突したためである。
 
-```js
-  {
-    slug: "soboro-don",
-    name: "そぼろ丼",
-    kicker: "丼もの",
-    time: 25,
-    genres: ["和食", "丼もの"],
-    reading: "そぼろどん さんしょくどん",
-    ingredients: ["鶏ひき肉", "醤油", "砂糖", "卵", "絹さや", "温かいご飯"],
-    nutrition: { kcal: 690, protein: 32, fat: 20, carb: 90, salt: 2.9 },
-  },
+HTML にカードを書かず、`recipes/catalog/<slug>.json` を 1 つ足す。
+一覧の並びは、`reading` の最初の語の五十音順になる。
+
+```json
+{
+  "slug": "soboro-don",
+  "name": "そぼろ丼",
+  "kicker": "丼もの",
+  "time": 25,
+  "genres": ["和食", "丼もの"],
+  "reading": "そぼろどん さんしょくどん",
+  "ingredients": ["鶏ひき肉", "醤油", "砂糖", "卵", "絹さや", "温かいご飯"],
+  "nutrition": {"kcal": 690, "protein": 32, "fat": 20, "carb": 90, "salt": 2.9}
+}
 ```
 
 | キー | 書く内容 |
 |---|---|
-| `slug` | ファイル名の語幹。写真は `images/<slug>/hero.jpg` を使う |
+| `slug` | ファイル名の語幹。目録のファイル名とページのファイル名にそろえる。写真は `images/<slug>/hero.jpg` を使う |
 | `name` | 料理名。カードの見出しになる |
 | `title` | アレンジ版だけ書く。`<title>` の括弧書きまで含めた名前 |
 | `arrange` | アレンジ版だけ `true` を書く。カードにバッジが付く |
@@ -178,6 +186,11 @@ HTML にカードを書かず、目録の配列の末尾に 1 件足す。
 - `recipes/` 配下で、HTML から参照している画像とアセットのパスがすべて存在することを確かめる。
 - data 属性の初期表示が 2 人分の値と一致していることを見直す。
 - 目録の `nutrition.kcal` がページのカロリー目安と一致していることを見直す。
+- 目録をまとめ、一覧に載ることを確かめる。まとめる処理は、項目の欠け、ページの有無、カロリーと三大栄養素の食い違いも確かめる。
+
+```bash
+docker run --rm -v "$(pwd -W):/w" -w /w node:22-alpine node scripts/build-recipe-catalog.mjs
+```
 - 利用者には、作ったファイル、写真の出典とライセンス、アレンジの有無と内容を報告する。ブラウザで表示を確認していなければ、そう書く。
 
 ## 文章

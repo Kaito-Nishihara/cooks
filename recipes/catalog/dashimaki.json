@@ -1,0 +1,10 @@
+{
+  "slug": "dashimaki",
+  "name": "だし巻き卵",
+  "kicker": "卵料理",
+  "time": 15,
+  "genres": ["和食", "卵料理"],
+  "reading": "だしまきたまご たまごやき",
+  "ingredients": ["卵", "だし", "薄口醤油", "みりん", "塩", "サラダ油", "大根おろし", "醤油"],
+  "nutrition": {"kcal": 130, "protein": 9, "fat": 9, "carb": 3, "salt": 0.7}
+}

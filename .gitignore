@@ -20,3 +20,6 @@ data/source/
 
 # Maven のビルドの出力
 target/
+
+# scripts/build-recipe-catalog.mjs が recipes/catalog/ から作る目録
+recipes/assets/catalog.js

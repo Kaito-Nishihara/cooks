@@ -1,0 +1,10 @@
+{
+  "slug": "hijiki",
+  "name": "ひじきの煮物",
+  "kicker": "副菜",
+  "time": 30,
+  "genres": ["和食", "副菜"],
+  "reading": "ひじきのにもの",
+  "ingredients": ["芽ひじき", "にんじん", "油揚げ", "大豆", "サラダ油", "だし", "砂糖", "みりん", "醤油"],
+  "nutrition": {"kcal": 170, "protein": 6, "fat": 9, "carb": 20, "salt": 2}
+}

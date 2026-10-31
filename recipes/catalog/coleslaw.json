@@ -1,0 +1,10 @@
+{
+  "slug": "coleslaw",
+  "name": "コールスロー",
+  "kicker": "副菜",
+  "time": 15,
+  "genres": ["洋食", "副菜"],
+  "reading": "こーるすろー きゃべつさらだ",
+  "ingredients": ["キャベツ", "にんじん", "ホールコーン", "塩", "マヨネーズ", "酢", "砂糖", "こしょう"],
+  "nutrition": {"kcal": 130, "protein": 2, "fat": 9, "carb": 11, "salt": 0.7}
+}

@@ -1,0 +1,10 @@
+{
+  "slug": "saba-misoni",
+  "name": "鯖の味噌煮",
+  "kicker": "煮物",
+  "time": 25,
+  "genres": ["和食", "煮物"],
+  "reading": "さばのみそに",
+  "ingredients": ["鯖", "しょうが", "長ねぎ", "酒", "砂糖", "みりん", "味噌", "醤油"],
+  "nutrition": {"kcal": 280, "protein": 19, "fat": 15, "carb": 18, "salt": 2.7}
+}
