@@ -99,6 +99,46 @@ class StepTracker {
   }
 }
 
+/**
+ * 1 つのページの中で、味付けの違う作り方(四川風、甘めなど)を切り替える。
+ * 切り替える要素には data-variant を付け、選んだ味のものだけを出す。印のない要素は、どの味でも出す。
+ * 選んだ味は URL の ?style= に残すので、そのリンクを開くと同じ味で表示される。
+ */
+class VariantSwitcher {
+  static PARAM = "style";
+
+  /** @param {HTMLElement} root 味のボタンを持つ要素 */
+  constructor(root) {
+    this.buttons = /** @type {HTMLButtonElement[]} */ ([...root.querySelectorAll("[data-variant-choice]")]);
+    this.targets = /** @type {HTMLElement[]} */ ([...document.querySelectorAll("[data-variant]")]);
+    const names = this.buttons.map((btn) => btn.dataset.variantChoice);
+    const requested = new URLSearchParams(window.location.search).get(VariantSwitcher.PARAM);
+    const initial = names.includes(requested ?? "") ? requested : names[0];
+
+    for (const btn of this.buttons) {
+      btn.addEventListener("click", () => this.select(btn.dataset.variantChoice ?? names[0], true));
+    }
+    this.select(initial ?? names[0], false);
+  }
+
+  /**
+   * @param {string} name
+   * @param {boolean} remember URL に残すかどうか
+   */
+  select(name, remember) {
+    for (const btn of this.buttons) btn.setAttribute("aria-pressed", String(btn.dataset.variantChoice === name));
+    for (const el of this.targets) el.hidden = el.dataset.variant !== name;
+    if (!remember) return;
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set(VariantSwitcher.PARAM, name);
+      window.history.replaceState(null, "", url);
+    } catch {
+      // ファイルを直接開いたときなど、URL を書き換えられない環境では、表示の切り替えだけにする
+    }
+  }
+}
+
 /** 検索のために文字列の表記ゆれをそろえる。全角と半角、大文字と小文字、カタカナとひらがなを同一視する */
 class TextNormalizer {
   /**
@@ -870,6 +910,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const steps = document.querySelector(".steps");
   if (steps) new StepTracker(steps);
+
+  const variants = document.querySelector("[data-variants]");
+  if (variants instanceof HTMLElement) new VariantSwitcher(variants);
 
   // 一覧と献立のページは catalog.js の目録を読む。レシピのページでは読み込まない
   if (typeof RECIPE_CATALOG === "undefined") return;

@@ -127,6 +127,34 @@ curl -sSL -A "$UA" -o hero.jpg "https://upload.wikimedia.org/wikipedia/commons/t
   { slug: "oyakodon-torimune", name: "親子丼", title: "親子丼(鶏むね肉でさっぱり)", arrange: true, /* 以下略 */ },
 ```
 
+### 4b. 1 つのページで味を切り替える
+
+同じ料理の味付け違い(四川風、甘めなど)を、別のページにせず 1 つのページで切り替えるときに使う。
+材料や手順が大きく変わるときは、4 のアレンジ版にする。
+見本は `recipes/mabo-dofu.html` である。
+
+基本情報の帯の直後に、味のボタンを置く。
+最初のボタンが、何も選んでいないときの味になる。
+
+```html
+<section class="variants" aria-label="味の切り替え" data-variants>
+  <div class="variants__box">
+    <p class="variants__label">味を選ぶ</p>
+    <div class="variants__tabs">
+      <button class="variants__btn" type="button" data-variant-choice="home" aria-pressed="true">ふつう</button>
+      <button class="variants__btn" type="button" data-variant-choice="sichuan" aria-pressed="false">四川風</button>
+    </div>
+    <p class="variants__desc" data-variant="home">家庭向けの辛さ控えめの味です。</p>
+    <p class="variants__desc" data-variant="sichuan" hidden>しびれる辛さに仕上げます。</p>
+  </div>
+</section>
+```
+
+- 味によって違う要素(材料の行、手順、コツ、カロリーの値)に `data-variant="<味の名前>"` を付ける。最初の味以外には `hidden` も付ける。
+- 印のない要素は、どの味でも出る。違うところだけに印を付ける。
+- 切り替えは `recipe.js` の `VariantSwitcher` が行う。選んだ味は URL の `?style=` に残る。
+- 目録の `nutrition` と `kcal` は、最初の味の値にする。`reading` に、ほかの味の名前のひらがなを足す。
+
 ### 5. 目録に 1 件足す
 
 一覧(`recipes/index.html`)のカードと今日の献立(`recipes/menu.html`)は、`recipes/assets/catalog.js` の目録から `recipe.js` が描く。
