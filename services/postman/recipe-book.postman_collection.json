@@ -481,6 +481,120 @@
       ]
     },
     {
+      "name": "自分の情報とログアウト",
+      "description": "入口を通った要求の代わりに、verify で取ったトークン(Authorization)と、クッキーを付けて送る。",
+      "item": [
+        {
+          "name": "自分の情報を取る",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{authUrl}}/api/me",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 が返る', () => pm.response.to.have.status(200));",
+                  "pm.test('登録したメールアドレスが返る', () => {",
+                  "  pm.expect(pm.response.json().email).to.eql(pm.collectionVariables.get('email'));",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "トークンがなければ 401",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{authUrl}}/api/me",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('401 と UNAUTHENTICATED が返る', () => {",
+                  "  pm.response.to.have.status(401);",
+                  "  pm.expect(pm.response.json().code).to.eql('UNAUTHENTICATED');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ログアウトする",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Cookie",
+                "value": "rb_session={{sessionToken}}"
+              }
+            ],
+            "url": "{{authUrl}}/api/auth/logout",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('204 が返る', () => pm.response.to.have.status(204));",
+                  "pm.test('クッキーを消す指示が返る', () => {",
+                  "  pm.expect(pm.response.headers.get('Set-Cookie')).to.include('Max-Age=0');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ログアウトした後は、本人を確かめられない",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "rb_session={{sessionToken}}"
+              }
+            ],
+            "url": "{{authUrl}}/internal/auth/verify/api/me",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('401 が返る', () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "公開の鍵",
       "item": [
         {

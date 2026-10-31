@@ -42,6 +42,18 @@ public final class AuthApi {
                 .when().post("/api/auth/login");
     }
 
+    /** 入口の代わりに verify を呼び、このクッキーのセッションのトークンを取る。 */
+    public static String tokenFor(String cookie) {
+        String authorization = given().cookie(COOKIE, cookie).get("/internal/auth/verify/api/me")
+                .then().statusCode(200).extract().header("Authorization");
+        return authorization.substring("Bearer ".length());
+    }
+
+    /** トークンとクッキーを付けた要求。入口を通った要求の代わりに使う。 */
+    public static RequestSpecification signedIn(String cookie) {
+        return given().header("Authorization", "Bearer " + tokenFor(cookie)).cookie(COOKIE, cookie);
+    }
+
     /** 名前と値を交互に渡して、本文を作る。値が null の項目は、入れない。 */
     public static Map<String, Object> body(Object... namesAndValues) {
         Map<String, Object> body = new LinkedHashMap<>();
