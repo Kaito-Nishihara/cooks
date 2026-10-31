@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ウインナーパイ | おうちレシピ帖</title>
+  <meta name="description" content="ウインナーをパイシートで巻いて焼くだけの、ウインナーパイ。調理時間30分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/wiener-pie/hero.jpg" alt="木のテーブルの上の皿にのった、パイ生地で巻いたソーセージ">
+    <div class="hero__body">
+      <span class="hero__kicker">パイ</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">WIENER PIE</span>
+        ウインナーパイ
+      </h1>
+      <p class="hero__lead">細長く切ったパイシートを、ウインナーにくるくる巻いて焼く。<br>材料が少なく、オーブントースターでも作れます。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">30<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★☆☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約400<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">オーブンかオーブントースター</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ウインナー</span><span class="ing__qty" data-amount="6" data-style="int" data-unit="本">6本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">粒マスタード</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ケチャップ</span><span class="ing__qty">適量</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">生地</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">冷凍パイシート(18cm角)</span><span class="ing__qty" data-amount="1" data-style="int" data-unit="枚">1枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">卵黄</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="個分">1/2個分</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">生地を切る</h3>
+          <p class="step__text">パイシートは冷凍庫から出し、室温で少しやわらかくしておく。6等分の細長い帯に切る。オーブンを200℃に予熱する。</p>
+          <span class="step__time">10分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">巻く</h3>
+          <p class="step__text">生地の片面に粒マスタードを薄く塗り、塗った面を内側にしてウインナーにらせん状に巻き付ける。巻き終わりを指で押さえて留める。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">卵黄を塗る</h3>
+          <p class="step__text">オーブンシートを敷いた天板に、巻き終わりを下にして並べる。表面に溶いた卵黄を塗る。</p>
+          <span class="step__time">2分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">焼く</h3>
+          <p class="step__text">200℃のオーブンで、生地がふくらんできつね色になるまで焼く。好みでケチャップを添える。</p>
+          <span class="step__time">15〜18分</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>生地は少し重ねながら巻くと、焼いている間にほどけません。</li>
+          <li>オーブントースターで焼くときは、焦げやすいので途中でアルミホイルをかぶせてください。</li>
+          <li>スライスチーズを生地と一緒に巻くと、チーズ入りになります。</li>
+          <li>焼いてから時間がたったら、オーブントースターで温め直すとさくっとした食感が戻ります。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/wiener-pie/closeup.jpg" alt="紙の上に置いた、こんがり焼けたソーセージロール" loading="lazy">
+        <figcaption>生地で包んで焼くと、ソーセージロールになる</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Home_made_sausage_roll_-_The_Coffee_Corner_2024-12-29.jpg">Home made sausage roll - The Coffee Corner 2024-12-29</a>(Andy Li 撮影、CC0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Australian_sausage_roll_01.jpg">Australian sausage roll 01</a>(AlphaLemur 撮影、CC0)
+      (いずれも Wikimedia Commons)</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>
