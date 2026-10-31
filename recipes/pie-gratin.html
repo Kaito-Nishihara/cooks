@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>パイグラタン | おうちレシピ帖</title>
+  <meta name="description" content="えびとマカロニのグラタンに、パイシートでふたをして焼くパイグラタン。調理時間50分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/pie-gratin/hero.jpg" alt="楕円の器でこんがり焼いたマカロニグラタン(近い料理の写真)">
+    <div class="hero__body">
+      <span class="hero__kicker">パイ</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">PIE GRATIN</span>
+        パイグラタン
+      </h1>
+      <p class="hero__lead">えびとマカロニのグラタンを器に入れ、パイシートでふたをして焼く。<br>ふくらんだパイを崩しながら、熱いグラタンと一緒に食べます。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">50<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約590<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">グラタン皿2つとオーブン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">むきえび</span><span class="ing__qty" data-amount="100" data-style="round5" data-unit="g">100g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">玉ねぎ</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-unit="個">1/4個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">しめじ</span><span class="ing__qty" data-amount="50" data-style="round5" data-unit="g">50g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">マカロニ</span><span class="ing__qty" data-amount="50" data-style="round5" data-unit="g">50g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ピザ用チーズ</span><span class="ing__qty" data-amount="30" data-style="round5" data-unit="g">30g</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">ホワイトソース</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">バター</span><span class="ing__qty" data-amount="20" data-style="round5" data-unit="g">20g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">薄力粉</span><span class="ing__qty" data-amount="2.5" data-style="frac" data-prefix="大さじ">大さじ2と1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">牛乳</span><span class="ing__qty" data-amount="300" data-style="round5" data-unit="ml">300ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">顆粒コンソメ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">塩</span><span class="ing__qty">少々</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">こしょう</span><span class="ing__qty">少々</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">生地</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">冷凍パイシート(18cm角)</span><span class="ing__qty" data-amount="1" data-style="int" data-unit="枚">1枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">卵黄</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="個分">1/2個分</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">パイシートは冷凍庫から出し、室温で少しやわらかくしておく。玉ねぎは薄切りにし、しめじはほぐす。えびは背わたを取り、水気を拭く。マカロニは袋の表示より1分短くゆでる。</p>
+          <span class="step__time">10分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">具を炒める</h3>
+          <p class="step__text">鍋にバターを溶かし、玉ねぎとしめじを中火で炒める。しんなりしたらえびを加え、色が変わるまで炒める。</p>
+          <span class="step__time">4分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ホワイトソースにする</h3>
+          <p class="step__text">薄力粉をふり入れ、粉っぽさがなくなるまで炒める。牛乳を3回に分けて加え、そのつど混ぜて溶きのばす。コンソメを加えてとろみが付くまで煮たら、マカロニを加え、塩とこしょうで味を調える。</p>
+          <span class="step__time">6分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">器に入れて冷ます</h3>
+          <p class="step__text">グラタン皿2つに分け入れ、チーズを散らす。表面がぬるくなるまで冷ます。この間にオーブンを200℃に予熱する。</p>
+          <span class="step__time">10分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">パイでふたをする</h3>
+          <p class="step__text">パイシートを半分に切り、それぞれ皿の口より1cm大きくのばす。皿の縁に溶いた卵黄を塗ってパイシートをかぶせ、縁を押さえて貼り付ける。表面に卵黄を塗り、真ん中に小さな切り込みを入れる。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">焼く</h3>
+          <p class="step__text">天板にのせ、200℃のオーブンで生地がふくらんできつね色になるまで焼く。</p>
+          <span class="step__time">15〜20分</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>グラタンが熱いままふたをすると、生地がだれてふくらみません。表面がぬるくなるまで待ってください。</li>
+          <li>生地は皿の縁にしっかり貼り付けます。はがれると、焼いている間に縮んで落ちます。</li>
+          <li>マカロニは短めにゆでます。オーブンの中でソースを吸って、ちょうどよいやわらかさになります。</li>
+          <li>えびの代わりに、鶏もも肉やベーコンでも作れます。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/pie-gratin/potpie.jpg" alt="パイの生地を崩したところから、クリーム煮がのぞくチキンポットパイ(近い料理の写真)" loading="lazy">
+        <figcaption>近い料理の写真。パイの生地を崩して、中のソースと食べる</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>この料理に合う写真が見つからなかったため、近い料理(マカロニグラタンとチキンポットパイ)の写真を載せています。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Macaronigratin.jpg">Macaronigratin</a>(Kuha455405 撮影、CC BY-SA 3.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Chicken_Pot_Pie.jpg">Chicken Pot Pie</a>(@joefoodie 撮影、CC BY 2.0)
+      (いずれも Wikimedia Commons)</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>
