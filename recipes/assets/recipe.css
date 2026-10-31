@@ -93,6 +93,8 @@ img { max-width: 100%; display: block; }
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
   /* 長い料理名が折り返すとき、最後の 1 文字だけが次の行に残らないよう行の長さをそろえる */
   text-wrap: balance;
+  /* 日本語の料理名を、単語の途中でなく文節の切れ目で折り返す(対応していないブラウザは今までどおり折り返す) */
+  word-break: auto-phrase;
 }
 .hero__ruby {
   font-size: 0.28em;
