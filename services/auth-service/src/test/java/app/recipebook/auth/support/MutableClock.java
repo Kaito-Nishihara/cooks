@@ -27,6 +27,14 @@ public class MutableClock extends Clock {
         now = START;
     }
 
+    /**
+     * 今の本物の時刻に合わせる。トークンを使うテストの前に呼ぶ。
+     * トークンを確かめる部品は本物の時刻で期限を見るので、過去の時刻で作ったトークンは切れている。
+     */
+    public void resetToNow() {
+        now = Instant.now().truncatedTo(java.time.temporal.ChronoUnit.SECONDS);
+    }
+
     public void advance(Duration duration) {
         now = now.plus(duration);
     }

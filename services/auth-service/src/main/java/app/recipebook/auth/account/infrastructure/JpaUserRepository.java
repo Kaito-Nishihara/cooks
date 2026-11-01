@@ -48,6 +48,11 @@ public class JpaUserRepository implements UserRepository {
     }
 
     @Override
+    public Optional<User> findById(UserId id) {
+        return Optional.ofNullable(entityManager.find(UserJpaEntity.class, id.value())).map(UserJpaEntity::toDomain);
+    }
+
+    @Override
     public void lock(UserId id) {
         entityManager.find(UserJpaEntity.class, id.value(), LockModeType.PESSIMISTIC_WRITE);
     }

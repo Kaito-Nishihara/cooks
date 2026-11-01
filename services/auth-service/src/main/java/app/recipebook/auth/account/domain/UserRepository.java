@@ -15,6 +15,8 @@ public interface UserRepository {
 
     Optional<User> findByEmail(EmailAddress email);
 
+    Optional<User> findById(UserId id);
+
     /**
      * この利用者に関わる書き込みを、順番に行わせるために、鍵をかける。
      * トランザクションが終わるまで、同じ利用者への別の書き込みが待つ。

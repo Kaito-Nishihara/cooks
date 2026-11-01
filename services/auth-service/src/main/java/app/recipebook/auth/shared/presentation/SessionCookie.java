@@ -19,6 +19,14 @@ public final class SessionCookie {
         return base().value(token.reveal()).maxAge(MAX_AGE_SECONDS).build();
     }
 
+    /**
+     * クッキーを消す指示を作る。値を空にし、Max-Age を 0 にする。
+     * ほかの属性は発行のときと同じにする。違うと、ブラウザが別のクッキーとみなして消さないためである。
+     */
+    public static NewCookie clear() {
+        return base().value("").maxAge(0).build();
+    }
+
     /** 要求に付いていたクッキーの値を、トークンとして読む。形が合わない値は、ないものとして扱う。 */
     public static Optional<SessionToken> read(String cookieValue) {
         return SessionToken.parse(cookieValue);
