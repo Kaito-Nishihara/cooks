@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>豚の角煮 | おうちレシピ帖</title>
+  <meta name="description" content="焼いて下ゆでした豚バラのかたまり肉を、甘辛い煮汁でゆで卵と一緒にじっくり煮る角煮。調理時間2時間30分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/kakuni/hero.jpg" alt="小さな土鍋に入った豚の角煮とゆで卵。白髪ねぎとからしがのっている">
+    <div class="hero__body">
+      <span class="hero__kicker">煮物</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">KAKUNI</span>
+        豚の角煮
+      </h1>
+      <p class="hero__lead">豚バラのかたまり肉を焼いて脂を出し、下ゆでしてから甘辛く煮る。<br>時間はかかりますが、箸で切れるほどやわらかく仕上がります。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">150<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約800<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">厚手の鍋</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豚バラかたまり肉</span><span class="ing__qty" data-amount="400" data-style="round5" data-unit="g">400g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ゆで卵</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="個">2個</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">下ゆで</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">長ねぎの青い部分</span><span class="ing__qty" data-amount="1" data-style="frac" data-unit="本分">1本分</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">しょうが(薄切り)</span><span class="ing__qty" data-amount="1" data-style="frac" data-unit="かけ">1かけ</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">煮汁</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">水</span><span class="ing__qty" data-amount="300" data-style="round5" data-unit="ml">300ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">酒</span><span class="ing__qty" data-amount="50" data-style="round5" data-unit="ml">50ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="3" data-style="frac" data-prefix="大さじ">大さじ3</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">みりん</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">添えるもの</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">練りからし</span><span class="ing__qty">適量</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">白髪ねぎ</span><span class="ing__qty">適量</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">切る</h3>
+          <p class="step__text">豚肉は5cm角に切る。</p>
+          <span class="step__time">3分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">焼いて脂を出す</h3>
+          <p class="step__text">フライパンを中火で熱し、豚肉を脂身から焼く。全面に焼き色が付くまで転がして焼き、出た脂はペーパーで拭き取る。</p>
+          <span class="step__time">8分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">下ゆでする</h3>
+          <p class="step__text">鍋に豚肉、ねぎの青い部分、しょうがを入れ、かぶるくらいの水を注ぐ。煮立ったら弱火にし、落としぶたをして、竹串がすっと通るまでゆでる。ゆで汁は捨てる。</p>
+          <span class="step__time">60分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">甘みを含ませる</h3>
+          <p class="step__text">鍋をさっと洗い、豚肉、水、酒、砂糖を入れて中火にかける。煮立ったら落としぶたをして弱火で煮る。</p>
+          <span class="step__time">15分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">醤油で煮る</h3>
+          <p class="step__text">醤油、みりん、ゆで卵を加え、ときどき肉を返しながら、煮汁が3分の1になるまで弱火で煮る。</p>
+          <span class="step__time">30分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">盛る</h3>
+          <p class="step__text">器に盛って煮汁をかけ、練りからしと白髪ねぎを添える。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>焼いてから下ゆですると、余分な脂が抜けて、やわらかく仕上がります。</li>
+          <li>砂糖を先に、醤油は後から入れます。醤油を先に入れると、肉が締まって固くなります。</li>
+          <li>ひと晩冷蔵庫で冷やすと、表面に固まった脂を取り除けて、味もしみます。</li>
+          <li>圧力鍋を使うときは、下ゆでを加圧20分にすると、時間を短くできます。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/kakuni/closeup.jpg" alt="煮汁でつやつやに光る角煮の寄り" loading="lazy">
+        <figcaption>煮汁を煮詰めると、照りが出る</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Butakakuni_-_Dec_2014.jpg">Butakakuni - Dec 2014</a>(nesnad 撮影、CC BY 3.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Kakuni_by_jetalone_at_home.jpg">Kakuni by jetalone at home</a>(jetalone 撮影、CC BY 2.0)
+      (いずれも Wikimedia Commons)</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>
