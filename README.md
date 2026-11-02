@@ -97,6 +97,7 @@ docker compose -f docs-site/compose.yaml down    # 停止
 | [機能設計: 今日の献立](docs/design/menu.md) | 献立の画面、料理を足す入口、日付の移動、合計の見せ方、献立の API とテーブル、同時に編集したときの動き |
 | [機能設計: 招待と共有](docs/design/sharing.md) | メンバーと役割、招待のリンクの作り方と期限、招待の確認と参加、立場ごとの API の状態 |
 | [開発の進め方: ハーネス](docs/design/dev-harness.md) | 自動の検査、許可の設定、Skill、CI、実装の Issue の立て方 |
+| [デザイン: アプリのメインアイコン](docs/design/app-icon.md) | 絵柄の候補、形と色の決まり、書き出す大きさと形式 |
 | [決定の記録](docs/decisions/) | 技術や設計の選択と、その理由 |
 
 ## 進め方

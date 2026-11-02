@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="おうちレシピ帖">
+  <!-- 候補 B: どんぶり。絵柄は中心から半径 205 の円の内側に収める -->
+  <rect width="512" height="512" fill="#f7f1e3"/>
+  <!-- 盛った具(卵の黄色) -->
+  <path fill="#f2b63d" d="M122 226A134 116 0 0 1 390 226Z"/>
+  <!-- 器(朱色) -->
+  <path fill="#c0392b" d="M92 258H420A164 164 0 0 1 92 258Z"/>
+  <!-- 高台(墨の色) -->
+  <rect fill="#2b2118" x="200" y="408" width="112" height="38" rx="8"/>
+</svg>
