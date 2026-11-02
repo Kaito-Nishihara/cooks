@@ -1,0 +1,10 @@
+{
+  "slug": "wiener-pie",
+  "name": "ウインナーパイ",
+  "kicker": "パイ",
+  "time": 30,
+  "genres": ["洋食", "パイ"],
+  "reading": "ういんなーぱい そーせーじろーる",
+  "ingredients": ["ウインナー", "粒マスタード", "ケチャップ", "冷凍パイシート", "卵黄"],
+  "nutrition": {"kcal": 400, "protein": 10, "fat": 32, "carb": 22, "salt": 1.8}
+}
