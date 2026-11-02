@@ -279,7 +279,7 @@ PR を出すたびに、GitHub Actions で次を走らせる。
 | 0-5 | `auth-service` の `verify` と、トークン、公開の鍵 | `AC-AUTHN-09` から `AC-AUTHN-13`、`AC-AUTHN-15` から `AC-AUTHN-17` |
 | 0-5b | `auth-service` のログアウト、`GET /api/me`、パスワードの変更、`GET /internal/users`、期限が切れた行を消す定期の処理 | `AC-AUTHN-19`、`AC-AUTHN-20`、`AC-SVC-17`、「機能設計: 登録とログイン」の `AC-AUTH` のうち、残りの API の条件 |
 | 0-6 | `book-service` と `kitchen-service` の骨組み。トークンの確認まで | `AC-DB-04`、`AC-AUTHN-16`、`AC-AUTHN-17` |
-| 0-7 | `frontend` の骨組み。テーマ、レイアウト、共通の部品、API のクライアント、ログインの状態 | 「画面の共通仕様」の `AC-UI` と、「画面の一覧と遷移」の `AC-NAV` のうち、土台に関わるもの |
+| 0-7 | `frontend` の骨組み。テーマ、レイアウト、共通の部品、部品と色の見本帳(Storybook)、API のクライアント、ログインの状態 | 「画面の共通仕様」の `AC-UI` と、「画面の一覧と遷移」の `AC-NAV` のうち、土台に関わるもの |
 | 0-7b | ログイン、登録、アカウントの画面と、ヘッダーの利用者のメニュー | 「機能設計: 登録とログイン」の `AC-AUTH` のうち画面の条件 |
 | 0-8 | 入口の設定、マニフェスト、PostgreSQL。kind の上でつなぐ | `AC-RT-01` から `AC-RT-10`、`AC-AUTHN-18`、`AC-AUTHN-21` |
 | 0-9 | Compose での起動と、入口の再現 | `AC-RT-11` |
