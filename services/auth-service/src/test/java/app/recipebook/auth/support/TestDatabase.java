@@ -27,6 +27,11 @@ public final class TestDatabase {
         execute(DATABASE, "TRUNCATE " + String.join(", ", TABLES) + " CASCADE");
     }
 
+    /** このサービスのデータベースで、SQL を 1 つ実行する。テストの前に、行をまとめて作るのに使う。 */
+    public static void update(String sql) {
+        execute(DATABASE, sql);
+    }
+
     /** テーブルの行の数を返す。 */
     public static int count(String table) {
         return Integer.parseInt(queryStrings("SELECT count(*) FROM " + table).get(0));

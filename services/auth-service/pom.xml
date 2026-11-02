@@ -44,6 +44,11 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-smallrye-jwt-build</artifactId>
     </dependency>
+    <!-- 期限が切れた行を、1 日に 1 回消す -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-scheduler</artifactId>
+    </dependency>
     <!-- bcrypt の計算に使う -->
     <dependency>
       <groupId>io.quarkus</groupId>
