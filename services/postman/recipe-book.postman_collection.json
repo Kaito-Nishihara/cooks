@@ -150,6 +150,7 @@
                   "pm.test('本文が id、email、displayName の 3 つだけ', () => {",
                   "  pm.expect(pm.response.json()).to.have.all.keys('id', 'email', 'displayName');",
                   "});",
+                  "pm.collectionVariables.set('userId', pm.response.json().id);",
                   "const setCookie = pm.response.headers.get('Set-Cookie') || '';",
                   "const match = setCookie.match(/rb_session=([^;]+)/);",
                   "pm.test('Set-Cookie に rb_session がある', () => pm.expect(match).to.not.be.null);",
@@ -472,6 +473,76 @@
                   "pm.test('403 と CROSS_SITE_REQUEST が返る', () => {",
                   "  pm.response.to.have.status(403);",
                   "  pm.expect(pm.response.json().code).to.eql('CROSS_SITE_REQUEST');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "サービスの間",
+      "description": "ほかのサービスだけが呼ぶ入口。入口(Envoy Gateway)からは届かない。受け取ったトークンをそのまま付けて呼ぶ。",
+      "item": [
+        {
+          "name": "表示名をまとめて取る",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{authUrl}}/internal/users?ids={{userId}},0192f3a2-11aa-7c3d-8e2f-4a5b6c7d8e9f",
+            "description": "登録のない識別子は飛ばす(「機能設計: 登録とログイン」の 4.8)。"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 が返る', () => pm.response.to.have.status(200));",
+                  "pm.test('登録した 1 人だけが、id と displayName だけで返る', () => {",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body.items.length).to.eql(1);",
+                  "  pm.expect(body.items[0]).to.have.all.keys('id', 'displayName');",
+                  "  pm.expect(body.items[0].id).to.eql(pm.collectionVariables.get('userId'));",
+                  "  pm.expect(body.nextCursor).to.be.null;",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "識別子の形が違うと 400",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": "{{authUrl}}/internal/users?ids=abc",
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('400 と INVALID_FORMAT が返る', () => {",
+                  "  pm.response.to.have.status(400);",
+                  "  pm.expect(pm.response.json().details.fields[0].code).to.eql('INVALID_FORMAT');",
+                  "});",
+                  "pm.test('本文が code、message、details の形である', () => {",
+                  "  const body = pm.response.json();",
+                  "  pm.expect(body).to.have.all.keys('code', 'message', 'details');",
                   "});"
                 ]
               }

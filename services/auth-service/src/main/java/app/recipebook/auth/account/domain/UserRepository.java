@@ -1,6 +1,8 @@
 package app.recipebook.auth.account.domain;
 
 import app.recipebook.auth.shared.domain.UserId;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 /** 利用者を保存し、取り出すための約束。 */
@@ -16,6 +18,9 @@ public interface UserRepository {
     Optional<User> findByEmail(EmailAddress email);
 
     Optional<User> findById(UserId id);
+
+    /** 識別子が合う利用者を、識別子の昇順で返す。見つからない識別子は飛ばす。 */
+    List<User> findAllById(Collection<UserId> ids);
 
     /** パスワードのハッシュと、更新日時を書き換える。 */
     void updatePassword(User user);
