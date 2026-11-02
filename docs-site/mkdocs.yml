@@ -168,3 +168,4 @@ nav:
       - 0062 g と ml の分量は換算した値が 10 未満のとき 1 刻みで出す: decisions/0062-one-step-under-ten.md
       - 0063 JSON のログに Quarkiverse の拡張を使う: decisions/0063-json-log-extension.md
       - 0064 API の仕様をパスの始まりで 2 つに分ける: decisions/0064-openapi-documents-by-path.md
+      - 0065 部品と色の見本帳に Storybook を使う: decisions/0065-storybook-component-catalog.md

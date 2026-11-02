@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ねぎだれ豚バラえのき | おうちレシピ帖</title>
+  <meta name="description" content="えのきを豚バラ肉で巻いて焼き、ごま油と酢の効いたねぎだれをかける。調理時間20分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/negidare-enoki/hero.jpg" alt="ベーコンで巻いて焼いたえのきの串焼き(近い料理の写真)">
+    <div class="hero__body">
+      <span class="hero__kicker">焼き物</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">NEGIDARE ENOKI</span>
+        ねぎだれ豚バラえのき
+      </h1>
+      <p class="hero__lead">えのきを豚バラ肉でくるくる巻き、転がしながらこんがり焼く。<br>ごま油と酢のねぎだれをたっぷりかけると、脂の多い豚バラもさっぱり食べられます。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">20<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約440<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">フライパン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">豚バラ薄切り肉</span><span class="ing__qty" data-amount="8" data-style="int" data-unit="枚">8枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">えのきだけ</span><span class="ing__qty" data-amount="1" data-style="frac" data-unit="袋">1袋</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">塩</span><span class="ing__qty">少々</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">こしょう</span><span class="ing__qty">少々</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">片栗粉</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">サラダ油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">ねぎだれ</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">長ねぎ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="本">1/2本</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ごま油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">醤油</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="大さじ">大さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">酢</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="小さじ">小さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">砂糖</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">鶏がらスープの素</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">白いりごま</span><span class="ing__qty" data-amount="1" data-style="frac" data-prefix="小さじ">小さじ1</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">えのきは石づきを切り落とし、8等分の小さな束に分ける。長ねぎはみじん切りにし、ねぎだれの材料と混ぜておく。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">巻く</h3>
+          <p class="step__text">豚肉を1枚ずつ広げ、手前にえのきをのせて、斜めにずらしながらきつめに巻く。塩とこしょうをふり、片栗粉を薄くまぶす。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">焼く</h3>
+          <p class="step__text">フライパンにサラダ油を中火で熱し、巻き終わりを下にして並べる。巻き終わりが焼き固まったら、転がしながら全体に焼き色を付ける。</p>
+          <span class="step__time">6分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">蒸し焼きにする</h3>
+          <p class="step__text">ふたをして弱火にし、えのきに火を通す。</p>
+          <span class="step__time">2分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">盛る</h3>
+          <p class="step__text">器に盛り、ねぎだれをたっぷりかける。</p>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>巻き終わりを下にして焼き始めると、肉がはがれません。</li>
+          <li>片栗粉をまぶすと、ねぎだれがよく絡みます。</li>
+          <li>ねぎだれは冷蔵庫で2日ほど持ちます。冷ややっこや焼いた鶏肉にも合います。</li>
+          <li>えのきの代わりに、アスパラガスやいんげんを巻いてもおいしく作れます。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/negidare-enoki/closeup.jpg" alt="焼き色の付いたベーコン巻きえのきの寄り(近い料理の写真)" loading="lazy">
+        <figcaption>近い料理の写真。巻いた肉にしっかり焼き色を付ける</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>この料理に合う写真が見つからなかったため、近い料理(ベーコンで巻いたえのきの串焼き)の写真を載せています。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Bacon-wrapped_Enoki_(14199109781).jpg">Bacon-wrapped Enoki (14199109781)</a>(Arnold Gatilao 撮影、CC BY 2.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Bacon-wrapped_Enoki_Mushrooms_(16066808092).jpg">Bacon-wrapped Enoki Mushrooms (16066808092)</a>(Arnold Gatilao 撮影、CC BY 2.0)
+      (いずれも Wikimedia Commons)</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "slug": "oyakodon",
+  "name": "親子丼",
+  "kicker": "丼もの",
+  "time": 20,
+  "genres": ["和食", "丼もの"],
+  "reading": "おやこどん",
+  "ingredients": ["鶏もも肉", "玉ねぎ", "卵", "三つ葉", "温かいご飯", "ほんだし", "醤油", "みりん", "砂糖"],
+  "nutrition": {"kcal": 780, "protein": 39, "fat": 28, "carb": 92, "salt": 2.9}
+}

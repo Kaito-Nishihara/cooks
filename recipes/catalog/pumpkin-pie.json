@@ -1,0 +1,10 @@
+{
+  "slug": "pumpkin-pie",
+  "name": "パンプキンパイ",
+  "kicker": "パイ",
+  "time": 60,
+  "genres": ["洋食", "パイ"],
+  "reading": "ぱんぷきんぱい かぼちゃのぱい",
+  "ingredients": ["かぼちゃ", "砂糖", "卵", "生クリーム", "シナモン", "冷凍パイシート"],
+  "nutrition": {"kcal": 440, "protein": 8, "fat": 26, "carb": 50, "salt": 0.6}
+}

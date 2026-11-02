@@ -1,0 +1,10 @@
+{
+  "slug": "sweet-potato-pie",
+  "name": "スイートポテトパイ",
+  "kicker": "パイ",
+  "time": 60,
+  "genres": ["洋食", "パイ"],
+  "reading": "すいーとぽてとぱい さつまいものぱい",
+  "ingredients": ["さつまいも", "砂糖", "バター", "牛乳", "卵黄", "冷凍パイシート"],
+  "nutrition": {"kcal": 450, "protein": 6, "fat": 23, "carb": 62, "salt": 0.7}
+}
