@@ -12,3 +12,5 @@ services/**/*.yaml text eol=lf
 # 目録の 1 品のファイルは、Windows で取り出しても LF に保つ
 recipes/catalog/*.json text eol=lf
 scripts/*.mjs text eol=lf
+# 書き出した API の仕様は LF で書かれる。Windows で取り出しても LF に保ち、書き出し直したときに差分が出ないようにする
+api/*.yaml text eol=lf
