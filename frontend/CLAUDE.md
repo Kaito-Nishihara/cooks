@@ -16,6 +16,7 @@ src/
 ├── domain/        # 業務ロジック。React、Next.js、ブラウザの API に依存させない
 ├── schema/        # Zod のスキーマ(元のレシピ、食材マスタ、入力欄)
 └── api/           # API を呼ぶクライアント。generated/ は openapi.yaml から作る
+.storybook/        # 部品と色の見本帳(Storybook)の設定
 e2e/               # Playwright
 scripts/           # データの検証
 ```
@@ -38,6 +39,7 @@ scripts/           # データの検証
 - 入力欄の検証は Zod で行い、スキーマを `src/schema/` に置く。
 - 色と書体は Tailwind のテーマの値を使う。部品に色の値を直接書かない。角括弧で値を書くクラス(`p-[13px]`)も使わない。
 - 写真には代替の説明を付ける。操作できる要素はキーボードで届くようにする。
+- **`src/components/ui/` に部品を足したら、同じ場所に見本(`<部品の名前>.stories.tsx`)を書く。** 状態ごとに 1 つずつ見本にする。見本は部品に渡す値だけで作り、`src/hooks/` と `src/api/` を読み込まない。決まりは [docs/design/common-frontend.md](../docs/design/common-frontend.md) の 3.14 にある。
 
 ## テスト
 

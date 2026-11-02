@@ -1,0 +1,10 @@
+{
+  "slug": "buta-kimchi",
+  "name": "豚キムチ",
+  "kicker": "炒め物",
+  "time": 15,
+  "genres": ["韓国風", "炒め物"],
+  "reading": "ぶたきむち",
+  "ingredients": ["豚バラ薄切り肉", "白菜キムチ", "玉ねぎ", "ニラ", "ごま油", "酒", "醤油", "砂糖", "白いりごま"],
+  "nutrition": {"kcal": 500, "protein": 18, "fat": 42, "carb": 13, "salt": 3.1}
+}

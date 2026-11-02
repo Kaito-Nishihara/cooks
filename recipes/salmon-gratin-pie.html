@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>サーモングラタンパイ | おうちレシピ帖</title>
+  <meta name="description" content="鮭ときのこのグラタンを冷凍パイシートに詰めて焼く、サーモングラタンパイ。調理時間60分、2人分から。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/recipe.css">
+  <script src="assets/recipe.js" defer></script>
+</head>
+<body>
+
+  <header class="hero">
+    <img class="hero__img" src="images/salmon-gratin-pie/hero.jpg" alt="白い皿に取り分けた鮭のパイのひと切れと、きゅうりのサラダ">
+    <div class="hero__body">
+      <span class="hero__kicker">パイ</span>
+      <h1 class="hero__title">
+        <span class="hero__ruby">SALMON GRATIN PIE</span>
+        サーモングラタンパイ
+      </h1>
+      <p class="hero__lead">鮭ときのこのホワイトソースをパイ生地に詰め、チーズをのせて焼く。<br>ソースを固めに仕上げれば、切り分けても形がくずれません。</p>
+    </div>
+  </header>
+
+  <section class="meta" aria-label="基本情報">
+    <ul class="meta__list">
+      <li class="meta__item"><span class="meta__label">調理時間</span><span class="meta__value">60<small>分</small></span></li>
+      <li class="meta__item"><span class="meta__label">難易度</span><span class="meta__value">★★☆</span></li>
+      <li class="meta__item"><span class="meta__label">カロリー目安</span><span class="meta__value">約700<small>kcal</small></span></li>
+      <li class="meta__item"><span class="meta__label">道具</span><span class="meta__value meta__value--text">18cmのパイ皿とオーブン</span></li>
+    </ul>
+  </section>
+
+  <main class="layout">
+
+    <aside class="ingredients" data-base-servings="2" data-min-servings="1" data-max-servings="6" aria-labelledby="ing-title">
+      <h2 class="section-title" id="ing-title" data-mark="材">材料</h2>
+
+      <div class="servings">
+        <button class="servings__btn" type="button" data-servings-dec aria-label="1人分減らす">−</button>
+        <span class="servings__label" aria-live="polite"><strong data-servings-count>2</strong>人分</span>
+        <button class="servings__btn" type="button" data-servings-inc aria-label="1人分増やす">＋</button>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">具</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">生鮭</span><span class="ing__qty" data-amount="160" data-style="round5" data-unit="g">160g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">玉ねぎ</span><span class="ing__qty" data-amount="0.25" data-style="frac" data-unit="個">1/4個</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">しめじ</span><span class="ing__qty" data-amount="50" data-style="round5" data-unit="g">50g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">ピザ用チーズ</span><span class="ing__qty" data-amount="30" data-style="round5" data-unit="g">30g</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">ホワイトソース</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">バター</span><span class="ing__qty" data-amount="15" data-style="round5" data-unit="g">15g</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">薄力粉</span><span class="ing__qty" data-amount="2" data-style="frac" data-prefix="大さじ">大さじ2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">牛乳</span><span class="ing__qty" data-amount="200" data-style="round5" data-unit="ml">200ml</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">顆粒コンソメ</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-prefix="小さじ">小さじ1/2</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">塩</span><span class="ing__qty">少々</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">こしょう</span><span class="ing__qty">少々</span></label></li>
+        </ul>
+      </div>
+
+      <div class="ing-group">
+        <p class="ing-group__title">生地</p>
+        <ul class="ing-list">
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">冷凍パイシート(18cm角)</span><span class="ing__qty" data-amount="2" data-style="int" data-unit="枚">2枚</span></label></li>
+          <li><label class="ing"><input type="checkbox"><span class="ing__name">卵黄</span><span class="ing__qty" data-amount="0.5" data-style="frac" data-unit="個分">1/2個分</span></label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-mark="作">作り方</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <h3 class="step__title">下ごしらえ</h3>
+          <p class="step__text">パイシートは冷凍庫から出し、室温で少しやわらかくしておく。鮭は皮と骨を取って2cm角に切り、塩とこしょうを少しふる。玉ねぎは薄切りにし、しめじは石づきを取ってほぐす。</p>
+          <span class="step__time">10分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">具を炒める</h3>
+          <p class="step__text">フライパンにバターを溶かし、玉ねぎとしめじを中火で炒める。玉ねぎがしんなりしたら鮭を加え、表面の色が変わるまで炒める。</p>
+          <span class="step__time">4〜5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ホワイトソースにする</h3>
+          <p class="step__text">薄力粉をふり入れ、粉っぽさがなくなるまで炒める。牛乳を3回に分けて加え、そのつど混ぜて溶きのばす。コンソメを加え、木べらで底に線が引けるくらい固くなるまで煮て、塩とこしょうで味を調える。</p>
+          <span class="step__time">5〜6分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">ソースを冷ます</h3>
+          <p class="step__text">バットに広げて冷ます。熱いまま生地に詰めると、生地のバターが溶けて層ができない。この間にオーブンを200℃に予熱する。</p>
+          <span class="step__time">15分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">生地を敷く</h3>
+          <p class="step__text">パイシート1枚をめん棒で一回り大きくのばし、パイ皿に敷きこむ。はみ出た生地を切り落とし、底にフォークで穴を数か所あける。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">詰めて格子をのせる</h3>
+          <p class="step__text">冷ましたグラタンを詰め、チーズを散らす。もう1枚のパイシートを1.5cm幅に切って格子に並べ、縁を押さえてつける。生地の表面に溶いた卵黄を塗る。</p>
+          <span class="step__time">5分</span>
+        </li>
+        <li class="step">
+          <h3 class="step__title">焼く</h3>
+          <p class="step__text">200℃のオーブンで25〜30分、生地がきつね色になり、チーズに焼き色がつくまで焼く。5分おいてから切り分ける。</p>
+          <span class="step__time">25〜30分</span>
+        </li>
+      </ol>
+
+      <div class="tips">
+        <h2 class="section-title" data-mark="技">おいしく作るコツ</h2>
+        <ul>
+          <li>ホワイトソースは、グラタンを作るときより固めにします。ゆるいと、切ったときに中身が流れ出ます。</li>
+          <li>甘塩の鮭を使うときは、下ごしらえの塩を省き、最後の味見で塩を足すか決めてください。</li>
+          <li>パイ皿がなければ、耐熱のグラタン皿に具を入れ、上にだけパイシートをかぶせて焼いても作れます。</li>
+          <li>底の生地に穴をあけておくと、焼いている間に生地が浮き上がりません。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 class="section-title" id="gallery-title" data-mark="写">盛り付けの参考</h2>
+    <div class="gallery__grid">
+      <figure>
+        <img src="images/salmon-gratin-pie/whole.jpg" alt="パイ皿に残った鮭と野菜のパイ。サワークリームがのっている" loading="lazy">
+        <figcaption>サワークリームとディルをのせても合う</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>カロリーは2人分で作ったときの1人分の目安です。</p>
+    <p>写真: <a href="https://commons.wikimedia.org/wiki/File:Salmon_quiche,_Kirchh%C3%B6rde.jpg">Salmon quiche, Kirchhörde</a>(Gerda Arendt 撮影、CC BY-SA 4.0)、
+      <a href="https://commons.wikimedia.org/wiki/File:Salmon_pie_with_sour_cream.jpg">Salmon pie with sour cream</a>(CC0)
+      (いずれも Wikimedia Commons)</p>
+    <p><a href="index.html">← レシピ一覧へ</a></p>
+  </footer>
+
+</body>
+</html>

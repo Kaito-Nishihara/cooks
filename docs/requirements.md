@@ -265,6 +265,7 @@ Claude Code が作ったレシピを、ブラウザで見て、自分の作り�
 | 実行環境 | Kubernetes。手元では kind |
 | 手元での開発 | Docker Compose(1 つのサービスを書いて確かめる間)と kind(つないで確かめるとき) |
 | テスト | 画面は Vitest と Playwright、API は JUnit と REST Assured |
+| 部品の見本帳 | Storybook。共通の部品と、色、書体、余白の値を、状態ごとに並べて見る。GitHub Pages で公開する |
 
 ### サービスの分け方
 
@@ -369,6 +370,7 @@ frontend/              # Next.js
 │   │   └── menu/      # 献立の合計
 │   ├── schema/        # Zod のスキーマ(元のレシピ、食材マスタ、入力欄)
 │   └── api/           # API を呼ぶクライアント。型は OpenAPI から生成する
+├── .storybook/        # 部品と色の見本帳(Storybook)
 └── e2e/               # Playwright
 services/
 ├── pom.xml            # 親。Quarkus と拡張の版を決める

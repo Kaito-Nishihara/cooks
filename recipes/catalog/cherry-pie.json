@@ -1,0 +1,10 @@
+{
+  "slug": "cherry-pie",
+  "name": "チェリーパイ",
+  "kicker": "パイ",
+  "time": 70,
+  "genres": ["洋食", "パイ"],
+  "reading": "ちぇりーぱい さくらんぼのぱい",
+  "ingredients": ["ダークチェリー缶", "砂糖", "コーンスターチ", "レモン汁", "冷凍パイシート", "卵黄"],
+  "nutrition": {"kcal": 520, "protein": 6, "fat": 26, "carb": 70, "salt": 1.0}
+}
