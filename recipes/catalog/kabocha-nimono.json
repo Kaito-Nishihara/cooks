@@ -1,0 +1,10 @@
+{
+  "slug": "kabocha-nimono",
+  "name": "かぼちゃの甘煮",
+  "kicker": "煮物",
+  "time": 20,
+  "genres": ["和食", "煮物"],
+  "reading": "かぼちゃのあまに かぼちゃのにもの",
+  "ingredients": ["かぼちゃ", "砂糖", "みりん", "醤油", "塩"],
+  "nutrition": {"kcal": 120, "protein": 2, "fat": 0, "carb": 29, "salt": 0.7}
+}

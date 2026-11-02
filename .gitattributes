@@ -9,3 +9,6 @@ pom.xml text eol=lf
 *.properties text eol=lf
 services/**/*.yaml text eol=lf
 *.sql text eol=lf
+# 目録の 1 品のファイルは、Windows で取り出しても LF に保つ
+recipes/catalog/*.json text eol=lf
+scripts/*.mjs text eol=lf
