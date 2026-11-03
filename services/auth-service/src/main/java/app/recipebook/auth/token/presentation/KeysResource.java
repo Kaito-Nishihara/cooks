@@ -7,6 +7,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 
 /**
  * 署名を確かめるための公開の鍵を返す(「共通設計: 認証」の 4.8)。
@@ -20,6 +21,7 @@ public class KeysResource {
     @Inject
     PublicKeySet publicKeySet;
 
+    @Operation(operationId = "getSigningKeys")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public KeySetResponse keys() {

@@ -7,6 +7,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 
 /** 自分の情報の入口(「機能設計: 登録とログイン」の 4.6)。トークンが要る。 */
 @Path("/api/me")
@@ -19,6 +20,7 @@ public class MeResource {
     @Inject
     CurrentUserId currentUserId;
 
+    @Operation(operationId = "getCurrentUser")
     @GET
     public UserResponse getMe() {
         return UserResponse.from(getMeUseCase.execute(currentUserId.get()));

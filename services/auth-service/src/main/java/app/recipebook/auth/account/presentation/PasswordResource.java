@@ -13,6 +13,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 
 /**
  * パスワードの変更の入口(「機能設計: 登録とログイン」の 4.7)。
@@ -28,6 +29,7 @@ public class PasswordResource {
     @Inject
     CurrentUserId currentUserId;
 
+    @Operation(operationId = "changePassword")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public UserResponse change(@Valid @NotNull ChangePasswordRequest request,
