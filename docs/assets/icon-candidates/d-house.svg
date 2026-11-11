@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="おうちレシピ帖">
+  <!-- 候補 D: おうち(家)。絵柄は中心から半径 205 の円の内側に収める -->
+  <rect width="512" height="512" fill="#f2b63d"/>
+  <!-- 壁(紙の色) -->
+  <rect fill="#fffdf7" x="126" y="226" width="260" height="184"/>
+  <!-- 屋根(朱色) -->
+  <path fill="#c0392b" d="M256 70L436 236H76Z"/>
+  <!-- 戸口(墨の色) -->
+  <path fill="#2b2118" d="M214 410V326A42 42 0 0 1 298 326V410Z"/>
+</svg>
