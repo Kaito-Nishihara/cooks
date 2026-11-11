@@ -15,6 +15,7 @@
     <module>service-common</module>
     <module>auth-service</module>
     <module>book-service</module>
+    <module>kitchen-service</module>
   </modules>
 
   <properties>
